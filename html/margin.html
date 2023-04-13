@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 마진의 크기는 큰 쪽을 따라간다. 단, inline-block의 경우 margin 값이 더해진다*/
+        div {
+            width: 200px;
+            height: 100px;
+            background: rgb(255, 149, 0);
+        }
+
+        .box1 {
+            margin: 30px 50px 30px 50px;
+        }
+
+        .box2 {
+            margin: 30px 50px;
+        }
+
+        .box3 {
+            margin: 50px;
+        }
+
+        .box4 {
+            margin: 30px 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+</body>
+
+</html>

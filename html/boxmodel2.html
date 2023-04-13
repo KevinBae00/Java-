@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .size {
+            width: 200px;
+            height: 300px;
+        }
+
+        /* 레벨의 변경 */
+        /* block <-> inline */
+        /* display : block || inline || inline-block */
+        div {
+            margin: 20px;
+            border: 1px solid grey;
+            border-radius: 5px;
+        }
+
+        #inline img {
+            margin: 20px;
+        }
+
+        #block img {
+            margin: 20px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="inline">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png" alt="" class="size">
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/ec/Lisa_Simpson.png" alt="" class="size">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png" alt="" class="size">
+    </div>
+    <div id="block">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png" alt="" class="size">
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/ec/Lisa_Simpson.png" alt="" class="size">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png" alt="" class="size">
+    </div>
+</body>
+
+</html>
