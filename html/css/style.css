@@ -1,0 +1,65 @@
+body {
+    font-family: "맑은 고딕";
+    font-size: 14px;
+}
+
+.container {
+    position: absolute;
+    width: 960px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+header{
+    position: relative;
+    height: 280px;
+    background-image: url("https://mblogthumb-phinf.pstatic.net/MjAyMjA2MTZfNzkg/MDAxNjU1MzMwMjI0OTU4.TZ3-rwOq274xgcozXqhHrbFebU99oGIUAa-JBElQcLEg.MFE3ZIPihrgBjBOwyC4gKdUKkYRyHMzLRo7tL4_yxxgg.JPEG.goodjcs/%EA%B0%95%EB%AC%B8%ED%95%B4%EB%B3%80_(22).jpg?type=w800");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 960px 280px;
+}
+
+header h1{
+    position: absolute;
+    right: 20px;
+    bottom: 70px;
+    font-size: 3em;
+    color: #ffc;
+    text-shadow: 1px 2px 2px #000;
+}
+
+header h2{
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+    font-size: 2em;
+    color: #ff0;
+}
+
+.navi {
+    position: relative;
+    background: #271717;
+    margin-top: -15px;
+    width: 960px;
+    height: 60px;
+}
+
+.navi ul{
+    list-style-type: none;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.navi ul li{
+    display: inline;
+    float: left;
+    font-size: 15px;
+}
+
+.navi a{
+    padding: 10px 5px 5px 35px;
+    display: block;
+    color: white;
+    width: 150px;
+}
