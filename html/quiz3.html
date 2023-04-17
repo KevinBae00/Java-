@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu{
+            text-align: center;
+            width: 750px;
+            margin-inline: auto;
+        }
+
+        #menu ul{
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            
+        }
+
+        #menu li{
+            background-color: lightgray;
+            width: 90px;
+            float: left;
+            padding: 10px 30px;
+            position: relative;
+        }
+
+        #menu ul li a{
+            color: black;
+            text-decoration: none;
+        }
+
+        .sub{
+            display: none;
+            position: absolute;
+            left: 0;
+        }
+
+        .l:hover .first{
+            display: block;
+        }
+        
+        .ll:hover .second{
+            display: block;
+        }
+
+        .lll:hover .third{
+            display: block;
+        }
+
+        .lV:hover .fourth{
+            display: block;
+        }
+
+        .V:hover .fifth{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+<div id="menu">
+    <ul>
+        <li class="l">
+            <a href="#">MENU1</a>
+            <ul class="sub first">
+                <li><a href="#">SUB_MENU1</a></li>
+                <li><a href="#">SUB_MENU2</a></li>
+                <li><a href="#">SUB_MENU3</a></li>
+            </ul>
+        </li>
+        <li class="ll">
+            <a href="#">MENU2</a>
+            <ul class="sub second">
+                <li><a href="#">SUB_MENU1</a></li>
+                <li><a href="#">SUB_MENU2</a></li>
+                <li><a href="#">SUB_MENU3</a></li>
+            </ul>
+        </li>
+        <li class="lll">
+            <a href="#">MENU3</a>
+            <ul class="sub third">
+                <li><a href="#">SUB_MENU1</a></li>
+                <li><a href="#">SUB_MENU2</a></li>
+                <li><a href="#">SUB_MENU3</a></li>
+            </ul>
+        </li>
+        <li class="lV">
+            <a href="#">MENU4</a>
+            <ul class="sub fourth">
+                <li><a href="#">SUB_MENU1</a></li>
+                <li><a href="#">SUB_MENU2</a></li>
+                <li><a href="#">SUB_MENU3</a></li>
+            </ul>
+        </li>
+        <li class="V">
+            <a href="#">MENU5</a>
+            <ul class="sub fifth">
+                <li><a href="#">SUB_MENU1</a></li>
+                <li><a href="#">SUB_MENU2</a></li>
+                <li><a href="#">SUB_MENU3</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

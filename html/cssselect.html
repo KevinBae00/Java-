@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 하위선택자 (후손)*/
+        /* #container ul {
+            border: 1px solid black;
+        } */
+
+        /* 자식선택자 */
+        /* #container > ul {
+            border: 1px solid black;
+        } */
+
+        /* 형제선택자(첫번째 동생) */
+        /* header + p {
+            text-decoration: underline;
+        } */
+
+        /* 형제선택자(모든 동생) */
+        /* header ~ p {
+            text-decoration: underline;
+        } */
+
+        /* 속성선택자 */
+        /* a[href] {
+            background-color: yellow;
+        } */
+
+        /* 속성값 선택자 */
+        /* a[target="_blank"] {
+            background-color: blueviolet;
+        } */
+
+        /* 가상클래스와 가상요소 선택자 */
+
+        /* 
+        :link - 방문하지 않는 링크 스타일
+        :visited - 방문한 링크 스타일
+        :hover - 마우스 커서 올려놓은 스타일
+        :active - 웹요소 마우스 클릭하고 대기한 상태의 스타일
+        :focus - 요소에 포커스가 되어진 상태의 스타일
+
+        :enabled - 요소가 사용가능한 상태일때 스타일
+        :disabled - 요소가 사용불가능한 상태일때의 스타일
+        :checked - 라디오나 체크박스가 선택되어질때 스타일
+        */
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:active {
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: red;
+        }
+
+        a:hover {
+            color: green;
+        }
+
+        input:disabled {
+            background-color: red;
+        }
+
+        input:checked + span{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <selection id="container">
+        <header>
+            <h1>예약 방법 및 요금</h1>
+        </header>
+        <nav class="navi">
+            <ul>
+                <li><a href="https://www.naver.com/">이용 안내</a></li>
+                <li><a href="">객실 소개</a></li>
+                <li><a href="">예약방법</a></li>
+                <li><a href="">예약하기</a></li>
+            </ul>
+        </nav>
+
+        <label for="">이름<input type="text" disabled></label>
+        <br><br>
+        <label for=""><input type="radio" name="subject" value="speaking"><span>회화</span></input></label>
+        <label for=""><input type="radio" name="subject" value="grammer"><span>문법</span></input></label>
+
+        <p>요안도라에 예약하려면1?</p>
+        <p>요안도라에 예약하려면2?</p>
+        <ul>
+            <li>예약 방법
+                <ul>
+                    <li><a href="#" target="_blank">통화</a></li>
+                    <li><a href="#">문자 남기기</a></li>
+                </ul>
+            </li>
+
+            <li>요금
+                <ul>
+                    <li>1인 : 40,000원</li>
+                    <li>2인 : 60,000원</li>
+                    <li>3인 : 80,000원</li>
+                    <li>4인 : 100,000원</li>
+                </ul>
+            </li>
+        </ul>
+    </selection>
+</body>
+
+</html>
