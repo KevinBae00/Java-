@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #website {
+            width: 900px;
+            height: 700px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        .appbar {
+            height: 80px;
+        }
+
+        .appbar * {
+            float: left;
+            margin-top: 15px;
+        }
+
+        .appbar>img {
+            width: 120px;
+
+        }
+
+        .appbar>#menu {
+            margin: 25px 15px;
+            width: 30px;
+        }
+
+        .appbar input {
+            width: 400px;
+            margin-left: 60px;
+            line-height: 30px;
+        }
+
+        .appbar>button>img {
+            margin-top: 0;
+            height: 30px;
+        }
+
+        .appbar>a {
+            margin-top: 0;
+            margin-right: 30px;
+            float: right !important;
+        }
+
+
+        .appbar>a>img {
+            width: 50px;
+        }
+
+        .list {
+            margin-left: 5px;
+            clear: both;
+            float: left;
+            height: 600px;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 50px;
+            overflow-y: scroll;
+        }
+
+        .list li {
+            width: 180px;
+            height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .list img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .list a{
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-break: break-all;
+            width: 180px;
+        }
+
+        .subbar {
+            margin-bottom: 20px;
+        }
+
+        .subbar li {
+            display: inline-block;
+            background-color: lightgray;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 15px;
+            margin-inline: 5px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .video {
+            overflow-y: scroll;
+            width: 680px;
+            height: 500px;
+        }
+
+        .video video {
+            width: 200px;
+        }
+
+        .video>ul {
+            text-align: center;
+        }
+
+        .video>ul>li {
+            float: right;
+            margin: 10px 10px;
+        }
+
+        .video h3 {
+            font-weight: bold;
+            font-size: 20px;
+            margin-left: 15px;
+        }
+
+        .list li:hover {
+            background-color: lightgray;
+        }
+
+        .subbar li:hover {
+            background-color: lightslategray;
+        }
+
+        hr {
+            clear: both;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="website">
+        <div class="appbar">
+            <img src="images/hamburger.png" alt="" id="menu">
+            <img src="images/youtube.jpg" alt="">
+            <input type="text">
+            <button><img src="images/search.png" alt=""></button>
+            <a href="#"><img src="images/profile2.jpg" alt=""></a>
+        </div>
+
+        <div class="list">
+            <ul class="firstlist">
+                <li><a href="#"><img src="images/home.png" alt="">홈</a></li>
+                <li><a href="#"><img src="images/shorts.png" alt="" height="30px">Shorts</a></li>
+                <li><a href="#"><img src="images/subscribe.png" alt="">구독</a></li>
+            </ul>
+            <hr>
+            <ul class="secondlist">
+                <li><a href="#"><img src="images/box.png" alt="" height="26px">보관함</a></li>
+                <li><a href="#"><img src="images/record.png" alt="" height="20px">시청 기록</a></li>
+                <li><a href="#"><img src="images/video.png" alt="">내 동영상</a></li>
+                <li>
+                    <div title="좋아요 표시한 동영상"><a href="#"><img src="images/like.png" height="28px">좋아요 표시한 동영상</a></div>
+                </li>
+            </ul>
+            <hr>
+            <ul>
+                <h3>구독</h3>
+            </ul>
+            <hr>
+            <ul class="thirdlist">
+                <li><a href="#"><img src="images/box.png" alt="" height="26px">보관함</a></li>
+                <li><a href="#"><img src="images/record.png" alt="" height="20px">시청 기록</a></li>
+                <li><a href="#"><img src="images/video.png" alt="">내 동영상</a></li>
+                <li>
+                    <div title="좋아요 표시한 동영상"><a href="#"><img src="images/like.png" height="28px">좋아요 표시한 동영상</a></div>
+                </li>
+            </ul>
+            <hr>
+            <ul class="lastlist">
+                <li><a href="#"><img src="images/phone.webp" alt="">123-123</a></li>
+                <li><a href="#"><img src="images/email.png" alt="">aaa@aaa.com</a></li>
+            </ul>
+        </div>
+
+        <div class="subbar">
+            <ul>
+                <li><a href="#">전체</a></li>
+                <li><a href="#music">음악</a></li>
+                <li><a href="#news">뉴스</a></li>
+                <li><a href="#game">게임</a></li>
+                <li><a href="#">믹스</a></li>
+                <li><a href="#live">실시간</a></li>
+                <li><a href="#movie">만화영화</a></li>
+                <li><a href="#game">액션 어드벤쳐 게임</a></li>
+                <li><a href="#cook">요리</a></li>
+                <li><a href="#mine">최근에 업로드된 동영상</a></li>
+                <li><a href="#">감상한 동영상</a></li>
+                <li><a href="#mine">새로운 맞춤 동영상</a></li>
+            </ul>
+        </div>
+
+        <div class="video">
+            <h3 id="mine">맞춤동영상</h3>
+            <ul>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+            </ul>
+            <hr>
+            <h3 id="movie">영화</h3>
+            <ul>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+            </ul>
+            <hr>
+            <h3 id="game">게임</h3>
+            <ul>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+            </ul>
+            <hr>
+            <h3 id="news">뉴스</h3>
+            <ul>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+            </ul>
+            <hr>
+            <h3 id="live">실시간</h3>
+            <ul>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+            </ul>
+            <hr>
+            <h3 id="cook">요리</h3>
+            <ul>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+            </ul>
+            <hr>
+            <h3 id="music">음악</h3>
+            <ul>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+                <li>
+                    <video src="media/Page.mp4" controls></video>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

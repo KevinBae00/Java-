@@ -7,106 +7,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #menu{
-            text-align: center;
-            width: 750px;
-            margin-inline: auto;
-        }
-
-        #menu ul{
+        * {
             padding: 0;
             margin: 0;
+        }
+
+        ul li {
             list-style-type: none;
         }
 
-        #menu li{
-            width: 90px;
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #menu {
+            font: bold 16px "malgun gothic";
+            /* weight font-size font-family */
+            width: 700px;
+            height: 50px;
+            background-color: #ccc;
+            line-height: 50px;
+            margin: 0 auto;
+            text-align: center;
+            /* a tag는 a tag 자체 속성이 우선 적용된다. */
+        }
+
+        #menu>ul>li {
             float: left;
-            padding: 10px 30px;
+            width: 140px;
             position: relative;
         }
 
-        #menu a{
-            color: black;
-            text-decoration: none;
-        }
-
-        #menu>ul>li{
-            background-color: lightgray;
-        }
-
-        #menu>ul>li>ul{
-            
-            position: absolute;
-            left: 0;
-            top: 41px;
-        }
-
-        #menu>ul>li>ul>li{
+        #menu>ul>li>ul {
+            width: 130px;
             display: none;
+            position: absolute;
+            font-size: 14px;
+            background-color: skyblue;
         }
 
-        #menu>ul>li:hover>ul>li{
+
+        #menu>ul>li:hover>ul {
             display: block;
-            background-color: yellowgreen;
         }
 
-        #menu>ul>li:hover{
+        #menu>ul>li:hover {
             background-color: gray;
         }
 
-        #menu>ul>li>ul>li:hover{
-            background-color: green;
+        #menu>ul>li>ul>li:hover {
+            background-color: greenyellow;
         }
-
     </style>
 </head>
 
 <body>
-<div id="menu">
-    <ul>
-        <li>
-            <a href="#">MENU1</a>
-            <ul>
-                <li><a href="#">SUB_MENU1</a></li>
-                <li><a href="#">SUB_MENU2</a></li>
-                <li><a href="#">SUB_MENU3</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">MENU2</a>
-            <ul>
-                <li><a href="#">SUB_MENU1</a></li>
-                <li><a href="#">SUB_MENU2</a></li>
-                <li><a href="#">SUB_MENU3</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">MENU3</a>
-            <ul>
-                <li><a href="#">SUB_MENU1</a></li>
-                <li><a href="#">SUB_MENU2</a></li>
-                <li><a href="#">SUB_MENU3</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">MENU4</a>
-            <ul>
-                <li><a href="#">SUB_MENU1</a></li>
-                <li><a href="#">SUB_MENU2</a></li>
-                <li><a href="#">SUB_MENU3</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">MENU5</a>
-            <ul>
-                <li><a href="#">SUB_MENU1</a></li>
-                <li><a href="#">SUB_MENU2</a></li>
-                <li><a href="#">SUB_MENU3</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+    <div id="menu">
+        <ul>
+            <li>
+                <a href="#">MENU1</a>
+                <ul>
+                    <li><a href="#">SUB_MENU1</a></li>
+                    <li><a href="#">SUB_MENU2</a></li>
+                    <li><a href="#">SUB_MENU3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">MENU2</a>
+                <ul>
+                    <li><a href="#">SUB_MENU1</a></li>
+                    <li><a href="#">SUB_MENU2</a></li>
+                    <li><a href="#">SUB_MENU3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">MENU3</a>
+                <ul>
+                    <li><a href="#">SUB_MENU1</a></li>
+                    <li><a href="#">SUB_MENU2</a></li>
+                    <li><a href="#">SUB_MENU3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">MENU4</a>
+                <ul>
+                    <li><a href="#">SUB_MENU1</a></li>
+                    <li><a href="#">SUB_MENU2</a></li>
+                    <li><a href="#">SUB_MENU3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">MENU5</a>
+                <ul>
+                    <li><a href="#">SUB_MENU1</a></li>
+                    <li><a href="#">SUB_MENU2</a></li>
+                    <li><a href="#">SUB_MENU3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>
