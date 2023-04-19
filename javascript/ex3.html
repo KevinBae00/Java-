@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //제어문
+    //조건문
+    //  if문의 조건식에서 false가 되는 값들
+    // 0, null, "", undefined
+
+    // if(조건식){
+    //   실행문;
+    // }
+
+    // var age = 22;
+    // if (age >= 20) {
+    //     document.write("성인 입니다.")
+    // } else {
+    //     document.write("미성년자 입니다.")
+    // }
+    //
+    // var result = age > 20 ? "성인 입니다." : "미성년자 입니다."
+    //
+    // var result = confirm("정말로 삭제 하시겠습니까?")
+    // //document.write(result)
+    //
+    // if (result == true) {
+    //     document.write("파일이 삭제 되었습니다.")
+    // } else {
+    //     document.write("삭제를 취소 했습니다.")
+    // }
+
+    // if (조건식) {
+    //     실행문
+    // } else if (조건식) {
+    //     실헹문
+    // } else if (조건식) {
+    //     실행문
+    // } else {
+    //     실행문
+    // }
+
+    // var num = 1;
+    // if (num == 1) {
+    //     document.write("num = " + num, "<br>")
+    // } else if (num == 2) {
+    //     document.write("num = " + num, "<br>")
+    // } else if (num == 3) {
+    //     document.write("num = " + num, "<br>")
+    // } else {
+    //     document.write("숫자를 잘못 입력하셨습니다.")
+    // }
+
+    // 원하는 달을 하나 입력받는다(1~12)
+    // 3 ~ 5 : 봄
+    // 6 ~ 8 : 여름
+    // 9 ~ 11 : 가을
+    // 12 ~ 2 : 겨울
+    // 입력한 달을 계절을 출력하세요
+    // 잘못 입력하면 메세지를 줄력해 주세요
+
+    var season = parseInt(prompt("달을 입력하시오(1~12)"));
+    if(season>=3 && season<=5) {
+        document.write("봄")
+    }else if(season>=6 && season<=8) {
+        document.write("여름")
+    }else if(season>=9 && season<=11) {
+        document.write("가을")
+    }else if(season>=1 && season<=2 || season==12) {
+        document.write("겨울")
+    }else {
+        document.write("잘못 입력하셨습니다.")
+    }
+</script>
+</body>
+</html>

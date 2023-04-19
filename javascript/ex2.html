@@ -18,9 +18,13 @@
 
     //신장을 입력 받아서 적정체중을 출력하세요
 
-    var height = parseInt(prompt("키를 입력하세요", "0"));
-    var weight = (height - 100) * 0.9;
-    document.write("당신의 적정 체중은", weight, "kg입니다.")
+    var height = parseInt(prompt("키를 입력하세요", ""));
+    var weight = parseInt(prompt("몸무게를 입력하세요", ""));
+
+    var normal_w = (height - 100) * 0.9;
+    var result = weight >= normal_w - 5 && weight <= normal_w + 5;
+    var rs = result ? "적정 체중입니다." : "적정 체중이 아닙니다."
+    document.write("나의 몸무게는" + rs);
 </script>
 </body>
 
