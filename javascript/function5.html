@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 함수의 스코프
+    // 값이 함수에 사용되는 범위
+
+    var score = 10; // 전역변수
+
+    function myFunc() {
+        score = 50; // 지역변수
+        console.log(score)
+    }
+
+    console.log(score); // 10
+    myFunc(); // 50
+</script>
+</body>
+</html>

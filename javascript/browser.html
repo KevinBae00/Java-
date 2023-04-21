@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="clearInterval(auto1)">값증가 중지</button>
+<button onclick="clearInterval(auto2)">값감소 중지</button>
+
+<script>
+    // window객체
+    // alert(),prompt(),open(),close(),confirm(),setInterval(),setTimeout()
+
+    // window.open("http://www.naver.com", "naver", "width=200,height=200,left=500,top=300")
+    // alert("회원가입을 하세요");
+    // confirm("삭제하시나요")
+
+    var addNum = 0;
+    var subNum = 1000;
+
+    // var auto1 = setInterval(function () {// 여러번 실행, 뒤에 시간은 주기를 결정
+    //     addNum++;
+    //     console.log("addNum : ", addNum);
+    // }, 1000);
+    //
+    // var auto2 = setInterval(function () {
+    //     subNum--;
+    //     console.log("subNum : ", subNum);
+    // }, 1000);
+
+    setTimeout(function () {// 한번만 실행, 뒤에 시간은 언제 실행할지
+        addNum++;
+        console.log("addNum : ", addNum);
+    }, 2000);
+</script>
+</body>
+</html>

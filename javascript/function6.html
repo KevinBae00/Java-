@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1형식 : 기본함수
+    // 2형식 : 리터럴 함수
+    // 3형식 : 익명함수(즉시실행함수)
+
+    // (
+    //     function () {
+    //         console.log("익명함수 호출");
+    //     }
+    // )();
+    //
+    // (
+    //     function (name) {
+    //         console.log(name);
+    //     }
+    // )("홍길동");
+    //
+    // var x = 10;
+    //
+    // (
+    //     function () {
+    //         console.log(x);
+    //     }
+    // )();
+
+    // 함수의 중복
+
+    // function foo() {
+    //     function bar() {
+    //         console.log("hello");
+    //     }
+    // }
+    //
+    // foo;
+    // bar(); //error
+
+    // 함수의 클러저(closure)
+    // 함수에 선언된 변수는 지역변수
+
+    // var x = 1;
+    //
+    // function locF() {
+    //     var num = 1;
+    //     for (i = 0; i < 3; i++) {
+    //         x++;
+    //         num++;
+    //     }
+    //     console.log("x = ", x);
+    //     console.log("num :", num)
+    // }
+    //
+    // locF();
+    // locF();
+
+    function outerF() {
+        var num = 1;
+
+        function innerF() {
+            for (i = 0; i < 3; i++) {
+                num++;
+            }
+            console.log(num);
+        }
+
+        return innerF;
+    }
+
+    var inner = outerF();
+    inner();
+    inner();
+</script>
+</body>
+</html>

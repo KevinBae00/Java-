@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p><img src="images/pic_1.jpg" id="photo" alt=""></p>
+    <p>
+        <button onclick="gallery(0)">이전</button>
+        <button onclick="gallery(1)">다음</button>
+    </p>
+</div>
+
+<script>
+    var num = 1;
+
+    function gallery(direct) {
+        if (direct === 0) {
+            if (num === 1) {
+                return;
+            }
+            console.log(--num);
+        } else {
+            if (num === 8) {
+                return;
+            }
+            console.log(++num);
+        }
+
+        var imgTag = document.getElementById("photo");
+        imgTag.setAttribute("src", "images/pic_" + num + ".jpg");
+    }
+</script>
+</body>
+</html>
