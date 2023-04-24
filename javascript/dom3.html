@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<img id="logo" src="images/game_1.png">-->
+
+<p id="p1">문단구분을 위한 태그 입니다</p>
+<!--태그의 구성요소 : 태그명, 텍스트-->
+
+<script>
+    // 태그의 속성값 읽고 쓰기
+    // getAttribute("속성명") //속성값 읽기
+    // setAttribute("속성명", "속성값") //속성값 쓰기
+
+    // var imgTag = document.getElementById("logo");
+    // document.write(imgTag.getAttribute("src"));
+
+    // imgTag.setAttribute("src", "images/pic_1.jpg");
+    // document.write(imgTag.getAttribute("src"));
+
+    // innerHTML : 선택한 요소의 하위요소를 문자 데이터로 반환한다.
+    // 일반태그 (폼태그를 제외한 태그)
+
+    var pTag = document.getElementById("p1");
+    document.write(pTag.innerHTML);
+
+    pTag.innerHTML = "p태그의 내용 수정";
+</script>
+</body>
+</html>

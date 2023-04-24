@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>자동차 견적</h1>
+<div id="carZone">
+    <p><img src="images/car1.jpg" alt="" width="600px"></p>
+    <table id="estimate">
+        <colgroup>
+            <col width="380px">
+            <col width="160px">
+            <col width="*">
+        </colgroup>
+
+        <thead>
+        <tr>
+            <th scope="row">옵션</th>
+            <th scope="row">추가가격</th>
+            <th scope="row">선택</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>인조가죽시트</td>
+            <td>250000</td>
+            <td>
+                <input type="checkbox" name="opt1" id="opt1"
+                       value="250000" onclick="car()"></td>
+        </tr>
+        <tr>
+            <td>내비게이션</td>
+            <td>250000</td>
+            <td>
+                <input type="checkbox" name="opt2" id="opt2"
+                       value="250000" onclick="car()">
+            </td>
+        </tr>
+        <tr>
+            <td>선루프</td>
+            <td>440000</td>
+            <td>
+                <input type="checkbox" name="opt3" id="opt3"
+                       value="440000" onclick="car()">
+            </td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+        <tr>
+            <td scope="col">(기본)차량가격</td>
+            <td colspan="2">
+                <input type="text" name="total" id="total"
+                       value="13450000" readonly>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+<script>
+    function car() {
+
+    }
+</script>
+</body>
+</html>
