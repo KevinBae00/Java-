@@ -7,7 +7,7 @@
 <body>
 <h1>자동차 견적</h1>
 <div id="carZone">
-    <p><img src="images/car1.jpg" alt="" width="600px"></p>
+    <p><img src="images/car1.jpg" alt="" width="600"></p>
     <table id="estimate">
         <colgroup>
             <col width="380px">
@@ -54,7 +54,7 @@
             <td scope="col">(기본)차량가격</td>
             <td colspan="2">
                 <input type="text" name="total" id="total"
-                       value="13450000" readonly>
+                       value="13450000" readonly="readonly">
             </td>
         </tr>
         </tfoot>
@@ -63,7 +63,24 @@
 
 <script>
     function car() {
+        // 요소의 값 읽어오기
+        // document.getElementById("opt1").getAttribute("value");
+        // document.getElementById("opt1").value;
 
+        // 요소의 값 쓰기
+        // document.getElementById("opt1").setAttribute("value", "100000");
+        // document.getElementById("opt1").value = "100000";
+
+        var basic_car = Number(document.getElementById("total").defaultValue);
+
+        for (var i = 1; i <= 3; i++) {
+            var checkOpt = document.getElementById("opt" + i);
+            if (checkOpt.checked) {
+                basic_car += Number(checkOpt.value);
+            }
+        }
+
+        document.getElementById("total").value = basic_car;
     }
 </script>
 </body>

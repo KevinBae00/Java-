@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #terms {
+            width: 400px;
+            height: 50px;
+            overflow: auto;
+            border: 1px solid #bbb;
+        }
+
+        form {
+            width: 550px;
+        }
+    </style>
+</head>
+<body>
+<form action="#" id="f1" name="f1">
+    <fieldset>
+        <legend>폼 1</legend>
+        <p>
+            비밀번호
+            <input type="password" name="user_pw1" id="user_pw1">
+        </p>
+        <p>
+            비밀번호 확인
+            <input type="text" name="user_pw2" id="user_pw2">
+            <input type="submit" value="확인">
+        </p>
+    </fieldset>
+</form>
+
+<form action="#" id="f2" name="f2">
+    <fieldset>
+        <legend>폼 2</legend>
+        <div id="terms">
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        </div>
+        <p>
+            <input type="checkbox" name="accept" id="accept">약관동의 합니다.
+        </p>
+        <p>
+            <input type="checkbox" name="allChk" id="allChk">전체선택
+            <br>
+            <input type="checkbox" name="subject1" id="subject1" value="s1">과목1
+            <br>
+            <input type="checkbox" name="subject2" id="subject2" value="s2">과목2
+            <br>
+            <input type="checkbox" name="subject3" id="subject3" value="s3">과목3
+            <br>
+        </p>
+        <p>
+            <input type="submit" value="등록 완료">
+            <input type="reset" value="등록 취소">
+        </p>
+    </fieldset>
+</form>
+
+<script>
+    // getElementById()
+    // getElementByTagName()
+
+    // 폼태그 요소 읽어오기
+    // 태그의 계층구조를 이용해서 name속성으로 읽어 온다
+
+    document.f1.onsubmit = function () {
+        var pw1 = document.f1.user_pw1;
+        var pw2 = document.f1.user_pw2;
+        pw2.value = pw1.value;
+        pw2.disabled = true; // 비활성화
+        return false; // submit의 링크속성을 제거한다.
+    }
+
+    document.f2.onsubmit = function () {
+        var act = document.f2.accept;
+        if (!act.checked) {
+            alert("약관동의해야 합니다.");
+            return false;
+        }
+    }
+
+    document.f2.allChk.onclick = function () {
+        if (document.f2.allChk.checked) { // this => 이벤트를 발생 시키는 대상 (document.f2.accept)
+            document.f2.subject1.checked = true;
+            document.f2.subject2.checked = true;
+            document.f2.subject3.checked = true;
+        } else {
+            document.f2.subject1.checked = false;
+            document.f2.subject2.checked = false;
+            document.f2.subject3.checked = false;
+        }
+    }
+
+    
+</script>
+</body>
+</html>
