@@ -16,8 +16,8 @@
             background-color: green;
         }
 
-        .blue {
-            background-color: blue;
+        .yellow {
+            background-color: yellow;
         }
     </style>
 </head>
@@ -51,19 +51,19 @@
     // addClass, removeClass(), toggleClass()
     // hasClass : true / false
 
-    $("#p1").addClass("aqua"); // .생략해야 한다.
-    $("#p2").removeClass("red");
-    $("#p3").toggleClass("green");
-    $("#p4").toggleClass("green");
-    $("#p6").text($("#p5").hasClass("yellow"));
-
+    // $("#p1").addClass("aqua"); // .생략해야 한다.
+    // $("#p2").removeClass("red");
+    // $("#p3").toggleClass("green");
+    // $("#p4").toggleClass("green");
+    // $("#p6").text($("#p5").hasClass("yellow"));
+    //
     // val(), val()값
     let name = $("#user_name").val();
     console.log(name);
     $("#user_name").val("홍길동")
 
-    // prop()
-    // 속성값을 반환하거나 상태를 확인.(true / false)
+    // // prop()
+    // // 속성값을 반환하거나 상태를 확인.(true / false)
     console.log($("#user_name").prop("defaultValue"));
     console.log($("#chk1").prop("checked"));
     console.log($("#chk2").prop("checked"));
