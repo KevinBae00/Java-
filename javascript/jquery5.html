@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>탐색 선택자</h1>
+<ul id="menu1">
+    <li>content1-1</li>
+    <li>content1-2</li>
+    <li id="list3">content1-3</li>
+</ul>
+<ul id="menu2">
+    <li>content2-1</li>
+    <li>content2-2</li>
+    <li>content2-3</li>
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    // 배열을 위한 메소드
+    // var obj = [
+    //     {"area": "Seoul"},
+    //     {"area": "Busan"},
+    //     {"area": "Jeunju"},
+    // ]
+
+    // each()
+    // 1형식
+    // $(obj).each(function (인덱스번호, 배열의 값) {
+    //     실행문
+    // });
+
+    // $(obj).each(function (i, o) {
+    //     console.log(i + ":", o);
+    // });
+
+    // 2형식
+    // $.each($(obj), function (i, o) {
+    //     console.log(i + ":", o);
+    // });
+
+    // $.each($("#menu1 li"), function (i, o) {
+    //     console.log(i + ":", o);
+    // })
+
+    // $.each($("#menu2 li"), function (i, o) {
+    //     console.log(i + ":", $(this));
+    // })
+
+    const arr1 = [
+        {
+            "area": "Seoul", // arr1[0].area == "Seoul"
+            "name": "Ms.Moo", // arr1[0].name == Ms.Moo""
+        },
+        {
+            "area": "Daejeon",
+            "name": "Mr.Park",
+        },
+        {
+            "area": "Seoul",
+            "name": "Mrs.Mama",
+        },
+    ];
+
+    // map()
+    // 배열의 값을 반복해서 처리
+    // 새로운 배열을 만들어서 반환한다.
+
+    // const arr2 = $.map(arr1, function (o, i) {
+    //     if (o.area === "Seoul") {
+    //         return o;
+    //     }
+    // });
+
+    // console.log(arr2);
+
+    // index()
+    // 요소의 index번호 반환
+    $("#menu1 li").index($("#list3"));
+    console.log(idx);
+</script>
+</body>
+</html>

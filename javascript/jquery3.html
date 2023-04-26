@@ -5,9 +5,71 @@
     <title>Title</title>
 </head>
 <body>
+<!--<ul id="wrap">-->
+<!--    <h1>no title</h1>-->
+<!--    <li><h1>list 1</h1>-->
+<!--        <ul>-->
+<!--            <li id="list_1">list 1-1</li>-->
+<!--            <li><h1>list 1-2</h1></li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--    <li>list 2</li>-->
+<!--    <li>list 3</li>-->
+<!--</ul>-->
+
+<!--<div id="wrap">-->
+<!--    <h1 class="title">인접 관계 선택자</h1>-->
+<!--    <p>내용 1</p>-->
+<!--    <p class="txt">내용 2</p>-->
+<!--    <p class="txt3">내용 3</p>-->
+<!--    <p>내용 4</p>-->
+<!--    <p>내용 5</p>-->
+<!--    <p class="txt6">내용 6</p>-->
+<!--</div>-->
+
+<div>
+    <h1 class="title">선택자</h1>
+    <div>
+        <p class="txt1">내용/p>
+    </div>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
     // 인접관계 선택자
+    // $("#list_1").parent().css("border","2px dashed red") // <ul>
+
+    // 하위선택자(후손)
+    // $("#wrap h1").css("border", "2px dashed red")
+
+    // 자식선택자
+    // $("#wrap > h1").css("border", "2px dashed red")
+
+    var style_1 = {
+        "background-color": "#ff0",
+        "border": "2px solid #f00",
+    }
+
+    var style_2 = {
+        "background-color": "#ff0",
+        "border": "2px dashed #f00",
+    }
+
+    // 형, 동생 선택자
+    // $(".txt").prev().css(style_1);
+    // $(".txt").next().next().css(style_2);
+
+    // $(".txt").prevAll().css(style_1);
+    // $(".txt").nextAll().css(style_2);
+
+    // $(".txt").siblings().css(style_1);
+    // $(".txt3").prevUntil(".title").css(style_1);
+    // $(".txt3").nextUntil(".txt6").css(style_2);
+
+    // parents() // 모든 조상
+
+    // 가장 가가운 상위 요소 선택자
+    $(".txt1").closest("div").css(style_2);
 </script>
 </body>
 </html>

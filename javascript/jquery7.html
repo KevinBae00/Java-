@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- <h1><strong>객체 조작 및 생성</strong></h1>
+<section id="sec_1">
+    <h2><em>html()</em></h2>
+    <p>내용1</p>
+</section>
+<section id="sec_2">
+    <h2><em>텍스트()</em></h2>
+    <p>내용2</p>
+</section> -->
+
+<h1><strong>객체 조작 및 생성</strong></h1>
+<section id="sec_1">
+    <h2>이미지 속성</h2>
+    <p><img src="images/math_img_1.png" alt="가위" border="2"></p>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    // 속성조작 메소드
+    // <p id="txt">내용</p>
+    // setAttribute()
+    // removeAttribute()
+    // getAttribute()
+    // innerHTML
+    // <input type="test">
+    // value
+
+    // html() : 선택대상의 하위 쇼소 정보를 반환한다.
+    // html(새요소) : 선택대상의 하위요소로 추가한다.(기존 내용은 사라진다.)
+
+    // let result_1 = $("#sec_1").html();
+    // console.log(result_1);
+    //
+    // $("#sec_1 p").html("<a href=\'#\'>링크태그</a>");
+    //
+    // // text(), text(새텍스트) : 태그가 감싸고 있는 문자를 반환 or 변경
+    // let result_2 = $("#sec_2").text();
+    // console.log(result_2);
+    //
+    // $("#sec_2 h2").text("문자 변경");
+
+    // 속성변경함수
+    // 읽기, 쓰기
+    // attr(), attr(속성정보)
+
+    let srcV = $("#sec_1 img").attr("src");
+    console.log(srcV);
+
+    $("#sec_1 img").attr({
+        "src": srcV.replace("1", "2"),
+        "alt": "바위",
+        "width": 50,
+    })
+
+    $("#sec_1 img").removeAttr("width");
+</script>
+</body>
+</html>
