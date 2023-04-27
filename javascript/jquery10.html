@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        #wrap {
+            height: 5000px;
+            padding-top: 2000px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <h1>위치메서드</h1>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    // 스크롤바의 위치메소드
+    // (선택요소).scrollTop() / (선택요소).scrollTop(값)
+    // (선택요소).scrollLeft() / (선택요소).scrollLeft(값)
+
+    let $topNum = $("h1").offset().top;
+    $(window).scrollTop($topNum);
+
+    let sct = $(window).scrollTop();
+    console.log(sct);
+
+</script>
+</body>
+</html>

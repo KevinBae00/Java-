@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box_wrap {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto 0;
+            position: relative;
+            background-color: #ccc;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+<div id="box_wrap">
+    <p class="box">box</p>
+</div>
+<p class="txt_1">절대 top 위칫값 <span></span></p>
+<p class="txt_2">상대 top 위칫값 <span></span></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    // 요소의 크기
+    // height, innerHeight, outHeight
+    // width, innerWidth, outWidth
+
+    // 요소의 위치
+    // position() : 절대기준, 상대기준, left, top, right, bottom
+    // offset() : document기준, left, top
+    let $txt1 = $(".txt_1 span");
+    let $txt2 = $(".txt_2 span");
+    let $box = $(".box");
+
+    let off_t = $box.offset().top; // 100
+    let pos_t = $box.position().top; // 50
+
+    $txt1.text(off_t);
+    $txt2.text(pos_t);
+</script>
+</body>
+</html>

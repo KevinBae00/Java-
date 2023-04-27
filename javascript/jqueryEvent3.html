@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p><input type="text" id="user_id"></p>
+
+<!--이름 : <input type="text" id="name">-->
+<!--<p id="txt1"></p>-->
+<!--<label for="rel_site"></label><select name="" id="rel_site">-->
+<!--    <option value="" selected disabled hidden>사이트 선택</option>-->
+<!--    <option value="www.google.com">구글</option>-->
+<!--    <option value="www.naver.com">네이버</option>-->
+<!--    <option value="www.daum.net">다음</option>-->
+<!--</select>-->
+<!--<p class="txt"></p>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    // $("#rel_site").on("change", function () {
+    //     // $('.txt').text($(this).val());
+    // });
+
+    // $("#rel_site").on("change", function () {
+    //     $("#txt1").text($(this).val());
+    //     window.location.href = "http://" + $(this).val();
+    // });
+
+    // key이벤트
+    // keydown(), keyup(), keypress()
+    $(document).on("keydown", keyEventFun)
+
+    function keyEventFun(e) {
+        let direct = "";
+
+        switch (e.keyCode) {
+            case 37:
+                direct = "Left";
+                break;
+            case 38:
+                direct = "Top";
+                break;
+            case 39:
+                direct = "Right";
+                break;
+            case 40:
+                direct = "Bottom";
+                break;
+        }
+
+        if (direct) {
+            $("#user_id").val(direct);
+        }
+    }
+</script>
+</body>
+</html>

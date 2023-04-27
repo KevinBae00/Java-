@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <button class="btn1">버튼1</button>
+</p>
+<p>내용1</p>
+<p>
+    <button class="btn2">버튼2</button>
+</p>
+<p>내용2</p>
+<p>
+    <a href="http://www.naver.com" class="btn3">버튼3</a>
+</p>
+<p>내용3</p>
+<p>
+    <a href="http://www.naver.com" class="btn4">버튼4</a>
+</p>
+<p>내용4</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    // 이번트 형식
+    // $(이벤트대상 선택자).이벤트등록함수(function(){
+    //    실행문
+    //    })
+
+    // 이번트 등록함수
+    // click(), hover(), mouseover(), mouseout(), mouseup(), mousedown()
+    // scroll(), focus(), blur(), change()
+
+    // 2형식: 그룹이벤트 처리
+    // $(이벤트대상 선택자).on(이벤트종류1,이벤트종류2,...n,function(){
+    //     실행문
+    // });
+
+    // $(이벤트대상 선택자).on({이벤트종류1,이벤트종류2,...n,function(){
+    //     실행문
+    //   }
+    // });
+
+    // $(이벤트대상 선택자).on(
+    //  "이벤트종류1":function(){실행문}
+    //  "이벤트종류2":function(){실행문}
+    //  "이벤트종류n":function(){실행문}
+    // );
+
+    // $(".btn1").click(function () {
+    //     $(".btn1").parent().next().css({"color": "red"});
+    // });
+    //
+    // $(".btn2").on({
+    //     "mouseover focus": function () {
+    //         $(".btn2").parent().next().css({"color": "aqua"});
+    //     },
+    //     "mouseout blur": function () {
+    //         $(".btn2").parent().next().css({"color": "black"});
+    //     }
+    // })
+
+    // 이벤트제거
+    // $(".btn1").off("click");
+    // $(".btn2").off("mouseover focus");
+
+    // 강제 이벤트 발생
+    // $(".btn1").click();
+    // $(".btn2").trigger("mouseover");
+
+    // a태그 도는 form태그의 링크 속성 차단하기
+    // $(".btn3").click(function () {
+    //     $(".btn3").parent().next().css({"color": "red"});
+    //     return false; // 링크 속성 차단하기
+    // });
+    //
+    // $(".btn4").click(function (e) {
+    //     e.preventDefault(); // 링크 속성 차단하기
+    //     $(".btn4").parent().next().css({"color": "red"});
+    // });
+
+    // hover = mouseover + mouseout
+    $(".btn1").hover(
+        function () { // mouseover
+            $(".btn1").parent().next().css({"color": "aqua"});
+        },
+        function () { // mouseout
+            $(".btn1").parent().next().css({"color": "red"});
+        },
+    );
+</script>
+</body>
+</html>
