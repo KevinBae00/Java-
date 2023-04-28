@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .txt1 {
+            background-color: aqua;
+        }
+
+        .txt2 {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<p>
+    <button class="btn1">버튼1</button>
+</p>
+<span class="txt1">"500px" 이동</span>
+<p>
+    <button class="btn2">버튼2</button>
+</p>
+<span class="txt2">"50px"씩 이동</span>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    // $(요소선택자).animate({스타일속성}, 적용시간, 가속도, 콜백함수)
+    $(".btn1").on("click", function () {
+        $(".txt1").animate({
+                marginLeft: "500px",
+                fontsize: "30px",
+            },
+            2000, "linear", function () {
+                alert("애니메이션 동작 끝");
+            });
+    });
+
+    $(".btn2").on("click", function () {
+        $(".txt2").animate({
+                marginLeft: "50px",
+            },
+            1000);
+    });
+</script>
+</body>
+</html>
