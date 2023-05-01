@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-<form action="#" method="post" name="myform">
+<form action="#" method="post" onsubmit="return checks()" name="myform">
     <table>
         <tr>
             <td>아이디</td>
@@ -32,7 +32,7 @@
         <tr>
             <td>
                 <span>*</span>
-                <input type="text" name="id" id="pInput" maxlength="10" required>
+                <input type="text" name="id" id="pInput" maxlength="10">
                 <input type="button" value="중복체크" onclick="idCheck()">
             </td>
         </tr>
@@ -43,7 +43,7 @@
         <tr>
             <td>
                 <span>*</span>
-                <input type="password" name="pwd1" minlength="4" maxlength="8">
+                <input type="password" id="pwd1" name="pwd1" minlength="4" maxlength="8">
             </td>
         </tr>
 
@@ -53,7 +53,7 @@
         <tr>
             <td>
                 <span>*</span>
-                <input type="password" name="pwd2">
+                <input type="password" id="pwd2" name="pwd2">
             </td>
         </tr>
 
@@ -63,7 +63,7 @@
         <tr>
             <td>
                 <span>*</span>
-                <input type="text" name="name">
+                <input type="text" id="name" name="name">
             </td>
         </tr>
 
@@ -72,8 +72,8 @@
         </tr>
         <tr>
             <td>
-                <input type="text" name="year" placeholder="년(4자)">
-                <select name="month">
+                <input type="text" id="year" name="year" placeholder="년(4자)">
+                <select id="month" name="month">
                     <option value="" selected disabled hidden="hidden">월</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -88,7 +88,7 @@
                     <option value="11">11</option>
                     <option value="12">12</option>
                 </select>
-                <input type="text" name="day" placeholder="일">
+                <input type="text" id="day" name="day" placeholder="일">
             </td>
         </tr>
 
@@ -97,8 +97,8 @@
         </tr>
         <tr>
             <td>
-                <input type="radio" name="gender">남 자
-                <input type="radio" name="gender">여 자
+                <input type="radio" class="gender" name="gender">남 자
+                <input type="radio" class="gender" name="gender">여 자
             </td>
         </tr>
 
@@ -107,78 +107,75 @@
         </tr>
         <tr>
             <td>
-                <input type="checkbox" name="hobby">스포츠
-                <input type="checkbox" name="hobby">예 술
-                <input type="checkbox" name="hobby">철 학
+                <input type="checkbox" class="hobby" name="hobby">스포츠
+                <input type="checkbox" class="hobby" name="hobby">예 술
+                <input type="checkbox" class="hobby" name="hobby">철 학
             </td>
         </tr>
 
         <tr>
             <td colspan="2">
-                <input type="submit" onclick="return check()" value="회원가입">
+                <input type="submit" value="회원가입">
                 <input type="reset" value="취소">
             </td>
         </tr>
 
     </table>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script>
-        function check() {
+        function checks() {
             let i;
 // 입력 항목의 휴효성 검사
 
-            const myForm = document.myform;
-
-            if (myForm.id.value === "") {
-                alert('Please type ID');
-                myForm.id.focus();
+            if ($("#pInput").val() === "") {
+                alert("아이디를 입력하세요");
+                $("#pInput").focus();
                 return false;
             }
 
-            if (myForm.pwd1.value === "") {
+            if ($("#pwd1").val() === "") {
                 alert('Please type Password');
-                myForm.pwd2.focus();
+                $("#pwd2").focus();
                 return false
             }
 
-            if (myForm.pwd1.value !== myForm.pwd2.value) {
+            if ($("#pwd1").val() !== $("#pwd2").val()) {
                 alert('Passwords do not match')
-                myForm.pwd2.select();
+                $("pwd2").select();
                 return false;
             }
 
-            if (myForm.name.value === "") {
+            if ($("#name").val() === "") {
                 alert('Please type name');
-                myForm.name.focus();
+                $("#name").focus();
                 return false;
             }
 
-            if (myForm.year.value === "") {
+            if ($("#year").val() === "") {
                 alert('Please type year');
-                myForm.year.focus();
+                $("#year").focus();
                 return false;
             }
 
-            if (!myForm.month.value) {
+            if (!$("#month").val()) {
                 alert('Please select month');
-                myForm.month.focus();
+                $("#month").focus();
                 return false;
             }
 
-            if (!myForm.day.value) {
+            if (!$("#day").val()) {
                 alert('Please type day');
-                myForm.day.focus();
+                $("#day").focus();
                 return false;
             }
 
             let flag = false;
 
-            for (i = 0; i < myForm.gender.length; i++) {
-                if (myForm.gender[i].checked) {
-                    flag = true;
-                    break;
-                }
+            if ($('input:radio[name=gender]').is(":checked")) {
+                flag = true;
             }
+
 
             if (flag === false) {
                 alert('please select gender');
@@ -186,10 +183,9 @@
             }
 
             flag = false;
-            for (i = 0; i < myForm.hobby.length; i++) {
-                if (myForm.hobby[i].checked) {
-                    flag = true;
-                }
+            if ($('.hobby').is(":checked")) {
+                alert($(".gender")[i].val());
+                flag = true;
             }
 
             if (flag === false) {
@@ -199,7 +195,7 @@
         }
 
         function idCheck() {
-            openWin = window.open('idcheck.html', 'childForm', 'width=450,height=200');
+            const openWin = window.open('idcheck.html', 'childForm', 'width=450,height=200');
 
         }
     </script>
