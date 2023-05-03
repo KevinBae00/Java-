@@ -919,11 +919,25 @@ from EMP e
                     on e.DEPTNO = d.DEPTNO
 where ENAME = 'FORD';
 
+-- 컬럼에 이름이 동일할 경우에 사용
 select ENAME, DEPTNO, SAL, DNAME, LOC
 from EMP
          inner join DEPT
-                    using (DEPTNO); -- 컬럼에 이름이 동일할 경우에 사용
+                    using (DEPTNO);
 
+-- natural join시 공통컬럼에는 테이블 이름을 적어주지 않는다.
 select ENAME, DEPTNO, SAL, DNAME, LOC
 from EMP
          natural join DEPT;
+
+select ENAME, SAL, GRADE
+from EMP e
+         inner join SALGRADE s
+                    on e.SAL between s.LOSAL and s.HISAL;
+
+select e1.ENAME || '의 매니저의 이름은 ' || e2.ENAME || '입니다.'
+from EMP e1
+         inner join
+     EMP e2
+     on e1.MGR = e2.EMPNO
+order by e1.EMPNO;
