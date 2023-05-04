@@ -941,3 +941,237 @@ from EMP e1
      EMP e2
      on e1.MGR = e2.EMPNO
 order by e1.EMPNO;
+
+-- ANSI JOIN(표준 조인)
+-- CROSS JOIN
+-- INNER JOIN
+-- OUTER JOIN [ left || right || full ] outer join
+select e1.ENAME, e2.ENAME
+from EMP e1
+         left outer join EMP e2
+                         on e1.MGR = e2.EMPNO;
+
+select e1.ENAME, e2.ENAME
+from EMP e1
+         full outer join EMP e2
+                         on e1.MGR = e2.EMPNO
+order by e1.ENAME;
+
+select ENAME, SAL, DNAME, GRADE
+from EMP e
+         inner join DEPT d
+                    on e.DEPTNO = d.DEPTNO
+         inner join SALGRADE s
+                    on e.SAL between s.LOSAL and s.HISAL;
+
+-- 문제 시작
+select e.DEPTNO, DNAME, EMPNO, SAL
+from EMP e,
+     DEPT d
+where e.DEPTNO = d.DEPTNO
+  and SAL > 2000;
+
+select e.DEPTNO, DNAME, EMPNO, SAL
+from EMP e
+         inner join DEPT d
+                    on e.DEPTNO = d.DEPTNO
+where SAL > 2000;
+----------------------------------------------
+select e.DEPTNO, DNAME, trunc(avg(SAL)) as AVG_SAL, max(SAL) as MAX_SAL, min(SAL) as MIN_SAL, count(*) as CNT
+from EMP e,
+     DEPT d
+where e.DEPTNO = d.DEPTNO
+group by e.DEPTNO, DNAME;
+
+select e.DEPTNO, DNAME, trunc(avg(SAL)) as AVG_SAL, max(SAL) as MAX_SAL, min(SAL) as MIN_SAL, count(*) as CNT
+from EMP e
+         inner join DEPT d
+                    on e.DEPTNO = d.DEPTNO
+group by e.DEPTNO, DNAME;
+----------------------------------------------
+select d.DEPTNO, DNAME, EMPNO, ENAME, JOB, SAL
+from EMP e,
+     DEPT d
+where e.DEPTNO(+) = d.DEPTNO
+order by DEPTNO, ENAME;
+
+select DEPTNO, DNAME, EMPNO, ENAME, JOB, SAL
+from EMP e
+         right outer join DEPT d
+                          using (DEPTNO)
+order by DEPTNO, ENAME;
+----------------------------------------------
+select d.DEPTNO  as DEPTNO,
+       DNAME,
+       e1.EMPNO  as EMPNO,
+       e1.ENAME  as ENAME,
+       e1.MGR    as MGR,
+       e1.SAL    as SAL,
+       e1.DEPTNO as DEPTNO_1,
+       LOSAL,
+       HISAL,
+       GRADE,
+       e2.EMPNO  as MGR_ENPNO,
+       e2.ENAME  as MGR_ENAME
+from EMP e1,
+     DEPT d,
+     SALGRADE s,
+     EMP e2
+where e1.DEPTNO(+) = d.DEPTNO
+  and e1.SAL between s.LOSAL(+) and s.HISAL(+)
+  and e1.MGR = e2.EMPNO(+)
+order by d.DEPTNO, e1.EMPNO;
+
+select d.DEPTNO  as DEPTNO,
+       DNAME,
+       e1.EMPNO  as EMPNO,
+       e1.ENAME  as ENAME,
+       e1.MGR    as MGR,
+       e1.SAL    as SAL,
+       e1.DEPTNO as DEPTNO_1,
+       LOSAL,
+       HISAL,
+       GRADE,
+       e2.EMPNO  as MGR_ENPNO,
+       e2.ENAME  as MGR_ENAME
+from EMP e1
+         right outer join DEPT d
+                          on e1.DEPTNO = d.DEPTNO
+         left outer join SALGRADE s
+                         on e1.SAL between s.LOSAL and s.HISAL
+         left outer join EMP e2
+                         on e1.MGR = e2.EMPNO
+order by d.DEPTNO, e1.EMPNO;
+-- 문제 끝
+
+-- 서브쿼리
+-- 단일행, 다중행
+-- select *
+-- from EMP
+-- where SAL=(
+--         select
+--         from
+--         where
+--     );
+
+select ENAME, DNAME
+from EMP,
+     DEPT
+where EMP.DEPTNO = DEPT.DEPTNO
+  and ENAME = 'SMITH';
+
+select DNAME
+from DEPT
+where DEPTNO = (select DEPTNO
+                from EMP
+                where ENAME = 'SMITH');
+
+select max(SAL)
+from EMP;
+
+select ENAME, SAL
+from EMP
+where SAL = (select max(SAL)
+             from EMP);
+
+-- 이름, 급여, 부서번호, 부서명
+-- 부서번호가 20번
+-- 전체사원의 급여의 평균을 초과하는 사원
+select ENAME, SAL, EMP.DEPTNO, DNAME
+from EMP
+         inner join DEPT
+                    on EMP.DEPTNO = DEPT.DEPTNO
+                        and EMP.DEPTNO = 20
+                        and SAL > (select avg(SAL)
+                                   from EMP);
+
+-- 서브쿼리문의 결과의 갯수
+-- 단일행 서브쿼리
+-- 다중행 서브쿼리
+
+-- 작성위치
+-- where : 서브쿼리
+-- from : 인라인 뷰
+-- select : 컬럼형식
+select ENAME, DEPTNO, (select DNAME from DEPT where DEPTNO = e.DEPTNO) as dname
+from EMP e
+where ENAME = 'SMITH';
+
+-- 다중행 서브쿼리문
+-- 비교연산자 사용불과
+-- in(), all(), any(), some(), exits()
+-- select
+-- from
+-- where SAL 연산자 (
+--             select
+--             from
+-- );
+
+select *
+from EMP
+where DEPTNO in (20, 30);
+
+select *
+from EMP
+where SAL in (select max(SAL)
+              from EMP
+              group by DEPTNO);
+
+-- any()
+select *
+from EMP
+where SAL > any (select max(SAL) -- 서브쿼리문의 결과값의 최소값보다 큰 값
+                 from EMP
+                 group by DEPTNO);
+
+-- all()
+select *
+from EMP
+where SAL > all (select SAL -- 가장 큰 값보다 큰 값
+                 from EMP
+                 where DEPTNO = 30);
+
+select *
+from EMP
+where exists(select DNAME
+             from DEPT
+             where DEPTNO = 50);
+
+-- 다중열 서브쿼리
+select *
+from EMP
+where (DEPTNO, SAL) = (select DEPTNO, SAL
+                       from EMP
+                       where ENAME = 'SMITH');
+
+select *
+from EMP
+where (DEPTNO, SAL) in (select DEPTNO, max(SAL)
+                        from EMP
+                        group by DEPTNO);
+
+-- 인라인뷰(가상테이블)
+select ee.*
+from (select ENAME, SAL, COMM, DEPTNO from EMP) ee;
+
+select ENAME, d.DEPTNO, DNAME, LOC
+from (select * from EMP where DEPTNO = 10) e10,
+     (select * from DEPT) d
+where e10.DEPTNO(+) = d.DEPTNO;
+
+-- with
+with e10 as (select * from EMP where DEPTNO = 10),
+     d as (select * from DEPT)
+select ENAME, d.DEPTNO, DNAME, LOC
+from e10,
+     d
+where e10.DEPTNO(+) = d.DEPTNO;
+
+-- 서브쿼리문을 select 절에 작성한다.
+select EMPNO,
+       JOB,
+       SAL,
+       (select GRADE from SALGRADE where EMP.SAL between LOSAL and HISAL) as SALGRADE,
+       DEPTNO,
+       (select DNAME from DEPT where EMP.DEPTNO = DEPTNO)                 as DNAME
+from EMP;
