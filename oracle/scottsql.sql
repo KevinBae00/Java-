@@ -1175,3 +1175,110 @@ select EMPNO,
        DEPTNO,
        (select DNAME from DEPT where EMP.DEPTNO = DEPTNO)                 as DNAME
 from EMP;
+
+-- 문제 시작
+select JOB, EMPNO, ENAME, trunc(SAL) as SAL, e.DEPTNO, DNAME
+from EMP e,
+     DEPT d
+where e.DEPTNO = d.DEPTNO
+  and JOB = (select job from EMP where ENAME = 'ALLEN');
+
+select EMPNO, ENAME, DNAME, HIREDATE, LOC, trunc(SAL) as SAL, GRADE
+from EMP e,
+     DEPT d,
+     SALGRADE s
+where e.DEPTNO = d.DEPTNO
+  and e.SAL between s.LOSAL and s.HISAL
+  and SAL > (select avg(SAL) from EMP)
+order by SAL desc, EMPNO;
+
+select EMPNO, ENAME, JOB, e.DEPTNO, DNAME, LOC
+from EMP e,
+     DEPT d
+where e.DEPTNO = d.DEPTNO
+  and e.DEPTNO = 10
+  and JOB not in (select distinct JOB from EMP where DEPTNO = 30);
+
+select EMPNO, ENAME, SAL, GRADE
+from EMP e,
+     SALGRADE s
+where e.SAL between s.LOSAL and s.HISAL
+  and SAL > (select max(SAL)
+             from EMP
+             where JOB = 'SALESMAN')
+order by EMPNO;
+
+select EMPNO, ENAME, SAL, GRADE
+from EMP e,
+     SALGRADE s
+where e.SAL between s.LOSAL and s.HISAL
+  and SAL > all (select distinct SAL
+                 from EMP
+                 where JOB = 'SALESMAN')
+order by EMPNO;
+-- 문제 끝
+-- DDL : Data Definition Language
+-- 데이터 정의어
+-- 객체를 생성하는 명령어 (table을 생성)
+create table dept_temp
+as
+select *
+from dept;
+
+select *
+from dept_temp
+
+-- DML : Data Manipulation Language
+-- 데이터 조작어
+-- insert : 신규데이터 추가
+-- update: 기존데이터 수정
+-- delete : 기존데이터 삭제
+-- CRUD
+-- c(insert) r(select) u(update) d(delete)
+
+-- 컬럼의 갯수와 값의 갯수가 동일해야 한다.
+-- insert into 테이블명 (컬럼명1, 컬럼명2, ...)
+-- values (값1, 값2)
+insert into DEPT_TEMP(DEPTNO, DNAME, LOC)
+values (50, 'PROGRAMMER', 'SEOUL');
+
+insert into DEPT_TEMP(DEPTNO, DNAME, LOC)
+values (50, 'PROGRAMMER', NULL);
+
+insert into DEPT_TEMP(DEPTNO, DNAME)
+values (60, 'PROGRAMMER');
+
+insert into DEPT_TEMP
+values (70, 'PROGRAMMER', 'BUSAN');
+
+select *
+from DEPT_TEMP
+order by DEPTNO;
+
+create table emp_temp
+as
+select *
+from EMP
+where 1 <> 1; -- 기존 테이블의 구조만 복사 한다.
+
+insert into emp_temp
+values (1111, 'HONG', 'CLICK', 2222, '23/05/08', 1000, NULL, 30);
+
+insert into emp_temp
+values (1111, 'HONG', 'CLICK', 2222, '23-05-08', 1000, NULL, 30);
+
+insert into emp_temp
+values (1111, 'HONG', 'CLICK', 2222, sysdate, 1000, NULL, 30);
+
+insert into emp_temp
+select *
+from EMP;
+
+insert into emp_temp (ENAME, SAL, DEPTNO)
+select ENAME, SAL, DEPTNO
+from EMP;
+
+select *
+from emp_temp;
+
+drop table emp_temp;

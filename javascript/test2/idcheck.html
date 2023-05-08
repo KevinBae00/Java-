@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>아이디 중복 체크</title>
+    <link href="CSS/subpage.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background-color: #B96DB5;
+            font-family: Verdana;
+        }
+
+        #wrap {
+            margin: 0 20px;
+        }
+
+        h1 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 45px;
+            color: #CCC;
+            font-weight: normal;
+        }
+
+        input[type=button], input[type=submit] {
+            float: right;
+        }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+
+<div id="wrap">
+    <h1>ID 중복확인</h1>
+    <form method=post name=formm style="margin-right:0 " action="NonageServlet?command=id_check_form">
+        <!-- 코드완성
+        새창의 실행 화면 코드를 완성 하세요 -->
+
+        <label for="cInput">User ID </label><input type="text" id="cInput">
+
+        <input type="button" value="검색">
+        <br>
+        <br>
+        <input type="submit" value="사용" onclick="sendValue()">
+    </form>
+</div>
+<script>
+    document.getElementById("cInput").value = window.opener.document.getElementsByName("id")[0].value;
+
+    function sendValue() {
+        window.opener.document.getElementsByName("id")[0].value = document.getElementById("cInput").value;
+        window.close();
+    }
+</script>
+</body>

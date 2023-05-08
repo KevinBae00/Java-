@@ -73,7 +73,7 @@
 
         var basic_car = Number(document.getElementById("total").defaultValue);
 
-        for (var i = 1; i <= 3; i++) {
+        for (let i = 1; i <= 3; i++) {
             var checkOpt = document.getElementById("opt" + i);
             if (checkOpt.checked) {
                 basic_car += Number(checkOpt.value);

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>아이디 중복 체크</h1>
+<input type="text" id="cInput">
+<input type="button" value="창닫기" onclick="sendValue()">
+<script>
+    // 부모의 값을 자식에게서 받기
+    document.getElementById("cInput").value = window.opener.document.getElementById("pInput").value;
+
+    // 자식의 값을 부모로 보내기
+    function sendValue() {
+        window.opener.document.getElementById("pInput").value = document.getElementById("cInput").value;
+        window.close();
+    }
+</script>
+</body>
+</html>
