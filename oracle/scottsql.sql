@@ -1282,3 +1282,430 @@ select *
 from emp_temp;
 
 drop table emp_temp;
+
+-- insert 서브쿼리문
+-- insert into dept_temp
+-- values (값1, ...)
+
+-- insert 서브쿼리문
+insert into emp_temp
+select *
+from emp;
+
+delete
+from emp_temp;
+
+insert into emp_temp(EMPNO, ENAME, JOB)
+select EMPNO, ENAME, JOB
+from EMP;
+
+insert into emp_temp
+select *
+from EMP
+where DEPTNO = 10;
+
+-- 급여등급이 1등급인 사원 정보 전체 컬럽 삽입
+insert into emp_temp
+select *
+from EMP
+where SAL >= (select LOSAL from SALGRADE where GRADE = 1)
+  and SAL <= (select HISAL from SALGRADE where GRADE = 1);
+
+insert into emp_temp
+select empno,
+       ename,
+       job,
+       mgr,
+       hiredate,
+       sal,
+       comm,
+       deptno
+from EMP e
+         inner join SALGRADE s
+                    on e.SAL between s.LOSAL and s.HISAL
+where s.GRADE = 1;
+
+select *
+from emp_temp;
+
+-- update
+-- update 테이블명
+-- set 컬럼명1 = 값, 컬럼명2 = 값, ....
+-- [where 조건식]
+
+create table dept_temp2
+as
+select *
+from dept;
+
+update dept_temp2
+set LOC = 'SEOUL'
+where DEPTNO = 40;
+
+update dept_temp2
+set DEPTNO=50,
+    LOC   = 'SEOUL'
+where DEPTNO = 40;
+
+update dept_temp2
+set DNAME = (select DNAME from DEPT where DEPTNO = 10)
+where DEPTNO = 40;
+
+update dept_temp2
+set (DNAME, LOC) = (select DNAME, LOC from DEPT where DEPTNO = 20)
+where DEPTNO = 40;
+
+update dept_temp2
+set LOC='SEOUL'
+where DEPTNO = (select DEPTNO from DEPT where DEPTNO = 30);
+
+select *
+from dept_temp2;
+
+ROLLBACK;
+
+-- delete
+-- 레코드 단위로 삭제
+-- delete from 테이블명
+-- [where 조건식]
+
+create table emp_temp2
+as
+select *
+from EMP;
+
+delete
+from emp_temp2;
+
+delete
+from emp_temp2
+where JOB = 'MANAGER';
+
+delete
+from emp_temp2
+where DEPTNO = (select DEPTNO from DEPT where DNAME = 'SALES');
+
+-- 서브쿼리를 사용해서 데이터 삭제하기
+-- 급여 등급이 3등급이면서 30번 부서에 근무하는 사원 모드를 삭제하세요
+delete
+from emp_temp2
+where DEPTNO = 30
+  and SAL >= (select LOSAL from SALGRADE where GRADE = 3)
+  and SAL <= (select HISAL from SALGRADE where GRADE = 3);
+
+delete
+from emp_temp2
+where EMPNO in (select e.EMPNO
+                from emp_temp2 e
+                         inner join SALGRADE s on e.SAL between s.LOSAL and s.HISAL
+                where s.GRADE = 3
+                  and e.DEPTNO = 30);
+
+select *
+from emp_temp2;
+
+ROLLBACK;
+
+-- TCL : TRANSACTION CONTROL LANGUAGE
+-- commit : "변경된 데이터를 데이터베이스에 영구적으로 반영하라"
+-- rollback : "변경된 데이터가 문제가 있느니 변경 전 데이터로 복귀하라"
+-- savepoint : "데이터 변경을 사전에 지정한 저장점까지만 롤백하라"
+
+-- DML구문을 하나의 작업단위로 묶어주는 역활을 한다.
+-- insert, update, delete
+
+create table dept_tcl
+as
+select *
+from DEPT;
+
+insert into dept_tcl
+values (50, 'DATABASE', 'SEOUL');
+
+insert into dept_tcl
+values (60, 'DATABASE', 'SEOUL');
+
+update dept_tcl
+set DNAME = 'PROGRAMMER'
+where DEPTNO = 60;
+
+select *
+from dept_tcl;
+
+commit;
+
+delete
+from dept_tcl
+where DEPTNO = 60;
+
+rollback;
+
+-- DDL : 객체  생성, 변경, 삭제
+-- create, alter, drop
+-- create table 테이블명 (
+--     컬럼명1 타입,
+--     컬럼명2 타입,
+--     컬럼명3 타입,
+--     ...
+-- );
+
+-- 학생 테이블
+-- 이름, 나이, 학년
+create table student
+(
+    sname varchar2(10),
+    age   number(3),
+    grade number(2)
+);
+
+desc student;
+
+-- 문자형(4000자)
+-- char(크기 : byte) : 고정형길이
+-- varchar2(크기 : byte) : 가변형길이
+-----
+-- varchar(n): 2000자
+-- nvarchar()
+
+-- 숫자형
+-- number(크기 : 자릿수)
+-- number(전체 크기, 소수자리 크기) : number(8,2)
+
+-- 날짜형
+-- date
+-- timestamp
+
+-- 기타
+-- long : 최대 2G까지 문자
+-- clob : 40G까지 문자
+
+-- float()
+
+-- blob : 이진데이터(사진, 동영상)
+-- bfile: 이진파일 데이터(사진, 동영상)
+
+-- varchar2(), number(), date
+desc emp;
+
+create table emp_copy
+(
+    empno    number(4),
+    ename    varchar2(10),
+    job      varchar2(9),
+    mgr      number(4),
+    hiredate date,
+    sal      number(7, 2),
+    comm     number(7, 2),
+    deptno   number(2)
+);
+
+insert into emp_copy
+select *
+from EMP;
+
+-- 테이블 변경하기(컬럼정보 변경)
+-- 추가
+alter table emp_copy
+    add hp varchar2(10);
+
+-- 변경
+-- 컬럼명 변경
+alter table emp_copy
+    rename column hp to tel;
+
+-- 자료형 수정
+alter table emp_copy
+    modify tel number(10);
+
+-- 삭제
+alter table emp_copy
+    drop column tel;;
+
+select *
+from emp_copy;
+
+-- 이름 변경
+rename emp_copy to emp_alter;
+
+----------
+
+delete
+from emp_alter; -- tx가능(rollback)
+
+truncate table emp_alter; -- tx 불가
+
+select *
+from emp_alter;
+
+rollback;
+
+drop table EMP_ALTER;
+
+select *
+from tab;
+
+select *
+from RECYCLEBIN;
+
+flashback table emp_alter to before drop;
+
+purge recyclebin;
+
+-- 제약조건
+-- 테이블 생성시 컬럼의 값을 제한하는 역활
+-- 5대 제약조건
+-- 제약조건의 사용 목적은 데이터의 무결성(정확한 데이터)
+-- not null : NULL을 허용하지 않는다
+-- unique : 중복된 값을 허용하지 않는다
+-- primary : not null + unique
+-- check : 데이터의 값의 범위나 조건을 설정하여 조건에 해당되는 데이터만 허용한다.
+-- foreign key : 참조한느 테이블 칼럼의 데이터만을 허용한다.
+-- 기타 조건
+-- default : 암런 데이터를 입력하지 않았을 경우 지정한 데이터가 자동으로 입력된다.
+
+create table table_notnull
+(
+    login_id varchar2(20) not null,
+    login_pw varchar2(20) not null,
+    tel      varchar2(20)
+);
+
+insert into table_notnull
+values ('aaa', '1234', '010');
+
+insert into table_notnull (login_id, login_pw)
+values ('bbb', '1234');
+
+insert into table_notnull (login_pw, tel)
+values ('1234', 010);
+
+-- 제약조건 확인 SQL구문
+select owner, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+from USER_CONSTRAINTS
+where TABLE_NAME = 'TABLE_NOTNULL';
+
+desc USER_CONSTRAINTS;
+
+select *
+from table_notnull;
+
+create table table_notnull2
+(
+    login_id varchar2(20)
+        constraint tblnn2_lgnid_nn not null,
+    login_pw varchar2(20)
+        constraint tblnn2_lgnpw_nn not null,
+    tel      varchar2(20)
+);
+
+select owner, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+from USER_CONSTRAINTS
+where TABLE_NAME = 'TABLE_NOTNULL2';
+
+-- 제약조건명 수정하기
+alter table table_notnull
+    rename constraint SYS_C007040 to tblnn_lgnid_nn;
+
+-- not null은 제약조건의 추가가 아닌 변경이다. null -> not null
+alter table table_notnull2
+    modify (tel not null);
+
+alter table table_notnull2
+    modify (tel constraint tlb_tel_nn not null);
+
+-- 제약조건 삭제
+alter table table_notnull2
+    drop constraint SYS_C007044;
+
+-- unique
+-- 중복을 허용하지 않는다.
+
+create table table_unique
+(
+    login_id varchar2(20)
+        constraint tbl_lgnid_uk unique not null,
+    login_pw varchar2(20)
+        constraint tbl_lgnpw_nn not null,
+    tel      varchar2(10)
+);
+
+drop table table_unique;
+
+select owner, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+from USER_CONSTRAINTS
+where TABLE_NAME = 'TABLE_UNIQUE';
+
+insert into table_unique
+values ('test01', '1111', '010');
+
+insert into table_unique
+values ('test01', '2222', '010');
+
+insert into table_unique
+values (null, '1111', '010');
+
+insert into table_unique
+values (null, '3333', '010');
+
+select *
+from table_unique;
+
+select owner, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+from USER_CONSTRAINTS
+where TABLE_NAME = 'TABLE_UNIQUE';
+
+select *
+from USER_CONS_COLUMNS
+where TABLE_NAME = 'TABLE_UNIQUE';
+
+-- primary key
+-- unique + not null
+-- 유일값
+-- 하나의 컬럼에만 설정 가능하다
+
+create table table_primary
+(
+    login_id varchar2(20)
+        constraint tblpk_lgnid_pk primary key,
+    login_pw varchar2(20)
+        constraint tblpk_lgnpw_nn not null,
+    tel      varchar2(20)
+);
+
+drop table table_primary;
+
+select owner, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+from USER_CONSTRAINTS
+where TABLE_NAME = 'TABLE_PRIMARY';
+
+insert into table_primary
+values ('test01', '1111', '010');
+
+insert into table_primary
+values ('test01', '1111', '010');
+
+insert into table_primary
+values (null, '1111', '010');
+
+select *
+from table_primary;
+
+-- check
+-- 값의 범위를 제한 한다.
+create table table_check
+(
+    login_id varchar2(20)
+        constraint tablck_lgnid_pk primary key,
+    login_pw varchar2(20)
+        constraint tblck_lgnpw_ck check (length(login_pw) > 3),
+    tel      varchar2(20)
+);
+
+insert into table_check
+values ('aaa', '1111', '010');
+
+insert into table_check
+values ('bbb', '2', '010');
+
+select *
+from table_check;
