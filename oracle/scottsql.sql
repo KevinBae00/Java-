@@ -1709,3 +1709,308 @@ values ('bbb', '2', '010');
 
 select *
 from table_check;
+
+-- not null - c
+-- unique - u
+-- primary key - p
+-- check - c
+-- foreign key - r
+
+-- foreign key
+-- 두개의 테이블을 사용해서 제약조건 설정
+-- emp, dept 관계는 소속
+-- 부모쪽 테이블의 값을 참조해서 자식쪽 데이터를 삽입할지 말지 결정한다.
+-- foreign key == reference
+-- 부모쪽 컬럼은 반드시 primary key or unique 이여야 한다.
+-- 자식쪽 컬럼에 제약조건을 설정한다.
+
+insert into EMP
+values (1111, 'aaa', 'bbb', '2222', sysdate, 100, 0, 50);
+
+-- 직접 컬럼을 정의 하는 방법
+-- 서브쿼리를 사용하는 방법 (제약조건은 복사가 안된다)
+
+drop table emp_copy;
+
+create table emp_copy
+as
+select *
+from EMP;
+
+create table dept_fk
+(
+    deptno number(2)
+        constraint dept_fk_deptno_pk primary key,
+    dname  varchar2(20)
+        constraint dept_fk_dname_nn not null,
+    loc    varchar2(20)
+);
+
+create table emp_fk
+(
+    empno    number(4)
+        constraint emp_fk_empno_pk primary key,
+    ename    varchar2(20),
+    job      varchar2(20),
+    mgr      number(4),
+    hiredate date,
+    sal      number(4),
+    comm     number(4),
+    deptno   number(2)
+        constraint emp_fk_deptno_fk references dept_fk (deptno)
+);
+
+insert into DEPT_FK
+select *
+from DEPT;
+
+select *
+from dept_fk;
+
+insert into emp_fk
+values (1111, 'aaa', 'bbb', 2222, sysdate, 100, 0, 10);
+
+insert into emp_fk
+values (2222, 'aaa', 'bbb', 2222, sysdate, 100, 0, 20);
+
+delete
+from emp_fk
+where empno = 2222;
+
+delete
+from dept_fk
+where deptno = 10;
+
+alter table dept_fk
+    disable primary key cascade;
+
+rollback;
+
+alter table dept_fk
+    enable primary key cascade; -- 활성 안 됨
+alter table dept_fk
+    enable constraint dept_fk_deptno_pk;
+
+alter table emp_fk
+    enable constraint emp_fk_deptno_fk;
+
+select *
+from dept_fk;
+select *
+from emp_fk;
+
+-- 제약 조건을 지정하는 3가지 방법
+-- 컬럼 레벨
+-- 테이블 레벨
+-- alter 명령어
+
+-- 테이블 레벨
+-- not null한 제약조건은 불가하다.
+-- 두 개 이상의 컬럼에 primary key 제약조건 설정이 가능하다.(복합키)
+create table emp_level
+(
+    empno  number(10),
+    ename  varchar2(10)
+        constraint emp_level_nn not null,
+    deptno number(20),
+    constraint emp_level_empno_pk primary key (empno, ename),
+    constraint emp_level_deptno_fk foreign key (deptno) references dept (deptno)
+);
+
+-- alter 명령어
+create table emp_level2
+(
+    empno  number(10),
+    ename  varchar2(10),
+    deptno number(20)
+);
+
+alter table emp_level2
+    add constraint emp_level2_pk primary key (empno);
+
+alter table emp_level2
+    modify ename constraint emp_level2_ename_nn not null;
+
+alter table emp_level2
+    add foreign key (deptno) references dept (DEPTNO);
+
+create table DEPT_CONST
+(
+    DEPTNO number(2)
+);
+
+alter table DEPT_CONST
+    add DNAME varchar2(14);
+
+alter table DEPT_CONST
+    add LOC varchar2(13);
+
+alter table DEPT_CONST
+    add constraint DEPTCONST_DEPTNO_PK primary key (DEPTNO);
+
+alter table DEPT_CONST
+    add constraint DEPTCONST_DNAME_UNQ unique (DNAME);
+
+alter table DEPT_CONST
+    modify LOC constraint DEPTCONST_LOC_NN not null;
+
+create table EMP_CONST
+(
+    EMPNO    number(4),
+    ENAME    varchar2(10),
+    JOB      varchar2(9),
+    TEL      varchar2(20),
+    HIREDATE date,
+    SAL      number(7, 2),
+    COMM     number(7, 2),
+    DEPTNO   number(2)
+);
+
+alter table EMP_CONST
+    add constraint EMPCONST_EMPNO_PK primary key (EMPNO);
+alter table EMP_CONST
+    modify ENAME constraint EMPCONST_ENAME_NN NOT NULL;
+alter table EMP_CONST
+    add constraint EMPCONST_TEL_UNQ unique (TEL);
+alter table EMP_CONST
+    add constraint EMPCONST_SAL_CHK check ( SAL >= 1000 AND SAL <= 9999 );
+alter table EMP_CONST
+    add constraint EMPCONST_DEPTNO_FK foreign key (DEPTNO) references DEPT (DEPTNO);
+
+-- 데이터 시전
+-- 객체 정보를 저장하는 테이블
+-- table, index, ...
+-- user_constraints
+-- 관리자 사전
+-- 내가 사용하는 사전
+-- 모두 사용하는 사전
+select *
+from tab;
+
+select *
+from DICT
+where TABLE_NAME like 'USER%';
+
+select *
+from USER_TABLES;
+
+select *
+from ALL_TABLES;
+
+select 12 * 14
+from DUAL;
+
+-- index
+-- 검색속도를 높여주는 역활
+-- 전체데이터의 3 ~ 5%
+-- primary key를 적용하면 기본으로 생성
+-- 테이블의 특정 컬럼에 생성한다.
+create table emp_sal
+as
+select *
+from EMP;
+
+insert into emp_sal
+select *
+from emp_sal;
+
+select *
+from emp_sal;
+
+select *
+from emp_sal
+where SAL >= 3000;
+
+create index emp_sal_index
+    on emp_sal (SAL);
+
+drop index emp_sal_index;
+
+-- view
+-- 가상테이블
+-- 원복테이블(실제 테이블)로부터 정보를 보기 위한 용도로 사용한다.
+-- with check option
+-- with read only
+-- DML이 가능하다.
+
+create or replace view emp_dept30
+as
+select *
+from emp_copy
+where DEPTNO = 30;
+
+select *
+from emp_dept30;
+
+insert into emp_dept30(empno, ename, deptno)
+values (1111, 'aaa', 30);
+
+select *
+from USER_VIEWS;
+
+delete
+from emp_dept30
+where empno = 1111;
+
+update emp_dept30
+set job='SALES'
+where ENAME = 'WARD';
+
+select *
+from emp_copy;
+
+select *
+from USER_VIEWS
+where VIEW_NAME like 'EMP_DEPT%';
+
+create or replace view emp_dept_salgrade
+as
+select empno, ename, dname, sal, grade
+from emp e
+         inner join dept d
+                    on e.deptno = d.deptno
+         inner join salgrade s
+                    on e.sal between s.losal and s.hisal;
+
+create or replace view emp_dept30
+as
+select *
+from emp_copy
+where DEPTNO = 30
+with read only;
+
+select *
+from emp_dept30;
+
+delete
+from emp_dept30;
+
+drop view emp_dept30;
+
+-- 뷰를 활용한 top-n 데이터 조회하기
+select ROWNUM, EMPNO, ENAME, HIREDATE, DEPTNO
+from EMP
+where ROWNUM <= 5
+order by HIREDATE;
+
+create or replace view emp_hiredate
+as
+select *
+from EMP
+order by HIREDATE;
+
+select ROWNUM, EMPNO, ENAME, HIREDATE
+from emp_hiredate
+where ROWNUM <= 3;
+
+-- 인라뷰(일회성)
+select ROWNUM, eh.*
+from (select * from EMP order by HIREDATE) eh
+where ROWNUM <= 5;
+
+-----------------
+-- rownum 조건절에 사용되면 반드시 1 이라느 값을 포함하도록 작성해야 한다.
+select ROWNUM, eh.*
+from (select * from EMP order by HIREDATE) eh
+where ROWNUM >= 2
+  and ROWNUM <= 4;
