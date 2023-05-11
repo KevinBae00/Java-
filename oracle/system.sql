@@ -12,11 +12,11 @@ grant create view
 
 create user user01 identified by 1234;
 
-grant connect,resource
-to user01;
+grant connect, resource
+    to user01;
 
 grant create synonym
-to SCOTT;
+    to SCOTT;
 
 -- 사용자 계정
 -- create user 계졍명 identified by 비밀번호 [account unlock | lock]
@@ -33,29 +33,29 @@ create user orclstudy identified by 1234;
 
 -- ORA-01045: user ORCLSTUDY lacks CREATE SESSION privilege; logon denied
 grant create session
-to orclstudy;
+    to orclstudy;
 
 grant create table
-to orclstudy;
+    to orclstudy;
 
 select USERNAME, DEFAULT_TABLESPACE
 from DBA_USERS
-where USERNAME in ('SCOTT','ORCLSTUDY');
+where USERNAME in ('SCOTT', 'ORCLSTUDY');
 
 alter user orclstudy
-quota 2m on SYSTEM;
+    quota 2 m on SYSTEM;
 
 -- 테이블 스페이스 확인
-select TABLESPACE_NAME,FILE_NAME,BYTES
+select TABLESPACE_NAME, FILE_NAME, BYTES
 from DBA_DATA_FILES;
 -- 계정의 테이블 스페이스 확인
-select USERNAME,DEFAULT_TABLESPACE
+select USERNAME, DEFAULT_TABLESPACE
 from DBA_USERS;
 
 -- 테이블 스페이스 만들기
 create tablespace mega
-datafile  'C:\oraclexe\app\oracle\oradata\XE\mega.dbf' size 100M
-autoextend on next 10M;
+    datafile 'C:\oraclexe\app\oracle\oradata\XE\mega.dbf' size 100 M
+    autoextend on next 10 M;
 
 create user batman identified by 1234 default tablespace mega;
 
@@ -64,7 +64,65 @@ from DBA_USERS
 where USERNAME in ('BATMAN');
 
 grant create session, create table
-to batman;
+    to batman;
 
 alter user BATMAN
-    quota 2m on MEGA;
+    quota 2 m on MEGA;
+
+-- 기본 테이블 스페이스 변경
+alter user orclstudy
+    default tablespace USERS;
+
+-- 시스템 권한
+-- 객체 권한
+
+-- 롤 (시스템 권한의 묶음)
+-- resource, connect
+-- 객체 권한
+
+grant create session, create table, create view
+    to batman;
+-- 롤(시스템 권한의 묶음)
+-- resource, connect
+-- dba : 슈퍼계정
+
+create user user02 identified by 1234 default tablespace mega;
+grant resource, connect
+    to user02;
+
+create role mrole;
+
+grant create session, create view, create table to mrole;
+
+create user user03 identified by 1234 default tablespace mega;
+
+grant mrole to user03;
+
+alter user user03
+    quota 2 m on mega;
+
+revoke mrole
+    from user03;
+
+drop role mrole;
+
+drop user user03 cascade;
+
+-- 객체 권한
+create user user01 identified by 1234 default tablespace mega;
+
+grant resource, connect
+    to user01;
+
+alter user user01
+    quota 2 m on mega;
+
+-- 시스템 권한
+select *
+from DBA_SYS_PRIVS
+where GRANTEE = 'USER01';
+
+-- 롤권한
+select *
+from DBA_ROLE_PRIVS
+where GRANTEE = 'USER01';

@@ -2161,3 +2161,45 @@ values (DEPTSEQ_SEQ.nextval, 'MOBILE', 'SEOUL');
 select *
 from DEPTSEQ;
 
+grant select on EMP to USER01;
+
+create synonym E for EMP;
+
+select *
+from E;
+
+revoke select on EMP from USER01;
+
+-- PL/SQL
+-- 변수, 조건문, 반복문
+
+-- [declare]
+--     변수선언
+-- begin
+--     실행문(SQL)
+-- exception
+-- end;
+-- /
+
+set serveroutput on;
+
+begin
+    DBMS_OUTPUT.PUT_LINE('Hello world');
+end;
+/
+
+declare
+    vempno number(4);
+    vename varchar2(20);
+begin
+    select empno, ename
+    into vempno, vename
+    from EMP
+    where EMPNO = 7369;
+
+    --     DBMS_OUTPUT.PUT_LINE(vempno);
+--     DBMS_OUTPUT.PUT_LINE(vename);
+    DBMS_OUTPUT.PUT_LINE('사번' || ' 이름');
+    DBMS_OUTPUT.PUT_LINE(vempno || ' ' || vename);
+end;
+/
