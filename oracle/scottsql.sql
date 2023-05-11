@@ -2014,3 +2014,150 @@ select ROWNUM, eh.*
 from (select * from EMP order by HIREDATE) eh
 where ROWNUM >= 2
   and ROWNUM <= 4;
+
+select rm, EMPNO, ENAME, SAL, HIREDATE
+from (select rownum rm, e1.*
+      from (select *
+            from EMP
+            order by HIREDATE) e1) e2
+where rm >= 6
+  and rm <= 9;
+
+drop table
+    dept_fk;
+
+-- 시퀀스 객체
+--자동으로 번호를 증가시켜주는 역활
+-- 테이블의 특정 컬럼(primary key)에 값으로 사용한다.
+create sequence dept_seq
+    increment by 10 -- 증감값
+    start with 10;
+-- 시작값
+-- maxvalue
+-- minvalue
+
+-- 기타
+-- cycle
+-- cache
+
+drop sequence dept_seq;
+
+select dept_seq.nextval
+from DUAL;
+
+select dept_seq.currval
+from DUAL;
+
+create table dept_sequence
+as
+select *
+from dept
+where 1 <> 1;
+
+select *
+from dept_sequence;
+
+insert into dept_sequence
+values (dept_seq.nextval, 'SALES', 'SEOUL');
+
+insert into dept_sequence
+values (dept_seq.nextval, 'ACCOUNTING', 'BUSAN');
+
+select *
+from dept_sequence;
+
+delete
+from dept_sequence
+where DEPTNO = 20;
+
+create table emp_seq
+as
+select empno, ename, deptno
+from EMP
+where 1 <> 1;
+
+drop table emp_seq;
+
+-- insa00001
+-- insa00002
+
+alter table emp_seq
+    modify empno varchar2(12);
+
+desc emp_seq;
+
+create sequence insa_seq
+    increment by 1
+    start with 1;
+
+insert into emp_seq
+values ('insa0000' || insa_seq.nextval, '홍길동', 10);
+
+insert into emp_seq
+values ('insa0000' || insa_seq.nextval, '이순신', 20);
+
+select *
+from emp_seq;
+
+-- 시퀀스 수정
+-- 시작값은 수정 불가
+
+-- 시노늄 객체(동의어)
+-- create synonym  시노늄명
+-- for 계정명.테이블이름
+-- 공개 동의어
+-- 비공개 동의어
+
+create synonym E
+    for EMP;
+
+drop synonym E;
+
+select *
+from EMP;
+select *
+from E;
+
+create table EMPIDX
+as
+select *
+from EMP;
+
+drop table EMPIDX;
+
+create index IDX_EMPINDEX_EMPNO
+    on EMPIDX (EMPNO);
+
+SELECT *
+FROM USER_INDEXES
+WHERE INDEX_NAME = 'IDX_EMPINDEX_EMPNO';
+
+create or replace view EMPIDX_OVER15K
+as
+select EMPNO, ENAME, JOB, DEPTNO, SAL, nvl2(COMM, 'O', 'X') as COMM
+from EMPIDX
+where SAL > 1500;
+
+select *
+from EMPIDX_OVER15K;
+
+create table DEPTSEQ as
+select *
+from DEPT;
+
+create sequence DEPTSEQ_SEQ
+    increment by 1
+    start with 1
+    maxvalue 99
+    minvalue 1;
+
+insert into DEPTSEQ
+values (DEPTSEQ_SEQ.nextval, 'DATABASE', 'SEOUL');
+insert into DEPTSEQ
+values (DEPTSEQ_SEQ.nextval, 'WEB', 'SEOUL');
+insert into DEPTSEQ
+values (DEPTSEQ_SEQ.nextval, 'MOBILE', 'SEOUL');
+
+select *
+from DEPTSEQ;
+
