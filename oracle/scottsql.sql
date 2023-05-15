@@ -1,5 +1,7 @@
-SELECT *
-FROM tab;
+SELECT
+    *
+FROM
+    tab;
 
 DESC BONUS;
 
@@ -15,183 +17,274 @@ DESC SALGRADE;
 -- select 컬럼명1, 컬럼명2, .....컬럼명n -- 컬럼명은 필요한 만큼만 작성한다.
 -- from 테이블명;
 
-SELECT deptno,
-       dname,
-       loc
-FROM dept;
+SELECT
+    deptno,
+    dname,
+    loc
+FROM
+    dept;
 
-SELECT *
-FROM dept;
+SELECT
+    *
+FROM
+    dept;
 
-SELECT dname,
-       loc
-FROM dept;
+SELECT
+    dname,
+    loc
+FROM
+    dept;
 
-SELECT *
-FROM emp;
+SELECT
+    *
+FROM
+    emp;
 
 -- 중복데이터 한번만 검색하기
-SELECT job
-FROM emp;
+SELECT
+    job
+FROM
+    emp;
 
-SELECT DISTINCT (job)
-FROM emp;
+SELECT DISTINCT
+    ( job )
+FROM
+    emp;
 
 -- 컬럼을 사용한 데이터 연산
-SELECT *
-FROM emp;
+SELECT
+    *
+FROM
+    emp;
 
 -- +, -, *, /
-SELECT ename,
-       sal,
-       sal * 12
-FROM emp;
+SELECT
+    ename,
+    sal,
+    sal * 12
+FROM
+    emp;
 
 -- 컬럼명에 별칭사용하기 (as는 생략 가능)
-SELECT ename    AS 사원명,
-       sal      AS 급여,
-       sal * 12 AS 연봉
-FROM emp;
+SELECT
+    ename    AS 사원명,
+    sal      AS 급여,
+    sal * 12 AS 연봉
+FROM
+    emp;
 
 -- 조회시 값의 정렬(내림, 오름)
 -- asc 는 기본값이다. (생략가능하다)
 -- 가장 마지막에 작성한다.
-SELECT *
-FROM emp
-ORDER BY sal DESC;
+SELECT
+    *
+FROM
+    emp
+ORDER BY
+    sal DESC;
 
 -- asc(오름) / desc(내림)
 
-SELECT *
-FROM emp
-ORDER BY sal ASC,
-         ename DESC;
+SELECT
+    *
+FROM
+    emp
+ORDER BY
+    sal ASC,
+    ename DESC;
 
 -- 첫번째는 전체데이터를 정렬하고, 두번재는 같은 겂을 그룹으로 묶어서 정렬한다.
 
 -- 조건절
 -- where 조건식(컬럼명 = 값) --> 참 / 거짓
 -- <, >, <=, >=, =, !=, or <>
-SELECT *
-FROM emp
-WHERE sal = 800;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal = 800;
 
-SELECT *
-FROM emp
-WHERE sal >= 3000;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal >= 3000;
 
-SELECT *
-FROM emp
-WHERE deptno = 10;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    deptno = 10;
 
 -- 문자를 조건절에 사용할 때
 -- 조건절에서의 문자는 대소문자를 구분한다.
 -- 문자를 반드시 '' 로 묶어주어야 한다. ("" 안됩니다.)
-SELECT *
-FROM emp
-WHERE ename = 'SMITH';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename = 'SMITH';
 
 -- 날짜를 조건절에 사용할 떄
 -- 크기 비교가 가능하다
 -- ''로 묶어준다.
 -- 80/09/30 // 년월일시분초 표준시 2023/05/01 12:30:22 GTM 9
-SELECT *
-FROM emp
-WHERE hiredate = '80/12/17';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    hiredate = '80/12/17';
 
 -- 1980/12/17
 
 -- 논리연산자
 -- and, or, not
-SELECT *
-FROM emp
-WHERE deptno = 10
-  AND sal >= 2000;
+SELECT
+    *
+FROM
+    emp
+WHERE
+        deptno = 10
+    AND sal >= 2000;
 
-SELECT *
-FROM emp
-WHERE sal >= 1000
-  AND sal <= 3000;
+SELECT
+    *
+FROM
+    emp
+WHERE
+        sal >= 1000
+    AND sal <= 3000;
 
-SELECT *
-FROM emp
-WHERE sal >= 1000
-  AND sal <= 3000
-  AND deptno = 10;
+SELECT
+    *
+FROM
+    emp
+WHERE
+        sal >= 1000
+    AND sal <= 3000
+    AND deptno = 10;
 
-SELECT *
-FROM emp
-WHERE deptno = 10
-   OR sal >= 2000;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    deptno = 10
+    OR sal >= 2000;
 
-SELECT *
-FROM emp
-WHERE sal < 1000
-   OR sal > 3000
-ORDER BY sal DESC;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal < 1000
+    OR sal > 3000
+ORDER BY
+    sal DESC;
 
-SELECT *
-FROM emp
-WHERE NOT sal <= 3000;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    NOT sal <= 3000;
 
 -- 논리연산자의 다른 표현
 -- and
-SELECT *
-FROM emp
-WHERE sal BETWEEN 1000 AND 2000;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal BETWEEN 1000 AND 2000;
 
 -- sal >= 1000 and sal <= 2000
 
-SELECT *
-FROM emp
-WHERE sal IN (800, 950, 5000);
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal IN ( 800, 950, 5000 );
 
 -- sal = 800 or sal = 950 or sal = 5000
 
-SELECT *
-FROM emp
-WHERE sal NOT IN (800, 950, 5000);
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal NOT IN ( 800, 950, 5000 );
 
 -- Like연산자
 -- %, _ (와이드카드)
 -- %는 나머지 문자 전체를 대신한다(선택)
 -- _한문자를 대신한다(필수) _ _ _, __A, A____
 -- where 컬럼명 like 값
-SELECT *
-FROM emp
-WHERE ename = 'F';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename = 'F';
 
-SELECT *
-FROM emp
-WHERE ename LIKE 'F%';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename LIKE 'F%';
 
-SELECT *
-FROM emp
-WHERE ename LIKE '%A%';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename LIKE '%A%';
 
-SELECT *
-FROM emp
-WHERE ename LIKE 'A____';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename LIKE 'A____';
 
-SELECT *
-FROM emp
-WHERE ename LIKE '_A%';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename LIKE '_A%';
 
-SELECT *
-FROM emp
-WHERE comm = NULL;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    comm = NULL;
 
 -- null데이터는 연산자 사용이 불가하다.
 
 -- is null
 -- is not null
-SELECT *
-FROM emp
-WHERE comm IS NULL;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    comm IS NULL;
 
-SELECT *
-FROM emp
-WHERE comm IS NOT NULL;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    comm IS NOT NULL;
 
 -- 집합 연산자
 -- 두개 이상의 select 구문을 사용하여 데이터를 조회한다.
@@ -204,109 +297,151 @@ WHERE comm IS NOT NULL;
 -- select
 -- from ;
 -- 합집합
-SELECT empno,
-       ename,
-       sal,
-       deptno
-FROM emp
-WHERE deptno = 10
+SELECT
+    empno,
+    ename,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+    deptno = 10
 UNION
-SELECT empno,
-       ename,
-       sal,
-       deptno
-FROM emp
-WHERE deptno = 30;
+SELECT
+    empno,
+    ename,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+    deptno = 30;
 
 -- 교집합
-SELECT empno,
-       ename,
-       sal,
-       deptno
-FROM emp
-WHERE deptno = 10
+SELECT
+    empno,
+    ename,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+    deptno = 10
 INTERSECT
-SELECT empno,
-       ename,
-       sal,
-       deptno
-FROM emp
-WHERE deptno = 10;
+SELECT
+    empno,
+    ename,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+    deptno = 10;
 
-SELECT empno,
-       ename,
-       sal,
-       deptno
-FROM emp
-WHERE deptno = 10
+SELECT
+    empno,
+    ename,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+    deptno = 10
 MINUS
-SELECT empno,
-       ename,
-       sal,
-       deptno
-FROM emp
-WHERE deptno = 30;
+SELECT
+    empno,
+    ename,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+    deptno = 30;
 
 -- 문제 시작
-SELECT *
-FROM emp
-WHERE ename LIKE '%S';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename LIKE '%S';
 
-SELECT empno,
-       ename,
-       job,
-       sal,
-       deptno
-FROM emp
-WHERE job = 'SALESMAN';
+SELECT
+    empno,
+    ename,
+    job,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+    job = 'SALESMAN';
 
-SELECT empno,
-       ename,
-       job,
-       sal,
-       deptno
-FROM emp
-WHERE sal > 2000
-  AND deptno IN (20, 30);
+SELECT
+    empno,
+    ename,
+    job,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+        sal > 2000
+    AND deptno IN ( 20, 30 );
 
-SELECT empno,
-       ename,
-       job,
-       sal,
-       deptno
-FROM emp
-WHERE sal > 2000
-  AND deptno = 20
+SELECT
+    empno,
+    ename,
+    job,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+        sal > 2000
+    AND deptno = 20
 UNION
-SELECT empno,
-       ename,
-       job,
-       sal,
-       deptno
-FROM emp
-WHERE sal > 2000
-  AND deptno = 30;
+SELECT
+    empno,
+    ename,
+    job,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+        sal > 2000
+    AND deptno = 30;
 
-SELECT *
-FROM emp
-WHERE sal < 2000
-   OR sal > 3000;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal < 2000
+    OR sal > 3000;
 
-SELECT ename,
-       empno,
-       sal,
-       deptno
-FROM emp
-WHERE ename LIKE '%E%'
-  AND deptno = 30
-  AND sal NOT BETWEEN 1000 AND 2000;
+SELECT
+    ename,
+    empno,
+    sal,
+    deptno
+FROM
+    emp
+WHERE
+    ename LIKE '%E%'
+    AND deptno = 30
+    AND sal NOT BETWEEN 1000 AND 2000;
 
-SELECT *
-FROM emp
-WHERE comm IS NULL
-  AND mgr IS NOT NULL
-  AND job IN ('MANAGER', 'CLERK')
-  AND NOT ename LIKE '_L%';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    comm IS NULL
+    AND mgr IS NOT NULL
+    AND job IN ( 'MANAGER', 'CLERK' )
+    AND NOT ename LIKE '_L%';
 
 -- 문제 끝
 
@@ -316,198 +451,279 @@ WHERE comm IS NULL
 -- 사용자 정의 함수
 -- 문자함수
 -- upper(), lower(), initcap()
-SELECT *
-FROM emp;
+SELECT
+    *
+FROM
+    emp;
 
-SELECT lower(ename),
-       initcap(ename)
-FROM emp;
+SELECT
+    lower(ename),
+    initcap(ename)
+FROM
+    emp;
 
-SELECT *
-FROM emp
-WHERE lower(ename) = 'smith';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    lower(ename) = 'smith';
 
 -- length() : 문자열의 길이확인
-SELECT ename,
-       length(ename),
-       length('홍길동')
-FROM emp
-WHERE length(ename) > 5;
+SELECT
+    ename,
+    length(ename),
+    length('홍길동')
+FROM
+    emp
+WHERE
+    length(ename) > 5;
 
 -- 문자열 추출하기
 -- substr(문자열, 시작위치, 문자의 길이)  // 시작위치값은 1부터 시작
 -- substr(문자열, 시작위치)
 -- 'abcdefg'   'abcdefg'
 --  1234567    -7-6-5-4-3-2-1
-SELECT job,
-       substr(job, 1, 2),
-       substr(job, 5)
-FROM emp;
+SELECT
+    job,
+    substr(job, 1, 2),
+    substr(job, 5)
+FROM
+    emp;
 
-SELECT job,
-       substr(job,
-              - length(job)),
-       substr(job,
-              - length(job),
-              2)
-FROM emp;
+SELECT
+    job,
+    substr(job,
+           - length(job)),
+    substr(job,
+           - length(job),
+           2)
+FROM
+    emp;
 
 -- instr() : 특정 문자위치 찾기
 -- 문자를 못찾으면 0 이 반환된다.
-SELECT instr('HELLO, ORACLE', 'L'),
-       instr('HELLO, ORACLE', 'L', 5),
-       instr('HELLO, ORACLE', 'L', 2, 3)
-FROM dual;
+SELECT
+    instr('HELLO, ORACLE', 'L'),
+    instr('HELLO, ORACLE', 'L', 5),
+    instr('HELLO, ORACLE', 'L', 2, 3)
+FROM
+    dual;
 
-SELECT ename
-FROM emp
-WHERE instr(ename, 'S') > 0;
+SELECT
+    ename
+FROM
+    emp
+WHERE
+    instr(ename, 'S') > 0;
 
 --where ename like '%S%';
 -- replace()
-SELECT '010-1234-5678' AS replace_before,
-       replace('010-1234-5678', '-', ' '),
-       replace('010-1234-5678', '-')
-FROM dual;
+SELECT
+    '010-1234-5678' AS replace_before,
+    replace('010-1234-5678', '-', ' '),
+    replace('010-1234-5678', '-')
+FROM
+    dual;
 
 -- lpad(), rpad()
-SELECT 'Oracle',
-       lpad('Oracle', 10, '#'),
-       rpad('Oracle', 10, '#')
-FROM dual;
+SELECT
+    'Oracle',
+    lpad('Oracle', 10, '#'),
+    rpad('Oracle', 10, '#')
+FROM
+    dual;
 
 -- concat()
-SELECT concat(empno, ename),
-       job
-FROM emp;
+SELECT
+    concat(empno, ename),
+    job
+FROM
+    emp;
 
-SELECT empno
-           || ''
-           || ename,
-       job
-FROM emp;
+SELECT
+    empno
+    || ''
+    || ename,
+    job
+FROM
+    emp;
 
 -- 입사연도
-SELECT *
-FROM emp
-WHERE hiredate BETWEEN '1980/01/01' AND '1981/12/31';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    hiredate BETWEEN '1980/01/01' AND '1981/12/31';
 
-SELECT *
-FROM emp
-WHERE ename LIKE '%E';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename LIKE '%E';
 
-SELECT *
-FROM emp
-WHERE ename LIKE '__R%';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ename LIKE '__R%';
 
 -- substr()
-SELECT *
-FROM emp
-WHERE substr(ename, 3, 1) = 'R';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    substr(ename, 3, 1) = 'R';
 
 -- instr()
-SELECT *
-FROM emp
-WHERE instr(ename, 'R', 3, 1) = 3;
+SELECT
+    *
+FROM
+    emp
+WHERE
+    instr(ename, 'R', 3, 1) = 3;
 
-SELECT *
-FROM emp
-WHERE substr(hiredate, 1, 2) = '80'
-   OR substr(hiredate, 1, 2) = '81';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    substr(hiredate, 1, 2) = '80'
+    OR substr(hiredate, 1, 2) = '81';
 
-SELECT *
-FROM emp
-WHERE substr(ename, - 1, 1) = 'E';
+SELECT
+    *
+FROM
+    emp
+WHERE
+    substr(ename, - 1, 1) = 'E';
 
 -- 숫자함수
 -- round(), trunc(), ceil(), floor(), mod()
-SELECT 1234.5678 AS num,
-       round(1234.5678),
-       round(1234.5678, 2),
-       round(1234.5678, - 1)
-FROM dual;
+SELECT
+    1234.5678 AS num,
+    round(1234.5678),
+    round(1234.5678, 2),
+    round(1234.5678, - 1)
+FROM
+    dual;
 
-SELECT 1234.5678 AS num,
-       trunc(1234.5678),
-       trunc(1234.5678, 2),
-       trunc(1234.5678, - 2)
-FROM dual;
+SELECT
+    1234.5678 AS num,
+    trunc(1234.5678),
+    trunc(1234.5678, 2),
+    trunc(1234.5678, - 2)
+FROM
+    dual;
 
-SELECT 1234.5678 AS num,
-       ceil(1234.5678),
-       floor(1234.5678)
-FROM dual;
+SELECT
+    1234.5678 AS num,
+    ceil(1234.5678),
+    floor(1234.5678)
+FROM
+    dual;
 
-SELECT mod(13, 2),
-       mod(20, 5)
-FROM dual;
+SELECT
+    mod(13, 2),
+    mod(20, 5)
+FROM
+    dual;
 
 -- 날짜 함수
 -- +, -
 -- add_months(), months_between(), next_day(), last_day()
 -- round(), trunc()
-SELECT sysdate - 1 AS yesterday,
-       sysdate     AS today,
-       sysdate + 1 AS tomorrow
-FROM dual;
+SELECT
+    sysdate - 1 AS yesterday,
+    sysdate     AS today,
+    sysdate + 1 AS tomorrow
+FROM
+    dual;
 
 DESC EMP;
 
-SELECT sysdate - hiredate                AS 근속일수,
-       round((sysdate - hiredate) / 365) AS 근속연수
-FROM emp;
+SELECT
+    sysdate - hiredate                AS 근속일수,
+    round((sysdate - hiredate) / 365) AS 근속연수
+FROM
+    emp;
 
-SELECT hiredate,
-       add_months(hiredate, 3)
-FROM emp;
+SELECT
+    hiredate,
+    add_months(hiredate, 3)
+FROM
+    emp;
 
 -- cc, yyyy, q, month, hh
-SELECT sysdate,
-       round(sysdate, 'month'),
-       round(sysdate, 'yyyy')
-FROM dual;
+SELECT
+    sysdate,
+    round(sysdate, 'month'),
+    round(sysdate, 'yyyy')
+FROM
+    dual;
 
 -- 숫자 날짜 문자를 형변환
 -- to_char(), to_number(), to_date()
 -- 날짜 -> 문자
 -- cc, yyyy, mm, dd, dy, w, hh, hh12, mi, ss
-SELECT sysdate,
-       to_char(sysdate, 'yyyy-mm-dd'),
-       to_char(sysdate, 'mm')
-FROM dual;
+SELECT
+    sysdate,
+    to_char(sysdate, 'yyyy-mm-dd'),
+    to_char(sysdate, 'mm')
+FROM
+    dual;
 
-SELECT sysdate,
-       to_char(sysdate, 'hh:mi:ss dy')
-FROM dual;
+SELECT
+    sysdate,
+    to_char(sysdate, 'hh:mi:ss dy')
+FROM
+    dual;
 
 -- 숫자 -> 문자
-SELECT to_char(1234, 'L999,999'),
-       to_char(1234, '000,000')
-FROM dual;
+SELECT
+    to_char(1234, 'L999,999'),
+    to_char(1234, '000,000')
+FROM
+    dual;
 
-SELECT sal,
-       to_char(sal, 'L999,999')
-FROM emp;
+SELECT
+    sal,
+    to_char(sal, 'L999,999')
+FROM
+    emp;
 
 -- 문자 -> 숫자
 -- 묵시적(암시적) 형변환
 -- 강제형변환 : to_number()
-SELECT 1300 - '1500',
-       '1300' + '1500' -- 묵시적 형변환
-FROM dual;
+SELECT
+    1300 - '1500',
+    '1300' + '1500' -- 묵시적 형변환
+FROM
+    dual;
 
-SELECT TO_NUMBER('1,300', '999,999') - TO_NUMBER('1,500', '999,999')
-FROM dual;
+SELECT
+    TO_NUMBER('1,300', '999,999') - TO_NUMBER('1,500', '999,999')
+FROM
+    dual;
 
 -- 문자 -> 날짜
 -- '2023-05-02', '20230502'
-SELECT TO_DATE('2023-05-02', 'yyyy-mm-dd'),
-       TO_DATE('20230502', 'yyyy-mm-dd')
-FROM dual;
+SELECT
+    TO_DATE('2023-05-02', 'yyyy-mm-dd'),
+    TO_DATE('20230502', 'yyyy-mm-dd')
+FROM
+    dual;
 
-SELECT *
-FROM emp
-WHERE hiredate >= TO_DATE(19800101, 'yyyy-mm-dd');
+SELECT
+    *
+FROM
+    emp
+WHERE
+    hiredate >= TO_DATE(19800101, 'yyyy-mm-dd');
 
 -- 예외적으로 숫자 -> 날짜
 
@@ -515,20 +731,24 @@ WHERE hiredate >= TO_DATE(19800101, 'yyyy-mm-dd');
 -- nvl(null,바꾸고싶은 값)
 -- null 데이터를 원하는 값으로 변경하는 함수
 -- nvl(a, b) a와 b의 타입이 일치해야한다.
-SELECT ename,
-       sal,
-       sal * 12                AS ann,
-       comm,
-       sal * 12 + nvl(comm, 0) AS realann
-FROM emp;
+SELECT
+    ename,
+    sal,
+    sal * 12                AS ann,
+    comm,
+    sal * 12 + nvl(comm, 0) AS realann
+FROM
+    emp;
 
 -- nvl2(a, b, c)
 -- nvl2(null, null이 아닌 경우의 값, null인 경우의 값)
 
-SELECT ename,
-       comm,
-       nvl2(comm, 'o', 'x')
-FROM emp;
+SELECT
+    ename,
+    comm,
+    nvl2(comm, 'o', 'x')
+FROM
+    emp;
 
 -- decode() => switch()
 -- case => if()
@@ -538,10 +758,12 @@ FROM emp;
 --            값2,결과2,
 --            값3,결과3
 --            ,값)  defalut와 같다.
-SELECT deptno,
-       decode(deptno, 10, 'ACCOUNTING', 20, 'RESEARCH',
-              30, 'SALES', 40, 'OPERATIONS', 'etc') AS dname
-FROM emp;
+SELECT
+    deptno,
+    decode(deptno, 10, 'ACCOUNTING', 20, 'RESEARCH',
+           30, 'SALES', 40, 'OPERATIONS', 'etc') AS dname
+FROM
+    emp;
 
 -- case
 --case
@@ -550,106 +772,139 @@ FROM emp;
 --    when 조건식  then 결과
 --    else
 --end as 'xxx'
-SELECT ename,
-       comm,
-       CASE
-           WHEN comm IS NULL THEN
-               '수당이 없는 사원'
-           WHEN comm = 0 THEN
-               '수당을 못 받은 사원'
-           WHEN comm > 0 THEN
-               '수당은 $' || comm
-           ELSE
-               '미확인'
-           END AS commition
-FROM emp;
+SELECT
+    ename,
+    comm,
+    CASE
+        WHEN comm IS NULL THEN
+            '수당이 없는 사원'
+        WHEN comm = 0 THEN
+            '수당을 못 받은 사원'
+        WHEN comm > 0 THEN
+            '수당은 $' || comm
+        ELSE
+            '미확인'
+    END AS commition
+FROM
+    emp;
 
 -- 사원테이블에 매니져 null인 사원이 있다.
 -- null -> CEO
-SELECT ename,
-       nvl(to_char(mgr, '9999'),
-           'CEO') AS mgr
-FROM emp
-WHERE mgr IS NULL;
+SELECT
+    ename,
+    nvl(to_char(mgr, '9999'),
+        'CEO') AS mgr
+FROM
+    emp
+WHERE
+    mgr IS NULL;
 
 -- 문제 시작
-SELECT empno,
-       substr(empno, 1, 2)
-           || '**' AS masking_empno,
-       ename,
-       rpad(substr(ename, 1, 1),
-            length(ename),
-            '*')   AS masking_ename
-FROM emp
-WHERE length(ename) >= 5
-  AND length(ename) < 6;
+SELECT
+    empno,
+    substr(empno, 1, 2)
+    || '**'   AS masking_empno,
+    ename,
+    rpad(substr(ename, 1, 1),
+         length(ename),
+         '*') AS masking_ename
+FROM
+    emp
+WHERE
+        length(ename) >= 5
+    AND length(ename) < 6;
 
-SELECT empno,
-       ename,
-       sal,
-       trunc(sal / 21.5, 2),
-       round(sal / (21.5 * 8), 1)
-FROM emp;
+SELECT
+    empno,
+    ename,
+    sal,
+    trunc(sal / 21.5, 2),
+    round(sal /(21.5 * 8), 1)
+FROM
+    emp;
 
-SELECT *
-FROM emp;
+SELECT
+    *
+FROM
+    emp;
 
-SELECT empno,
-       ename,
-       mgr,
-       CASE
-           WHEN mgr IS NULL THEN
-               '0000'
-           WHEN substr(mgr, 1, 2) = '75' THEN
-               '5555'
-           WHEN substr(mgr, 1, 2) = '76' THEN
-               '6666'
-           WHEN substr(mgr, 1, 2) = '77' THEN
-               '7777'
-           WHEN substr(mgr, 1, 2) = '78' THEN
-               '8888'
-           ELSE
-               to_char(mgr)
-           END AS chg_mgr
-FROM emp;
+SELECT
+    empno,
+    ename,
+    mgr,
+    CASE
+        WHEN mgr IS NULL THEN
+            '0000'
+        WHEN substr(mgr, 1, 2) = '75' THEN
+            '5555'
+        WHEN substr(mgr, 1, 2) = '76' THEN
+            '6666'
+        WHEN substr(mgr, 1, 2) = '77' THEN
+            '7777'
+        WHEN substr(mgr, 1, 2) = '78' THEN
+            '8888'
+        ELSE
+            to_char(mgr)
+    END AS chg_mgr
+FROM
+    emp;
 
 -- 문제 끝
 
 -- 그룹함수
 -- 단일행 함수, 다중행 함수
 -- sum(), avg(), max(), min(), count()
-SELECT SUM(sal) AS 급여합계
-FROM emp;
+SELECT
+    SUM(sal) AS 급여합계
+FROM
+    emp;
 
 -- select ENAME, max(SAL)
 -- from EMP;
 
-SELECT COUNT(comm)
-FROM emp;
+SELECT
+    COUNT(comm)
+FROM
+    emp;
 
-SELECT COUNT(*)
-FROM emp;
+SELECT
+    COUNT(*)
+FROM
+    emp;
 
-SELECT COUNT(DISTINCT job)
-FROM emp;
+SELECT
+    COUNT(DISTINCT job)
+FROM
+    emp;
 
-SELECT COUNT(*),
-       COUNT(comm)
-FROM emp;
+SELECT
+    COUNT(*),
+    COUNT(comm)
+FROM
+    emp;
 
-SELECT MIN(sal)
-FROM emp;
+SELECT
+    MIN(sal)
+FROM
+    emp;
 
-SELECT AVG(sal)
-FROM emp;
+SELECT
+    AVG(sal)
+FROM
+    emp;
 
-SELECT MAX(sal)
-FROM emp
-WHERE deptno = 20;
+SELECT
+    MAX(sal)
+FROM
+    emp
+WHERE
+    deptno = 20;
 
-SELECT SUM(sal),
-       SUM(DISTINCT sal)
-FROM emp;
+SELECT
+    SUM(sal),
+    SUM(DISTINCT sal)
+FROM
+    emp;
 
 -- group by
 -- select
@@ -658,242 +913,338 @@ FROM emp;
 -- group by
 -- having -- group by를 위한 조건절
 -- order by -- 마지막에 작성한다.
-SELECT AVG(sal)
-FROM emp
-WHERE deptno = 10
+SELECT
+    AVG(sal)
+FROM
+    emp
+WHERE
+    deptno = 10
 UNION
-SELECT AVG(sal)
-FROM emp
-WHERE deptno = 20
+SELECT
+    AVG(sal)
+FROM
+    emp
+WHERE
+    deptno = 20
 UNION
-SELECT AVG(sal)
-FROM emp
-WHERE deptno = 30;
+SELECT
+    AVG(sal)
+FROM
+    emp
+WHERE
+    deptno = 30;
 
-SELECT deptno,
-       job,
-       AVG(sal)
-FROM emp
-GROUP BY deptno,
-         job
-ORDER BY deptno;
+SELECT
+    deptno,
+    job,
+    AVG(sal)
+FROM
+    emp
+GROUP BY
+    deptno,
+    job
+ORDER BY
+    deptno;
 
-SELECT deptno,
-       job,
-       AVG(sal)
-FROM emp
+SELECT
+    deptno,
+    job,
+    AVG(sal)
+FROM
+    emp
 -- where avg(SAL) >= 2000 -- 일반조건절에서는 그룹함수 사용불가
-GROUP BY deptno,
-         job
-HAVING AVG(sal) >= 2000 -- 조건절을 구성시 그룹함수를 사용한다.
-ORDER BY deptno;
+GROUP BY
+    deptno,
+    job
+HAVING
+    AVG(sal) >= 2000 -- 조건절을 구성시 그룹함수를 사용한다.
+ORDER BY
+    deptno;
 
 -- where과 having 함께 사용하는 순서
 -- where -> group by -> having을 실행한다.
-SELECT deptno,
-       job,
-       AVG(sal)
-FROM emp
-WHERE sal <= 3000
-GROUP BY deptno,
-         job
-HAVING AVG(sal) >= 2000
-ORDER BY deptno,
-         job;
+SELECT
+    deptno,
+    job,
+    AVG(sal)
+FROM
+    emp
+WHERE
+    sal <= 3000
+GROUP BY
+    deptno,
+    job
+HAVING
+    AVG(sal) >= 2000
+ORDER BY
+    deptno,
+    job;
 
-SELECT deptno,
-       job,
-       sal
-FROM emp
-WHERE sal <= 2000
-ORDER BY deptno,
-         job;
+SELECT
+    deptno,
+    job,
+    sal
+FROM
+    emp
+WHERE
+    sal <= 2000
+ORDER BY
+    deptno,
+    job;
 
 -- 그룹화 관련 함수
 -- rollup(), cube(), grouping_sets()
 -- 그룹화된 데이터의 결과를 이용해서 합계를 출력한다
-SELECT deptno,
-       job,
-       COUNT(*),
-       MAX(sal),
-       MIN(sal),
-       AVG(sal)
-FROM emp
+SELECT
+    deptno,
+    job,
+    COUNT(*),
+    MAX(sal),
+    MIN(sal),
+    AVG(sal)
+FROM
+    emp
 GROUP BY
-    ROLLUP (deptno,
-            job) -- (a, b) : a, b -> a -> 전체결과
-ORDER BY deptno,
-         job;
+    ROLLUP(deptno,
+           job) -- (a, b) : a, b -> a -> 전체결과
+ORDER BY
+    deptno,
+    job;
 
-SELECT deptno,
-       job,
-       COUNT(*),
-       MAX(sal),
-       MIN(sal),
-       AVG(sal)
-FROM emp
+SELECT
+    deptno,
+    job,
+    COUNT(*),
+    MAX(sal),
+    MIN(sal),
+    AVG(sal)
+FROM
+    emp
 GROUP BY
-    CUBE (deptno,
-          job) -- (a, b, c) : a, b -> b, c -> a, c -> a -> b -> c -> 전체결과
-ORDER BY deptno,
-         job;
+    CUBE(deptno,
+         job) -- (a, b, c) : a, b -> b, c -> a, c -> a -> b -> c -> 전체결과
+ORDER BY
+    deptno,
+    job;
 
 -- 가장 입사일이 빠른 사람 조회하기
-SELECT MIN(hiredate)
-FROM emp;
+SELECT
+    MIN(hiredate)
+FROM
+    emp;
 
 -- 부서별로 가장 입사일이 빠른 사람 조회하기
 -- 부서 인원이 3명 이상인 부서만 조회하기
-SELECT deptno,
-       MIN(hiredate),
-       COUNT(*)
-FROM emp
-GROUP BY deptno
-HAVING COUNT(*) >= 4;
-
-SELECT deptno,
-       job,
-       AVG(sal)
-FROM emp
-WHERE sal >= 2000
-GROUP BY deptno,
-         job
-HAVING deptno = 10;
-
-SELECT deptno,
-       trunc(AVG(sal)) AS avg_sal,
-       MAX(sal)        AS max_sal,
-       MIN(sal)        AS min_sal,
-       COUNT(*)        AS cnt
-FROM emp
-GROUP BY deptno;
-
-SELECT job,
-       COUNT(*)
-FROM emp
-GROUP BY job
-HAVING COUNT(*) >= 3;
-
-SELECT EXTRACT(YEAR FROM hiredate) AS hire_year,
-       deptno,
-       COUNT(*)                    AS cnt
-FROM emp
-GROUP BY EXTRACT(YEAR FROM hiredate),
-         deptno
-ORDER BY EXTRACT(YEAR FROM hiredate);
-
-SELECT nvl2(comm, 'O', 'X') AS exist_comm,
-       COUNT(*)             AS cnt
-FROM emp
-GROUP BY nvl2(comm, 'O', 'X')
-ORDER BY nvl2(comm, 'O', 'X') DESC;
-
-SELECT deptno,
-       EXTRACT(YEAR FROM hiredate),
-       COUNT(*),
-       MAX(sal),
-       SUM(sal),
-       AVG(sal)
-FROM emp
+SELECT
+    deptno,
+    MIN(hiredate),
+    COUNT(*)
+FROM
+    emp
 GROUP BY
-    ROLLUP (deptno,
-            EXTRACT(YEAR FROM hiredate));
+    deptno
+HAVING
+    COUNT(*) >= 4;
+
+SELECT
+    deptno,
+    job,
+    AVG(sal)
+FROM
+    emp
+WHERE
+    sal >= 2000
+GROUP BY
+    deptno,
+    job
+HAVING
+    deptno = 10;
+
+SELECT
+    deptno,
+    trunc(AVG(sal)) AS avg_sal,
+    MAX(sal)        AS max_sal,
+    MIN(sal)        AS min_sal,
+    COUNT(*)        AS cnt
+FROM
+    emp
+GROUP BY
+    deptno;
+
+SELECT
+    job,
+    COUNT(*)
+FROM
+    emp
+GROUP BY
+    job
+HAVING
+    COUNT(*) >= 3;
+
+SELECT
+    EXTRACT(YEAR FROM hiredate) AS hire_year,
+    deptno,
+    COUNT(*)                    AS cnt
+FROM
+    emp
+GROUP BY
+    EXTRACT(YEAR FROM hiredate),
+    deptno
+ORDER BY
+    EXTRACT(YEAR FROM hiredate);
+
+SELECT
+    nvl2(comm, 'O', 'X') AS exist_comm,
+    COUNT(*)             AS cnt
+FROM
+    emp
+GROUP BY
+    nvl2(comm, 'O', 'X')
+ORDER BY
+    nvl2(comm, 'O', 'X') DESC;
+
+SELECT
+    deptno,
+    EXTRACT(YEAR FROM hiredate),
+    COUNT(*),
+    MAX(sal),
+    SUM(sal),
+    AVG(sal)
+FROM
+    emp
+GROUP BY
+    ROLLUP(deptno,
+           EXTRACT(YEAR FROM hiredate));
 
 -- ERD(Entity Relationship Diagram)
 -- SQL(ORACLE, MYSQL), NON-SQL(MOGODB)
 -- SMITH
-SELECT ename,
-       deptno
-FROM emp
-WHERE ename = 'SMITH';
+SELECT
+    ename,
+    deptno
+FROM
+    emp
+WHERE
+    ename = 'SMITH';
 
-SELECT deptno,
-       dname
-FROM dept
-WHERE deptno = 20;
+SELECT
+    deptno,
+    dname
+FROM
+    dept
+WHERE
+    deptno = 20;
 
 -- cross join
 -- 12 * 4 = 48
-SELECT ename,
-       dname
-FROM emp,
-     dept;
+SELECT
+    ename,
+    dname
+FROM
+    emp,
+    dept;
 
 -- equl join
-SELECT ename,
-       emp.deptno,
-       dname
-FROM emp,
-     dept
-WHERE emp.deptno = dept.deptno;
+SELECT
+    ename,
+    emp.deptno,
+    dname
+FROM
+    emp,
+    dept
+WHERE
+    emp.deptno = dept.deptno;
 
 -- 테이블 이름 별칭
-SELECT ename,
-       e.deptno,
-       dname
-FROM emp e,
-     dept d
-WHERE e.deptno = d.deptno;
+SELECT
+    ename,
+    e.deptno,
+    dname
+FROM
+    emp  e,
+    dept d
+WHERE
+    e.deptno = d.deptno;
 
 -- 조인구문에서 일반조건 추가하기
-SELECT e.ename,
-       e.deptno,
-       d.dname,
-       sal
-FROM emp e,
-     dept d
-WHERE e.deptno = d.deptno
-  AND sal >= 3000;
+SELECT
+    e.ename,
+    e.deptno,
+    d.dname,
+    sal
+FROM
+    emp  e,
+    dept d
+WHERE
+        e.deptno = d.deptno
+    AND sal >= 3000;
 
 -- non equal join
 -- 값의 범위로 조인하는 방식
-SELECT ename,
-       sal,
-       grade
-FROM emp,
-     salgrade
-WHERE sal BETWEEN losal AND hisal;
+SELECT
+    ename,
+    sal,
+    grade
+FROM
+    emp,
+    salgrade
+WHERE
+    sal BETWEEN losal AND hisal;
 
-SELECT ename,
-       e.deptno,
-       dname,
-       grade
-FROM emp e,
-     dept d,
-     salgrade s
-WHERE e.deptno = d.deptno
-  AND sal BETWEEN losal AND hisal;
+SELECT
+    ename,
+    e.deptno,
+    dname,
+    grade
+FROM
+    emp      e,
+    dept     d,
+    salgrade s
+WHERE
+        e.deptno = d.deptno
+    AND sal BETWEEN losal AND hisal;
 
 -- self join
-SELECT e1.ename
-           || '의 매니저의 이름은 '
-           || e2.ename
-           || '입니다.'
-FROM emp e1,
-     emp e2
-WHERE e1.mgr = e2.empno
-ORDER BY e1.empno;
+SELECT
+    e1.ename
+    || '의 매니저의 이름은 '
+    || e2.ename
+    || '입니다.'
+FROM
+    emp e1,
+    emp e2
+WHERE
+    e1.mgr = e2.empno
+ORDER BY
+    e1.empno;
 
 -- outer join
 -- 조인시 누락되는 레코드를 함께 조회가 되도록 하는 방식
 -- (+) : 조인 조건절의 컬럼 뒤에 표시한다.
 -- 값이 없는 쪽 컬럼 뒤에 붙인다.
-SELECT e1.ename
-           || '의 매니저의 이름은 '
-           || e2.ename
-           || '입니다.'
-FROM emp e1,
-     emp e2
-WHERE e1.mgr = e2.empno (+)
-ORDER BY e1.empno;
+SELECT
+    e1.ename
+    || '의 매니저의 이름은 '
+    || e2.ename
+    || '입니다.'
+FROM
+    emp e1,
+    emp e2
+WHERE
+    e1.mgr = e2.empno (+)
+ORDER BY
+    e1.empno;
 
-SELECT ename,
-       dept.deptno,
-       dname,
-       loc
-FROM emp,
-     dept
-WHERE emp.deptno (+) = dept.deptno;
+SELECT
+    ename,
+    dept.deptno,
+    dname,
+    loc
+FROM
+    emp,
+    dept
+WHERE
+    emp.deptno (+) = dept.deptno;
 
 -- cross join
 -- equi join
@@ -901,186 +1252,236 @@ WHERE emp.deptno (+) = dept.deptno;
 -- self join
 -- outer join
 -- 표준조인(ANSI-JOIN)
-SELECT *
-FROM emp
-         CROSS JOIN dept;
+SELECT
+    *
+FROM
+         emp
+    CROSS JOIN dept;
 
-SELECT ename,
-       e.deptno,
-       sal,
-       dname,
-       loc
-FROM emp e
-         INNER JOIN dept d ON e.deptno = d.deptno;
+SELECT
+    ename,
+    e.deptno,
+    sal,
+    dname,
+    loc
+FROM
+         emp e
+    INNER JOIN dept d ON e.deptno = d.deptno;
 
-SELECT ename,
-       e.deptno,
-       sal,
-       dname,
-       loc
-FROM emp e
-         INNER JOIN dept d ON e.deptno = d.deptno
-WHERE ename = 'FORD';
+SELECT
+    ename,
+    e.deptno,
+    sal,
+    dname,
+    loc
+FROM
+         emp e
+    INNER JOIN dept d ON e.deptno = d.deptno
+WHERE
+    ename = 'FORD';
 
 -- 컬럼에 이름이 동일할 경우에 사용
-SELECT ename,
-       deptno,
-       sal,
-       dname,
-       loc
-FROM emp
-         INNER JOIN dept USING (deptno);
+SELECT
+    ename,
+    deptno,
+    sal,
+    dname,
+    loc
+FROM
+         emp
+    INNER JOIN dept USING ( deptno );
 
 -- natural join시 공통컬럼에는 테이블 이름을 적어주지 않는다.
-SELECT ename,
-       deptno,
-       sal,
-       dname,
-       loc
-FROM emp
-         NATURAL JOIN dept;
+SELECT
+    ename,
+    deptno,
+    sal,
+    dname,
+    loc
+FROM
+         emp
+    NATURAL JOIN dept;
 
-SELECT ename,
-       sal,
-       grade
-FROM emp e
-         INNER JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal;
+SELECT
+    ename,
+    sal,
+    grade
+FROM
+         emp e
+    INNER JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal;
 
-SELECT e1.ename
-           || '의 매니저의 이름은 '
-           || e2.ename
-           || '입니다.'
-FROM emp e1
-         INNER JOIN emp e2 ON e1.mgr = e2.empno
-ORDER BY e1.empno;
+SELECT
+    e1.ename
+    || '의 매니저의 이름은 '
+    || e2.ename
+    || '입니다.'
+FROM
+         emp e1
+    INNER JOIN emp e2 ON e1.mgr = e2.empno
+ORDER BY
+    e1.empno;
 
 -- ANSI JOIN(표준 조인)
 -- CROSS JOIN
 -- INNER JOIN
 -- OUTER JOIN [ left || right || full ] outer join
-SELECT e1.ename,
-       e2.ename
-FROM emp e1
-         LEFT OUTER JOIN emp e2 ON e1.mgr = e2.empno;
+SELECT
+    e1.ename,
+    e2.ename
+FROM
+    emp e1
+    LEFT OUTER JOIN emp e2 ON e1.mgr = e2.empno;
 
-SELECT e1.ename,
-       e2.ename
-FROM emp e1
-         FULL OUTER JOIN emp e2 ON e1.mgr = e2.empno
-ORDER BY e1.ename;
+SELECT
+    e1.ename,
+    e2.ename
+FROM
+    emp e1
+    FULL OUTER JOIN emp e2 ON e1.mgr = e2.empno
+ORDER BY
+    e1.ename;
 
-SELECT ename,
-       sal,
-       dname,
-       grade
-FROM emp e
-         INNER JOIN dept d ON e.deptno = d.deptno
-         INNER JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal;
+SELECT
+    ename,
+    sal,
+    dname,
+    grade
+FROM
+         emp e
+    INNER JOIN dept     d ON e.deptno = d.deptno
+    INNER JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal;
 
 -- 문제 시작
-SELECT e.deptno,
-       dname,
-       empno,
-       sal
-FROM emp e,
-     dept d
-WHERE e.deptno = d.deptno
-  AND sal > 2000;
+SELECT
+    e.deptno,
+    dname,
+    empno,
+    sal
+FROM
+    emp  e,
+    dept d
+WHERE
+        e.deptno = d.deptno
+    AND sal > 2000;
 
-SELECT e.deptno,
-       dname,
-       empno,
-       sal
-FROM emp e
-         INNER JOIN dept d ON e.deptno = d.deptno
-WHERE sal > 2000;
+SELECT
+    e.deptno,
+    dname,
+    empno,
+    sal
+FROM
+         emp e
+    INNER JOIN dept d ON e.deptno = d.deptno
+WHERE
+    sal > 2000;
 ----------------------------------------------
-SELECT e.deptno,
-       dname,
-       trunc(AVG(sal)) AS avg_sal,
-       MAX(sal)        AS max_sal,
-       MIN(sal)        AS min_sal,
-       COUNT(*)        AS cnt
-FROM emp e,
-     dept d
-WHERE e.deptno = d.deptno
-GROUP BY e.deptno,
-         dname;
+SELECT
+    e.deptno,
+    dname,
+    trunc(AVG(sal)) AS avg_sal,
+    MAX(sal)        AS max_sal,
+    MIN(sal)        AS min_sal,
+    COUNT(*)        AS cnt
+FROM
+    emp  e,
+    dept d
+WHERE
+    e.deptno = d.deptno
+GROUP BY
+    e.deptno,
+    dname;
 
-SELECT e.deptno,
-       dname,
-       trunc(AVG(sal)) AS avg_sal,
-       MAX(sal)        AS max_sal,
-       MIN(sal)        AS min_sal,
-       COUNT(*)        AS cnt
-FROM emp e
-         INNER JOIN dept d ON e.deptno = d.deptno
-GROUP BY e.deptno,
-         dname;
+SELECT
+    e.deptno,
+    dname,
+    trunc(AVG(sal)) AS avg_sal,
+    MAX(sal)        AS max_sal,
+    MIN(sal)        AS min_sal,
+    COUNT(*)        AS cnt
+FROM
+         emp e
+    INNER JOIN dept d ON e.deptno = d.deptno
+GROUP BY
+    e.deptno,
+    dname;
 ----------------------------------------------
-SELECT d.deptno,
-       dname,
-       empno,
-       ename,
-       job,
-       sal
-FROM emp e,
-     dept d
-WHERE e.deptno (+) = d.deptno
-ORDER BY deptno,
-         ename;
+SELECT
+    d.deptno,
+    dname,
+    empno,
+    ename,
+    job,
+    sal
+FROM
+    emp  e,
+    dept d
+WHERE
+    e.deptno (+) = d.deptno
+ORDER BY
+    deptno,
+    ename;
 
-SELECT deptno,
-       dname,
-       empno,
-       ename,
-       job,
-       sal
-FROM emp e
-         RIGHT OUTER JOIN dept d USING (deptno)
-ORDER BY deptno,
-         ename;
+SELECT
+    deptno,
+    dname,
+    empno,
+    ename,
+    job,
+    sal
+FROM
+    emp  e
+    RIGHT OUTER JOIN dept d USING ( deptno )
+ORDER BY
+    deptno,
+    ename;
 ----------------------------------------------
-SELECT d.deptno  AS deptno,
-       dname,
-       e1.empno  AS empno,
-       e1.ename  AS ename,
-       e1.mgr    AS mgr,
-       e1.sal    AS sal,
-       e1.deptno AS deptno_1,
-       losal,
-       hisal,
-       grade,
-       e2.empno  AS mgr_enpno,
-       e2.ename  AS mgr_ename
-FROM emp e1,
-     dept d,
-     salgrade s,
-     emp e2
-WHERE e1.deptno (+) = d.deptno
-  AND e1.sal BETWEEN s.losal (+) AND s.hisal (+)
-  AND e1.mgr = e2.empno (+)
-ORDER BY d.deptno,
-         e1.empno;
+SELECT
+    d.deptno  AS deptno,
+    dname,
+    e1.empno  AS empno,
+    e1.ename  AS ename,
+    e1.mgr    AS mgr,
+    e1.sal    AS sal,
+    e1.deptno AS deptno_1,
+    losal,
+    hisal,
+    grade,
+    e2.empno  AS mgr_enpno,
+    e2.ename  AS mgr_ename
+FROM
+    emp      e1,
+    dept     d,
+    salgrade s,
+    emp      e2
+WHERE
+        e1.deptno (+) = d.deptno
+    AND e1.sal BETWEEN s.losal (+) AND s.hisal (+)
+    AND e1.mgr = e2.empno (+)
+ORDER BY
+    d.deptno,
+    e1.empno;
 
-SELECT d.deptno  AS deptno,
-       dname,
-       e1.empno  AS empno,
-       e1.ename  AS ename,
-       e1.mgr    AS mgr,
-       e1.sal    AS sal,
-       e1.deptno AS deptno_1,
-       losal,
-       hisal,
-       grade,
-       e2.empno  AS mgr_enpno,
-       e2.ename  AS mgr_ename
-FROM emp e1
-         RIGHT OUTER JOIN dept d ON e1.deptno = d.deptno
-         LEFT OUTER JOIN salgrade s ON e1.sal BETWEEN s.losal AND s.hisal
-         LEFT OUTER JOIN emp e2 ON e1.mgr = e2.empno
-ORDER BY d.deptno,
-         e1.empno;
+SELECT
+    d.deptno  AS deptno,
+    dname,
+    e1.empno  AS empno,
+    e1.ename  AS ename,
+    e1.mgr    AS mgr,
+    e1.sal    AS sal,
+    e1.deptno AS deptno_1,
+    losal,
+    hisal,
+    grade,
+    e2.empno  AS mgr_enpno,
+    e2.ename  AS mgr_ename
+FROM
+    emp      e1
+    RIGHT OUTER JOIN dept     d ON e1.deptno = d.deptno
+    LEFT OUTER JOIN salgrade s ON e1.sal BETWEEN s.losal AND s.hisal
+    LEFT OUTER JOIN emp      e2 ON e1.mgr = e2.empno
+ORDER BY
+    d.deptno,
+    e1.empno;
 -- 문제 끝
 
 -- 서브쿼리
@@ -1093,40 +1494,66 @@ ORDER BY d.deptno,
 --         where
 --     );
 
-SELECT ename,
-       dname
-FROM emp,
-     dept
-WHERE emp.deptno = dept.deptno
-  AND ename = 'SMITH';
+SELECT
+    ename,
+    dname
+FROM
+    emp,
+    dept
+WHERE
+        emp.deptno = dept.deptno
+    AND ename = 'SMITH';
 
-SELECT dname
-FROM dept
-WHERE deptno = (SELECT deptno
-                FROM emp
-                WHERE ename = 'SMITH');
+SELECT
+    dname
+FROM
+    dept
+WHERE
+    deptno = (
+        SELECT
+            deptno
+        FROM
+            emp
+        WHERE
+            ename = 'SMITH'
+    );
 
-SELECT MAX(sal)
-FROM emp;
+SELECT
+    MAX(sal)
+FROM
+    emp;
 
-SELECT ename,
-       sal
-FROM emp
-WHERE sal = (SELECT MAX(sal)
-             FROM emp);
+SELECT
+    ename,
+    sal
+FROM
+    emp
+WHERE
+    sal = (
+        SELECT
+            MAX(sal)
+        FROM
+            emp
+    );
 
 -- 이름, 급여, 부서번호, 부서명
 -- 부서번호가 20번
 -- 전체사원의 급여의 평균을 초과하는 사원
-SELECT ename,
-       sal,
-       emp.deptno,
-       dname
-FROM emp
-         INNER JOIN dept ON emp.deptno = dept.deptno
-    AND emp.deptno = 20
-    AND sal > (SELECT AVG(sal)
-               FROM emp);
+SELECT
+    ename,
+    sal,
+    emp.deptno,
+    dname
+FROM
+         emp
+    INNER JOIN dept ON emp.deptno = dept.deptno
+                       AND emp.deptno = 20
+                       AND sal > (
+        SELECT
+            AVG(sal)
+        FROM
+            emp
+    );
 
 -- 서브쿼리문의 결과의 갯수
 -- 단일행 서브쿼리
@@ -1136,13 +1563,21 @@ FROM emp
 -- where : 서브쿼리
 -- from : 인라인 뷰
 -- select : 컬럼형식
-SELECT ename,
-       deptno,
-       (SELECT dname
-        FROM dept
-        WHERE deptno = e.deptno) AS dname
-FROM emp e
-WHERE ename = 'SMITH';
+SELECT
+    ename,
+    deptno,
+    (
+        SELECT
+            dname
+        FROM
+            dept
+        WHERE
+            deptno = e.deptno
+    ) AS dname
+FROM
+    emp e
+WHERE
+    ename = 'SMITH';
 
 -- 다중행 서브쿼리문
 -- 비교연산자 사용불과
@@ -1154,174 +1589,309 @@ WHERE ename = 'SMITH';
 --             from
 -- );
 
-SELECT *
-FROM emp
-WHERE deptno IN (20, 30);
+SELECT
+    *
+FROM
+    emp
+WHERE
+    deptno IN ( 20, 30 );
 
-SELECT *
-FROM emp
-WHERE sal IN (SELECT MAX(sal)
-              FROM emp
-              GROUP BY deptno);
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal IN (
+        SELECT
+            MAX(sal)
+        FROM
+            emp
+        GROUP BY
+            deptno
+    );
 
 -- any()
-SELECT *
-FROM emp
-WHERE sal > ANY (SELECT MAX(sal) -- 서브쿼리문의 결과값의 최소값보다 큰 값
-                 FROM emp
-                 GROUP BY deptno);
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal > ANY (
+        SELECT
+            MAX(sal) -- 서브쿼리문의 결과값의 최소값보다 큰 값
+        FROM
+            emp
+        GROUP BY
+            deptno
+    );
 
 -- all()
-SELECT *
-FROM emp
-WHERE sal > ALL (SELECT sal -- 가장 큰 값보다 큰 값
-                 FROM emp
-                 WHERE deptno = 30);
+SELECT
+    *
+FROM
+    emp
+WHERE
+    sal > ALL (
+        SELECT
+            sal -- 가장 큰 값보다 큰 값
+        FROM
+            emp
+        WHERE
+            deptno = 30
+    );
 
-SELECT *
-FROM emp
-WHERE EXISTS (SELECT dname
-              FROM dept
-              WHERE deptno = 50);
+SELECT
+    *
+FROM
+    emp
+WHERE
+    EXISTS (
+        SELECT
+            dname
+        FROM
+            dept
+        WHERE
+            deptno = 50
+    );
 
 -- 다중열 서브쿼리
-SELECT *
-FROM emp
-WHERE (deptno,
-       sal) = (SELECT deptno,
-                      sal
-               FROM emp
-               WHERE ename = 'SMITH');
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ( deptno,
+      sal ) = (
+        SELECT
+            deptno,
+            sal
+        FROM
+            emp
+        WHERE
+            ename = 'SMITH'
+    );
 
-SELECT *
-FROM emp
-WHERE (deptno, sal) IN (SELECT deptno,
-                               MAX(sal)
-                        FROM emp
-                        GROUP BY deptno);
+SELECT
+    *
+FROM
+    emp
+WHERE
+    ( deptno, sal ) IN (
+        SELECT
+            deptno, MAX(sal)
+        FROM
+            emp
+        GROUP BY
+            deptno
+    );
 
 -- 인라인뷰(가상테이블)
-SELECT ee.*
-FROM (SELECT ename,
-             sal,
-             comm,
-             deptno
-      FROM emp) ee;
+SELECT
+    ee.*
+FROM
+    (
+        SELECT
+            ename,
+            sal,
+            comm,
+            deptno
+        FROM
+            emp
+    ) ee;
 
-SELECT ename,
-       d.deptno,
-       dname,
-       loc
-FROM (SELECT *
-      FROM emp
-      WHERE deptno = 10) e10,
-     (SELECT *
-      FROM dept) d
-WHERE e10.deptno (+) = d.deptno;
+SELECT
+    ename,
+    d.deptno,
+    dname,
+    loc
+FROM
+    (
+        SELECT
+            *
+        FROM
+            emp
+        WHERE
+            deptno = 10
+    ) e10,
+    (
+        SELECT
+            *
+        FROM
+            dept
+    ) d
+WHERE
+    e10.deptno (+) = d.deptno;
 
 -- with
-WITH e10 AS (SELECT *
-             FROM emp
-             WHERE deptno = 10),
-     d AS (SELECT *
-           FROM dept)
-SELECT ename,
-       d.deptno,
-       dname,
-       loc
-FROM e10,
-     d
-WHERE e10.deptno (+) = d.deptno;
+WITH e10 AS (
+    SELECT
+        *
+    FROM
+        emp
+    WHERE
+        deptno = 10
+), d AS (
+    SELECT
+        *
+    FROM
+        dept
+)
+SELECT
+    ename,
+    d.deptno,
+    dname,
+    loc
+FROM
+    e10,
+    d
+WHERE
+    e10.deptno (+) = d.deptno;
 
 -- 서브쿼리문을 select 절에 작성한다.
-SELECT empno,
-       job,
-       sal,
-       (SELECT grade
-        FROM salgrade
-        WHERE emp.sal BETWEEN losal AND hisal) AS salgrade,
-       deptno,
-       (SELECT dname
-        FROM dept
-        WHERE emp.deptno = deptno)             AS dname
-FROM emp;
+SELECT
+    empno,
+    job,
+    sal,
+    (
+        SELECT
+            grade
+        FROM
+            salgrade
+        WHERE
+            emp.sal BETWEEN losal AND hisal
+    ) AS salgrade,
+    deptno,
+    (
+        SELECT
+            dname
+        FROM
+            dept
+        WHERE
+            emp.deptno = deptno
+    ) AS dname
+FROM
+    emp;
 
 -- 문제 시작
-SELECT job,
-       empno,
-       ename,
-       trunc(sal) AS sal,
-       e.deptno,
-       dname
-FROM emp e,
-     dept d
-WHERE e.deptno = d.deptno
-  AND job = (SELECT job
-             FROM emp
-             WHERE ename = 'ALLEN');
+SELECT
+    job,
+    empno,
+    ename,
+    trunc(sal) AS sal,
+    e.deptno,
+    dname
+FROM
+    emp  e,
+    dept d
+WHERE
+        e.deptno = d.deptno
+    AND job = (
+        SELECT
+            job
+        FROM
+            emp
+        WHERE
+            ename = 'ALLEN'
+    );
 
-SELECT empno,
-       ename,
-       dname,
-       hiredate,
-       loc,
-       trunc(sal) AS sal,
-       grade
-FROM emp e,
-     dept d,
-     salgrade s
-WHERE e.deptno = d.deptno
-  AND e.sal BETWEEN s.losal AND s.hisal
-  AND sal > (SELECT AVG(sal)
-             FROM emp)
-ORDER BY sal DESC,
-         empno;
+SELECT
+    empno,
+    ename,
+    dname,
+    hiredate,
+    loc,
+    trunc(sal) AS sal,
+    grade
+FROM
+    emp      e,
+    dept     d,
+    salgrade s
+WHERE
+        e.deptno = d.deptno
+    AND e.sal BETWEEN s.losal AND s.hisal
+    AND sal > (
+        SELECT
+            AVG(sal)
+        FROM
+            emp
+    )
+ORDER BY
+    sal DESC,
+    empno;
 
-SELECT empno,
-       ename,
-       job,
-       e.deptno,
-       dname,
-       loc
-FROM emp e,
-     dept d
-WHERE e.deptno = d.deptno
-  AND e.deptno = 10
-  AND job NOT IN (SELECT DISTINCT job
-                  FROM emp
-                  WHERE deptno = 30);
+SELECT
+    empno,
+    ename,
+    job,
+    e.deptno,
+    dname,
+    loc
+FROM
+    emp  e,
+    dept d
+WHERE
+        e.deptno = d.deptno
+    AND e.deptno = 10
+    AND job NOT IN (
+        SELECT DISTINCT
+            job
+        FROM
+            emp
+        WHERE
+            deptno = 30
+    );
 
-SELECT empno,
-       ename,
-       sal,
-       grade
-FROM emp e,
-     salgrade s
-WHERE e.sal BETWEEN s.losal AND s.hisal
-  AND sal > (SELECT MAX(sal)
-             FROM emp
-             WHERE job = 'SALESMAN')
-ORDER BY empno;
+SELECT
+    empno,
+    ename,
+    sal,
+    grade
+FROM
+    emp      e,
+    salgrade s
+WHERE
+    e.sal BETWEEN s.losal AND s.hisal
+    AND sal > (
+        SELECT
+            MAX(sal)
+        FROM
+            emp
+        WHERE
+            job = 'SALESMAN'
+    )
+ORDER BY
+    empno;
 
-SELECT empno,
-       ename,
-       sal,
-       grade
-FROM emp e,
-     salgrade s
-WHERE e.sal BETWEEN s.losal AND s.hisal
-  AND sal > ALL (SELECT DISTINCT sal
-                 FROM emp
-                 WHERE job = 'SALESMAN')
-ORDER BY empno;
+SELECT
+    empno,
+    ename,
+    sal,
+    grade
+FROM
+    emp      e,
+    salgrade s
+WHERE
+    e.sal BETWEEN s.losal AND s.hisal
+    AND sal > ALL (
+        SELECT DISTINCT
+            sal
+        FROM
+            emp
+        WHERE
+            job = 'SALESMAN'
+    )
+ORDER BY
+    empno;
 -- 문제 끝
 -- DDL : Data Definition Language
 -- 데이터 정의어
 -- 객체를 생성하는 명령어 (table을 생성)
 CREATE TABLE dept_temp
-AS
-SELECT *
-FROM dept;
+    AS
+        SELECT
+            *
+        FROM
+            dept;
 
 select *
 from dept_temp
@@ -2360,9 +2930,7 @@ declare
 --    type 타입이름 is table of 실제 데이터 타입
 --    index by ?
     type ename_table_type is table of emp.ename%type
-        index by binary_integer;
 
-    type job_table_type is table of emp.job%type
         index by binary_integer;
 
     ename_t ename_table_type;
@@ -2672,3 +3240,188 @@ end;
 
 select *
 from salgrade;
+
+-- 커서 사용하기
+--declare
+--    cusor 커서명 is SQL구문 // 커서의 선언
+--begin
+--    open 커서명
+--    fetch 커서명 into 변수
+--    close 커서명
+--end;
+--/
+
+declare
+    vdept dept%rowtype;
+    cursor c1 is select *
+                 from dept; -- 커서의 선언
+begin
+    open c1;
+    loop
+        fetch c1 into vdept;
+        exit when c1%NOTFOUND;
+        dbms_output.put_line(vdept.deptno || ' ' || vdept.dname || ' ' || vdept.loc);
+    end loop;
+    close c1;
+end;
+/
+
+declare
+    cursor c1 is select *
+                 from dept; -- 커서의 선언
+begin
+    for i in (select * from emp)
+        loop
+            dbms_output.put_line(i.deptno);
+        end loop;
+end;
+/
+
+-- 저장 프로시저
+--create or replace procedure 프로시져명
+--is
+--    변수선언
+--begin
+--    실행문(SQL)
+--end;
+--/
+
+--execute 프로시져명;
+
+create or replace procedure pro_test
+    is
+    vempno number(10);
+    vename varchar2(10);
+begin
+    vempno := 7777;
+    vename := 'hong';
+    DBMS_OUTPUT.PUT_LINE(vempno);
+    DBMS_OUTPUT.PUT_LINE(vename);
+end;
+/
+
+execute pro_test;
+
+drop procedure pro_test;
+
+create or replace procedure emp01_del
+    is
+begin
+    delete from emp01;
+end;
+/
+
+exec emp01_del;
+
+create table emp01
+as
+select * from emp;
+
+select * from emp01;
+
+rollback;
+
+-- 프로시저 조회
+select * from user_source;
+
+-- 저장 프로시져
+--create or replace procedure 프로시져명(매개변수, ....)
+--    is
+--        변수선언
+--begin
+--        
+--end;
+--/
+
+create or replace procedure del_ename(vename emp01.ename%type)
+-- 매개변수의 타입(스칼라 방식)은 크기를 생략해야 한다.
+    is
+        
+begin
+    delete from emp01
+    where ename = vename;
+end;
+/
+
+exec del_ename('SMITH')
+
+select * from emp01;
+
+-- 프로시져의 매개변수 유형
+-- in, out, in out
+
+create or
+    replace
+    procedure
+    sel_empno
+    (
+    vempno in emp01.empno%type,
+    vename out emp01.ename%type,
+    vsal out emp01.sal%type,
+    vjob out emp01.job%type
+    )
+    is
+    
+    begin
+SELECT
+    ename,
+    sal,
+    job
+INTO
+    vename,
+    vsal,
+    vjob
+FROM
+    emp01
+WHERE
+    empno = vempno;
+end;
+/
+
+declare
+    v_ename emp01.ename%type;
+    v_sal emp01.sal%type;
+    v_job emp01.job%type;
+begin
+    sel_empno(7499, v_ename, v_sal, v_job);
+    dbms_output.put_line(v_ename);
+    dbms_output.put_line(v_sal);
+    dbms_output.put_line(v_job);
+end;
+/
+
+-- 저장 함수
+-- 리턴값을 가진다.
+--create or replace 함수명(매개수, ....)
+--return 타입
+--is
+--    변수선언
+--begin
+--    실행문(SQL)
+--    return 리턴값;
+--end;
+--/
+
+create or replace function cal_boun(vempno IN emp01.empno%TYPE) 
+    return number -- 크기와 ;는 생략한다.
+is 
+    vsal number(7, 2); 
+begin
+SELECT
+    sal
+INTO vsal
+FROM
+    emp01
+WHERE
+    empno = vempno;
+
+RETURN vsal * 200;
+
+end;
+/
+
+variable var_res number;
+
+exec :var_res := cal_boun(7499);
+
+print var_res;
