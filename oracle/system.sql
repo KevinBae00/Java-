@@ -15,6 +15,12 @@ create user user01 identified by 1234;
 grant connect, resource
     to user01;
 
+grant create session, create table, create view
+    to user01;
+
+alter user user01
+    quota 2 m on MEGA;
+
 grant create synonym
     to SCOTT;
 
