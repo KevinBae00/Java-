@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class ArrayEx {
     public static void main(String[] args) {
@@ -145,7 +146,7 @@ public class ArrayEx {
 //        }
 //        System.out.println(distinct);
 
-        char[][] star = {
+        /*char[][] star = {
                 {'*', '*', ' ', ' ', ' '},
                 {'*', '*', ' ', ' ', ' '},
                 {'*', '*', '*', '*', '*'},
@@ -158,6 +159,8 @@ public class ArrayEx {
             }
             System.out.println();
         }
+
+        System.out.println("-----------------");
 
         char[][] star90 = new char[star[0].length][star.length];
 
@@ -173,7 +176,83 @@ public class ArrayEx {
                 System.out.print(star90[i][j]);
             }
             System.out.println();
+        }*/
+
+        // 배열의 복사
+        // 2가지
+        // 1. 반복문을 이용한 복사
+        /*int[] arr1 = new int[5];
+        int[] arr2 = new int[5];
+
+        arr1[0] = 1;
+        arr1[1] = 2;
+        arr1[2] = 3;
+        arr1[3] = 4;
+        arr1[4] = 5;
+
+        for (int i = 0; i < arr1.length; i++) {
+            arr2[i] = arr1[i];
         }
-       
+
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.println(arr2[i]);
+        }*/
+
+        // 함수를 이용한 배열의 복사
+        // arraycopy()
+
+        /*int[] arr1 = new int[5];
+        int[] arr2 = new int[5];
+
+        arr1[0] = 1;
+        arr1[1] = 2;
+        arr1[2] = 3;
+        arr1[3] = 4;
+        arr1[4] = 5;
+
+        // arraycopy(값을 가진배열, 시작인덱스 번호, 복사 받기 위한 두번째 배열, 시작 인덱스, 3)
+
+        System.arraycopy(arr1, 0, arr2, 0, 3);
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.println(arr2[i]);
+        }*/
+
+        // 3. 배열 객체를 사용하는 방법
+        // Arrays객체
+
+        /*int[] arr1 = {1, 2, 3};
+        int[] arr2 = null;
+
+        arr2 = Arrays.copyOf(arr1, 5);
+
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.println(arr2[i]);
+        }*/
+
+        // 향상된 for
+        // 배열 or 객체
+//        for (변수 : 배열변수 or 객체){
+//            실행문
+//        }
+
+        /*int[] arr1 = {1, 2, 3, 4, 5};
+        for (int num : arr1) {
+            System.out.println(num);
+        }*/
+
+        int[][] score = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        for (int[] temp : score) {
+            for (int num : temp) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+
+        
     }
 }
