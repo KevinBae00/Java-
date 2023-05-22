@@ -8,6 +8,8 @@ public class MethodTest {
 //        m.add2(10, 20);
         m.add2(x, y);
         int result = m.add3(100, 200);
+
+
         System.out.println(result);
 
         int max = m.maxVal(500, 300);
