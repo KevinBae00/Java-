@@ -23,10 +23,42 @@ public class Method {
     }
 
     int maxVal(int x, int y) {
+//        if (x > y) {
+//            return x;
+//        } else {
+//            return y;
+//        }
+
         if (x > y) {
             return x;
-        } else {
-            return y;
         }
+        return y;
+
+//        int max = 0;
+//        if (x > y) {
+//            max = x;
+//        } else {
+//            max = y;
+//        }
+//        return max;
+    }
+
+    void test(int x) {
+        if (x > 10) {
+            return; // 메소드의 강제종료
+        }
+        System.out.println("hello");
+    }
+
+    void add5(int... x) {
+        int sum = 0;
+        for (int num : x) {
+            sum += num;
+        }
+        System.out.println(sum);
+    }
+
+    static void add6(int x, int y) {
+        System.out.println("static add6()" + (x + y));
     }
 }
