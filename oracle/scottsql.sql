@@ -3193,7 +3193,7 @@ end;
 -- 사원의 사번, 이름, 급여, 부서이름, 급여등급
 -- 단 급여 등급이 4등급인 사원을 조회하는 프로시저를 완성하세요
 -- 모든 사원 정보를 출력한다.
-
+set serveroutput on;
 declare
     type emp_table is table of EMP%rowtype
         index by pls_integer;

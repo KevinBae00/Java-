@@ -132,3 +132,42 @@ where GRANTEE = 'USER01';
 select *
 from DBA_ROLE_PRIVS
 where GRANTEE = 'USER01';
+
+create user mega identified by 1234 default tablespace mega;
+
+select USERNAME, DEFAULT_TABLESPACE
+from DBA_USERS
+where USERNAME in ('MEGA');
+
+grant create session, create table
+    to mega;
+
+alter user MEGA
+    quota 2 m on MEGA;
+
+select NAME,DB_UNIQUE_NAME
+from V$DATABASE;
+
+SELECT instance FROM v$thread;
+
+-- 시스템 권한
+select *
+from DBA_SYS_PRIVS
+where GRANTEE = 'MEGA';
+
+-- 롤권한
+select *
+from DBA_ROLE_PRIVS
+where GRANTEE = 'MEGA';
+
+GRANT CREATE SEQUENCE
+TO mega;
+
+GRANT EXECUTE ANY PROCEDURE TO mega;
+
+grant create table to mega;
+
+grant create synonym
+    to mega;
+    
+grant create procedure to mega;
