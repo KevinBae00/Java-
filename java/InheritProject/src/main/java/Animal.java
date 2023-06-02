@@ -1,7 +1,7 @@
-import lombok.Getter;
+import lombok.Data;
 
+@Data
 public class Animal {
-    @Getter
     String name;
     int weight;
 }
