@@ -62,8 +62,13 @@ from DBA_USERS;
 create tablespace mega
     datafile 'C:\oraclexe\app\oracle\oradata\XE\mega.dbf' size 100 M
     autoextend on next 10 M;
+    
+create tablespace it
+    datafile 'C:\oraclexe\app\oracle\oradata\XE\it.dbf' size 100 M
+    autoextend on next 10 M;
 
 create user batman identified by 1234 default tablespace mega;
+create user haha identified by 1234 default tablespace it;
 
 select USERNAME, DEFAULT_TABLESPACE
 from DBA_USERS
@@ -74,6 +79,9 @@ grant create session, create table
 
 alter user BATMAN
     quota 2 m on MEGA;
+    
+    alter user haha
+    quota 2 m on it;
 
 -- 기본 테이블 스페이스 변경
 alter user orclstudy
