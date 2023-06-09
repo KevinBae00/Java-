@@ -3429,3 +3429,5 @@ print var_res;
 drop table emp01;
 
 create table emp01 as select * from emp;
+
+select * from emp01;
