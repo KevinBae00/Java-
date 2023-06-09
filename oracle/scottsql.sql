@@ -3425,3 +3425,7 @@ variable var_res number;
 exec :var_res := cal_boun(7499);
 
 print var_res;
+
+drop table emp01;
+
+create table emp01 as select * from emp;
