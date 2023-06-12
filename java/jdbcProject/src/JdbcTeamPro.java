@@ -120,7 +120,7 @@ public class JdbcTeamPro {
             String loc = sc.nextLine();
 
 
-            sql = "insert into customer"
+            sql = "insert into DELIVERY"
                     + " values (" + delno + ",'" + loc + "')";
         } else if (data == 3) {
             sql = "select * from customer";
@@ -269,7 +269,7 @@ public class JdbcTeamPro {
         System.out.println("삭제할 상품번호 입력: ");
         int proid = sc.nextInt();
 
-        String sql = "delete  from product where proid = " + proid;
+        String sql = "delete from product where proid = " + proid;
         try {
             int result = stmt.executeUpdate(sql);
 
