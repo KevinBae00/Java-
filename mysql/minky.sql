@@ -14,5 +14,24 @@ create table customer
     primary key (no)
 );
 
-show tables ;
+show tables;
 desc customer;
+
+insert into customer(name, age, phone, email)
+values ('Hong', 10, '01011112222', 'aaa@aaa.com');
+
+insert into customer(name, age, phone, email)
+values ('Kim', 20, '01011112222', 'bbb@bbb.com');
+
+update customer
+set email = 'a@a.com'
+where no = 1;
+
+delete
+from customer
+where no = 2;
+
+commit;
+
+select *
+from customer;

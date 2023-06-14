@@ -32,5 +32,11 @@
     <li><%=pPerson.getName()%>, <%=pPerson.getAge()%>
     </li>
 </ul>
+
+<h2>include된 파일에서 page 영역 읽어오기</h2>
+<%@include file="PageInclude.jsp" %>
+
+<h2>페이지 이동 후 page 영역 읽어오기</h2>
+<a href="PageLocation.jsp">PageLocation.jsp 바로가기</a>
 </body>
 </html>
