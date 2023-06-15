@@ -179,3 +179,8 @@ grant create synonym
     to mega;
     
 grant create procedure to mega;
+
+create user musthave identified by 1234;
+
+grant connect,resource
+to musthave;
