@@ -1,4 +1,4 @@
-<%@ page import="com.example.jsp05.JDBCConnect" %>
+<%@ page import="com.example.jsp06_re.JDBCConnect" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Date" %><%--
