@@ -75,7 +75,46 @@ public class BoardDAO extends JDBCConnect {
 
     }
 
-//    검색 조건에 맞는 게시물 목록을 반화합니다.(페이징 기능 지원).
+    //    검색 조건에 맞는 게시물 목록을 반화합니다.(페이징 기능 지원).
+    public List<BoardDTO> selectListPage(Map<String, Object> map) {
+        List<BoardDTO> bbs = new ArrayList<BoardDTO>();
+        String query = "select *\n" +
+                "from (select ROWNUM rnum, tb.*\n" +
+                "      from (select *\n" +
+                "            from BOARD\n";
+
+        if (map.get("searchWord") != null) {
+            query += " WHERE " + map.get("searchField") + " "
+                    + " LIKE '%" + map.get("searchWord") + "%' ";
+        }
+
+        query += "            order by NUM desc) tb)\n" +
+                "where rnum>=? and rnum<=?";
+
+        try {
+            psmt = con.prepareStatement(query);
+            psmt.setString(1, map.get("start").toString());
+            psmt.setString(2, map.get("end").toString());
+
+            rs = psmt.executeQuery();
+
+            while (rs.next()) {
+                BoardDTO dto = new BoardDTO();
+
+                dto.setNum(rs.getString("num"));
+                dto.setTitle(rs.getString("title"));
+                dto.setContent(rs.getString("content"));
+                dto.setPostdate(rs.getDate("postdate"));
+                dto.setId(rs.getString("id"));
+                dto.setVisitcount(rs.getString("visitcount"));
+
+                bbs.add(dto);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return bbs;
+    }
 
     //    게시글 데이터를 받아 DB에 추가합니다.
     public int insertWrite(BoardDTO dto) {
@@ -167,7 +206,7 @@ public class BoardDAO extends JDBCConnect {
     }
 
     //    지정한 게시물을 삭제합니다.
-    public int delete(String num) {
+    public int deletePost(String num) {
         int result = 0;
         String query = "delete from BOARD\n" +
                 "where NUM=?";

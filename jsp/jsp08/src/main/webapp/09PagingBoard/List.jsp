@@ -2,7 +2,8 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
-<%@ page import="model1.BoardDTO" %><%--
+<%@ page import="model1.BoardDTO" %>
+<%@ page import="utils.BoardPage" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 2023-06-20
@@ -23,7 +24,26 @@
     }
 
     int totalCount = dao.selectCount(param);
-    List<BoardDTO> boardLists = dao.selectList(param);
+
+//    전체 페이지 수 계산
+    int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+    int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+    int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+
+//    현재 페이지 확인
+    int pageNum = 1;
+    String pageTemp = request.getParameter("pageNum");
+    if (pageTemp != null && !pageTemp.equals(""))
+        pageNum = Integer.parseInt(pageTemp);
+
+//    목록에 출력한 게시물 범위 계산
+    int start = (pageNum - 1) * pageSize + 1; // 1, 11, 21
+    int end = pageNum * pageSize; // 10, 20, 30
+
+    param.put("start", start);
+    param.put("end", end);
+
+    List<BoardDTO> boardLists = dao.selectListPage(param);
     dao.close();
 %>
 
@@ -33,7 +53,8 @@
 </head>
 <body>
 <jsp:include page="../Common/Link.jsp"/>
-<h2>목록 보기(List)</h2>
+<h2>목록 보기(List) - 현재 페이지 : <%=pageNum%>{전체:<%=totalPage%>}</h2>
+
 <%--form태그에 action속성이 생략되어 있으면 현재 페이지로 이동한다.--%>
 <form method="post">
     <table border="1" width="90%">
@@ -69,9 +90,10 @@
         <%
         } else {
             int virtualNum = 0;
+            int countNum = 0;
             for (BoardDTO dto :
                     boardLists) {
-                virtualNum = totalCount--; // virtualNum = totalCount고 계산 후 --가 된다.
+                virtualNum = totalCount - ((pageNum - 1) * pageSize) - countNum++;
         %>
         <tr align="center">
             <td><%=virtualNum%>
@@ -92,7 +114,11 @@
         %>
     </table>
     <table border="1" width="90%">
-        <tr align="right">
+        <tr align="center">
+            <%--            페이징 처리--%>
+            <td>
+                <%=BoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI())%>
+            </td>
             <td>
                 <button type="button" onclick="location.href='Write.jsp';">글쓰기</button>
             </td>
