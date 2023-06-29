@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebServlet("/mvcboard/write.do")
 public class WriteController extends HttpServlet {
@@ -40,6 +42,38 @@ public class WriteController extends HttpServlet {
             JSFunction.alertLocation(resp, "첨부 파일이 제한 용량을 초과했습니다.", "../mvcboard/write.do");
 
             return;
+        }
+
+        MVCBoardDTO dto = new MVCBoardDTO();
+        dto.setName(mr.getParameter("name"));
+        dto.setTitle(mr.getParameter("title"));
+        dto.setContent(mr.getParameter("content"));
+        dto.setPass(mr.getParameter("pass"));
+
+        String fileName = mr.getFilesystemName("ofile");
+
+        if (fileName != null) {
+            String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
+            String ext = fileName.substring(fileName.lastIndexOf("."));
+            String newFileName = now + ext;
+
+            // 파일명 변경
+            File oldFile = new File(saveDirectory + File.separator + fileName);
+            File newFile = new File(saveDirectory + File.separator + newFileName);
+            oldFile.renameTo(newFile);
+
+            dto.setOfile(fileName);  // 원래 파일 이름
+            dto.setSfile(newFileName);  // 서버에 저장된 파일 이름
+        }
+
+        MVCBoardDAO dao = new MVCBoardDAO();
+        int result = dao.insertWrite(dto);
+        dao.close();
+
+        if (result == 1) {
+            resp.sendRedirect("../mvcboard/list.do");
+        } else {
+            resp.sendRedirect("../mvcboard/write.do");
         }
     }
 }
