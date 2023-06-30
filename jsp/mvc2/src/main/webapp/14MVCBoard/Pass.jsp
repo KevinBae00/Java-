@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="writeFrm" method="post" action="../mvcboard/pass.do" onsubmit="return validateForm(this)">
+<form name="writeFrm" method="post" action="../mvcboard/pass.do" onsubmit="return validateForm(this)">
     <input type="hidden" name="idx" value="${param.idx}">
     <input type="hidden" name="mode" value="${param.mode}">
     <table border="1" width="90%">

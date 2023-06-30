@@ -1,5 +1,6 @@
 package model2.mvcboard;
 
+import fileupload.FileUtil;
 import utils.JSFunction;
 
 import javax.servlet.ServletException;
@@ -7,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/mvcboard/pass.do")
@@ -35,7 +37,22 @@ public class PassController extends HttpServlet {
         dao.close();
 
         if (confirmed) {
+            if (mode.contentEquals("edit")) {
+                HttpSession session = req.getSession();
+                session.setAttribute("pass", pass);
+                resp.sendRedirect("../mvcboard/edit.do?idx=" + idx);
 
+            } else if (mode.contentEquals("delete")) {
+                dao = new MVCBoardDAO();
+                MVCBoardDTO dto = dao.selectView(idx);
+                int result = dao.deletePost(idx);
+                dao.close();
+                if (result == 1) {
+                    String saveFileName = dto.getSfile();
+                    FileUtil.deleteFile(req, "Uploads", saveFileName);
+                }
+                JSFunction.alertLocation(resp, "삭제되었습니다.", "../mvcboard/list.do");
+            }
         } else {
             JSFunction.alertBack(resp, "비밀번호 검증에 실패했습니다.");
         }
