@@ -27,7 +27,7 @@ public class ChatServer {
     public void onMessage(String message, Session session) throws IOException {
         System.out.println("메세지 전송: " + session.getId());
 
-        synchronized (clients) {
+        synchronized (clients) { // 동기(순차대로 진행), lock 없애지는 것은 아니고 첫번째 작업이 다 실행 후 실행된다.
             for (Session client : clients) {
                 if (!clients.equals(session)) {
                     client.getBasicRemote().sendText(message);
