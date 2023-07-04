@@ -20,32 +20,34 @@ public class ChatServer {
     @OnOpen
     public void onOpen(Session session) {
         clients.add(session);
-        System.out.println("웹소켓 연결:" + session.getId());
+        System.out.println("웹소켓 연결: " + session.getId());
     }
 
     @OnMessage
     public void onMessage(String message, Session session) throws IOException {
-        System.out.println("메세지 전송: " + session.getId());
+        System.out.println("메시지 전송: " + session.getId() + ":" + message);
 
-        synchronized (clients) { // 동기(순차대로 진행), lock 없애지는 것은 아니고 첫번째 작업이 다 실행 후 실행된다.
+        synchronized (clients) {
             for (Session client : clients) {
-                if (!clients.equals(session)) {
+                if (!client.equals(session)) {
                     client.getBasicRemote().sendText(message);
                 }
             }
         }
     }
 
+
     @OnClose
     public void onClose(Session session) {
         clients.remove(session);
-        System.out.println("웹소켓 종료: " + session.getId());
+        System.out.println("웹소캣 종료: " + session.getId());
     }
 
-    @OnError
+    @OnError  //에러 발생 시 실행
     public void onError(Throwable e) {
         System.out.println("에러 발생");
         e.printStackTrace();
     }
+
 
 }
