@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원 가입창</title>
+    <script type="text/javascript">
+        function fn_sendMember() {
+            //코드 완성 하기
+            //유효성 검증및 요청처리 구현하기
+            const frm = document.frmMember;
+
+            if (frm.id.value === "" || frm.id.value.length == 0) {
+                alert('ID를 입력하여 주세요');
+                frm.id.focus();
+                return false;
+            }
+
+            if (frm.pwd.value === "" || frm.pwd.value.length == 0) {
+                alert('비밀번호를 입력하여 주세요');
+                frm.pwd.focus();
+                return false;
+            }
+
+            frm.submit();
+        }
+    </script>
+</head>
+<body>
+<form name="frmMember" action="/webShop_war_exploded/member3?command=login" method="post">
+    <table>
+        <th>로그인 창</th>
+        <tr>
+            <td>아이디</td>
+            <td><input type="text" name="id"></td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><input type="password" name="pwd"></td>
+        </tr>
+
+    </table>
+    <a href="#" onclick="fn_sendMember();">로그인</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href='/webShop_war_exploded/memberForm.html'>새 회원 등록하기</a>
+</form>
+</body>
+</html>
