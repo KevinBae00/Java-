@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--scope="prototype"을 쓰면 싱글 타입이 아니어서 다른 인스턴스 생성 가능-->
+    <bean id="tv" class="polymorphism.SamsungTV">
+        <!--        constructor-arg는 class에 존재하는 constructor에 매개변수 값을 넣는다.-->
+        <!--                <constructor-arg ref="apple"/>-->
+        <!--                <constructor-arg value="270000"/>-->
+
+        <!--        property는 Setter method를 호출한다.-->
+        <property name="speaker" ref="apple"/>
+        <property name="price" value="270000"/>
+    </bean>
+    <bean id="sony" class="polymorphism.SonySpeaker"/>
+    <bean id="apple" class="polymorphism.AppleSpeaker"/>
+
+</beans>
