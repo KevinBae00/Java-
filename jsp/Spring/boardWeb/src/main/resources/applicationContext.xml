@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--scope="prototype"을 쓰면 싱글 타입이 아니어서 다른 인스턴스 생성 가능-->
-    <bean id="tv" class="polymorphism.SamsungTV">
-        <!--        constructor-arg는 class에 존재하는 constructor에 매개변수 값을 넣는다.-->
-        <!--                <constructor-arg ref="apple"/>-->
-        <!--                <constructor-arg value="270000"/>-->
+    <!--    &lt;!&ndash;scope="prototype"을 쓰면 싱글 타입이 아니어서 다른 인스턴스 생성 가능&ndash;&gt;-->
+    <!--    <bean id="tv" class="polymorphism.SamsungTV">-->
+    <!--        &lt;!&ndash;        constructor-arg는 class에 존재하는 constructor에 매개변수 값을 넣는다.&ndash;&gt;-->
+    <!--        &lt;!&ndash;                <constructor-arg ref="apple"/>&ndash;&gt;-->
+    <!--        &lt;!&ndash;                <constructor-arg value="270000"/>&ndash;&gt;-->
 
-        <!--        property는 Setter method를 호출한다.-->
-        <property name="speaker" ref="apple"/>
-        <property name="price" value="270000"/>
-    </bean>
-    <bean id="sony" class="polymorphism.SonySpeaker"/>
-    <bean id="apple" class="polymorphism.AppleSpeaker"/>
+    <!--        &lt;!&ndash;        property는 set method를 호출한다.&ndash;&gt;-->
+    <!--        <property name="speaker" ref="apple"/>-->
+    <!--        <property name="price" value="270000"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="sony" class="polymorphism.SonySpeaker"/>-->
+    <!--    <bean id="apple" class="polymorphism.AppleSpeaker"/>-->
 
+    <!--    <bean id="collectionBean" class="com.example.ioc.injection.CollectionBean">-->
+    <!--        <property name="addressList">-->
+    <!--            <list>-->
+    <!--                <value>서울시 강남구</value>-->
+    <!--                <value>서울시 영등포구</value>-->
+    <!--            </list>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="collectionBean" class="com.example.ioc.injection.CollectionBean">-->
+    <!--            <property name="addressList">-->
+    <!--                <set>-->
+    <!--&lt;!&ndash;                <set value-type="java.lang.String"> 받을 때 Generic이 없을 경우 지정해 준다.&ndash;&gt;-->
+    <!--                <value>서울시 강남구</value>-->
+    <!--                <value>서울시 성동구</value>-->
+    <!--                <value>서울시 성동구</value>-->
+    <!--            </set>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="collectionBean" class="com.example.ioc.injection.CollectionBean">-->
+    <!--        <property name="addressList">-->
+    <!--            <map>-->
+    <!--                <entry>-->
+    <!--                    <key>-->
+    <!--                        <value>고길동</value>-->
+    <!--                    </key>-->
+    <!--                    <value>서울시 강남구</value>-->
+    <!--                </entry>-->
+    <!--                <entry>-->
+    <!--                    <key>-->
+    <!--                        <value>마이클</value>-->
+    <!--                    </key>-->
+    <!--                    <value>서울시 강서구</value>-->
+    <!--                </entry>-->
+    <!--            </map>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="collectionBean" class="com.example.ioc.injection.CollectionBean">-->
+    <!--        <property name="addressList">-->
+    <!--            <props>-->
+    <!--                <prop key="고길동">서울시 강남구</prop>-->
+    <!--                <prop key="마이콜">서울시 성동구</prop>-->
+    <!--            </props>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <!--    <context:component-scan base-package="polymorphism"/>-->
+
+    <context:component-scan base-package="com.example.biz.board.impl"/>
 </beans>
