@@ -67,5 +67,11 @@
 
     <!--    <context:component-scan base-package="polymorphism"/>-->
 
-    <context:component-scan base-package="com.example.biz.board.impl"/>
+    <context:component-scan base-package="com.example.biz"/>
+
+    <!--    <bean id="userService" class="com.example.biz.user.impl.UserServiceImpl">-->
+    <!--        <property name="userDAO" ref="userDAO"/>-->
+    <!--        &lt;!&ndash;        name은 settermethod 이름으로 맨 첫글자는 소문자이다.&ndash;&gt;-->
+    <!--    </bean>-->
+    <!--    <bean id="userDAO" class="com.example.biz.user.impl.UserDAO"></bean>-->
 </beans>
