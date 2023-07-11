@@ -74,4 +74,30 @@
     <!--        &lt;!&ndash;        name은 settermethod 이름으로 맨 첫글자는 소문자이다.&ndash;&gt;-->
     <!--    </bean>-->
     <!--    <bean id="userDAO" class="com.example.biz.user.impl.UserDAO"></bean>-->
+
+    <!--    <bean id="log" class="com.example.biz.common.LogAdvice"></bean>-->
+
+    <!--    <bean id="around" class="com.example.biz.common.AroundAdvice"></bean>-->
+
+    <!--    <aop:config>-->
+    <!--        <aop:pointcut id="allPointcut" expression="execution(* com.example.biz..*Impl.*(..))"/>-->
+    <!--        <aop:pointcut id="getPointcut" expression="execution(* com.example.biz..*Impl.get*(..))"/>-->
+
+    <!--        <aop:aspect ref="around">-->
+    <!--            <aop:around method="aroundLog" pointcut-ref="allPointcut"/>-->
+    <!--        </aop:aspect>-->
+    <!--    </aop:config>-->
+
+    <context:property-placeholder location="classpath:config/database.properties"/>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
 </beans>
