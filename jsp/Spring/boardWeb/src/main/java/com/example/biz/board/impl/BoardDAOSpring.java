@@ -12,7 +12,7 @@ public class BoardDAOSpring {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    private final String BOARD_INSERT = "insert into  BOARD(seq, title, writer, content)\n" +
+    private final String BOARD_INSERT = "insert into  BOAR D(seq, title, writer, content)\n" +
             "values ((select nvl(max(seq),0)+1 from BOARD),?,?,?)";
     private final String BOARD_UPDATE = "update BOARD set TITLE=?, CONTENT=? where SEQ = ?";
     private final String BOARD_DELETE = "delete BOARD where SEQ=?";
@@ -22,7 +22,7 @@ public class BoardDAOSpring {
     //    글 등록
     public void insertBoard(BoardVO vo) {
         System.out.println("===> Spring JDBC로 insertBoard() 기능 처리");
-        jdbcTemplate.update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent());
+        jdbcTemplate.update(BOARD_INSERT, vo.getSeq(), vo.getTitle(), vo.getWriter(), vo.getContent());
     }
 
     //    글 수정

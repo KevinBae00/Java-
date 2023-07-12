@@ -16,6 +16,7 @@ public class BoardServiceClient {
         BoardVO vo = new BoardVO();
 
 //        글 등록 기능
+        vo.setSeq(100);
         vo.setTitle("임시제목");
         vo.setWriter("홍길동");
         vo.setContent("임시내용..");

@@ -90,6 +90,7 @@ public class BoardDAO {
 
             if (rs.next()) {
                 boardVO = new BoardVO();
+                boardVO.setSeq(rs.getInt("seq"));
                 boardVO.setTitle(rs.getString("title"));
                 boardVO.setWriter(rs.getString("writer"));
                 boardVO.setContent(rs.getString("content"));
@@ -116,6 +117,7 @@ public class BoardDAO {
 
             while (rs.next()) {
                 BoardVO boardVO = new BoardVO();
+                boardVO.setSeq(rs.getInt("seq"));
                 boardVO.setTitle(rs.getString("title"));
                 boardVO.setWriter(rs.getString("writer"));
                 boardVO.setContent(rs.getString("content"));
