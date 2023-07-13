@@ -193,47 +193,15 @@ pageEncoding="UTF-8" %>
 </head>
 <body>
 
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top "style="background-color: #53eba6">
+<header data-bs-theme="dark" class="pt-5" style="padding: 1rem;">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background-color: #53eba6">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">ALGODA</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <div class="nav-link active" aria-current="page" >관리자님 환영합니다!</div>
-                    </li>
-                </ul>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                유형 선택
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">중등 영단어</a></li>
-                                <li><a class="dropdown-item" href="#">수능 영단어</a></li>
-                                <li><a class="dropdown-item" href="#">직장인 영단어</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="dropdown d-flex dropstart">
-                    <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <strong>mdo</strong>
-                    </a>
-                    <ul class="dropdown-menu text-small shadow">
-                        <li><a class="dropdown-item " href="#">Sign out</a></li>
-                    </ul>
+                <button class="btn btn-primary">뒤로 가기</button>
+                <div class="navbar-nav me-auto mb-2 mb-md-0"></div>
+                <div class="p-2 border border-5 rounded-3 d-flex"
+                     style="color: white; background-color: gray;">
+                    12:15
                 </div>
             </div>
         </div>
@@ -243,7 +211,7 @@ pageEncoding="UTF-8" %>
 <main>
 
 
-    <h2>중등 영단어</h2>
+    <h2 class="fs-1 fw-bold text-success">7 / 10</h2>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -251,163 +219,118 @@ pageEncoding="UTF-8" %>
                        class="table table-bordered table-hover dt-responsive">
                     <thead>
                     <tr>
-                        <th>랭킹</th>
-                        <th>아이디</th>
-                        <th>닉네임</th>
-                        <th>total 점수</th>
-                        <th>수정</th>
-                        <th>삭제</th>
+                        <th>번호</th>
+                        <th>영어단어</th>
+                        <th>내가 쓴 단어</th>
+                        <th>정답</th>
+                        <th>동의어</th>
+                        <th>단어장에 추가하기</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <div style="overflow: scroll; height: 150px;">
 
                     <tr>
                         <td>1</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
-                    </div>
+
                     <tr>
                         <td>2</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     <tr>
                         <td>4</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>life</td>
                         <td>삶</td>
                         <td>existence</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>life</td>
-                        <td>삶</td>
-                        <td>existence</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>life</td>
-                        <td>삶</td>
-                        <td>existence</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>life</td>
-                        <td>삶</td>
-                        <td>existence</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>life</td>
-                        <td>삶</td>
-                        <td>existence</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>life</td>
-                        <td>삶</td>
-                        <td>existence</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>life</td>
-                        <td>삶</td>
-                        <td>existence</td>
+                        <td>hi</td>
+                        <td><button type="button" class="btn btn-warning btn-lg">추가하기</button></td>
                     </tr>
 
                     </tbody>
-                    <tfoot>
-
-                    </tfoot>
                 </table>
             </div>
         </div>
     </div>
-
-    <div class="btn-group">
-        <button type="button" class="btn btn-round btn-default">«</button>
-        <button type="button" class="btn btn-default">1</button>
-        <button type="button" class="btn btn-default">2</button>
-        <button type="button" class="btn btn-default disabled">3</button>
-        <button type="button" class="btn btn-default">4</button>
-        <button type="button" class="btn btn-default">5</button>
-        <button type="button" class="btn btn-round btn-default">»</button>
-    </div>
-
-
-    <div class="container">
-        <div class="row">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="  search-query form-control" placeholder="단어 검색" />
-                    <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
