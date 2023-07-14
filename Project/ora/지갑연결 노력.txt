@@ -1,0 +1,63 @@
+JDBC연결방식 4번째—풀 방식
+
+tomcat설치된 폴더에 가서 server.xml의 수정
+
+<GlobalNamingResources>
+<!-- Editable user database that can also be used by
+UserDatabaseRealm to authenticate users
+-->
+<Resource name="UserDatabase" auth="Container"
+type="org.apache.catalina.UserDatabase"
+description="User database that can be updated and saved"
+factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+pathname="conf/tomcat-users.xml" />
+</GlobalNamingResources>
+
+톰캣 사이트 가서 도큐멘테이션 메뉴에 톰캣 9.0버전 눌러서 JNDI 들어가면 유용한 소스코드들이 있어서 복사 붙여넣기 해서 쓸 수 있다.
+
+https://tomcat.apache.org/tomcat-9.0-doc/jndi-resources-howto.html
+
+톰캣 설치된 폴더의 conf폴더에 가서 context.xml파일 수정하기
+
+<context>태그 아래쪽
+
+맨 밑의 줄 수정
+
+직접 conf폴더 찾아가서 server.xml파일과 context.xml파일을 수정하고 저장한 다음 이클립스에서 server폴더에서 context.xml파일과 server.xml파일을 열어서 맞게 수정되어 있는지 확인한다.
+
+1.jdbc드라이버 로드
+2.데이터 베이스 연결
+3.쿼리문 작성하고
+4.쿼리문 객체 생성
+5.쿼리문 실행
+6.실행결과 처리
+7.연결 해제
+
+lib라이브러리 폴더에 교수님이 보내주신 압축파일 4개를을 롬복처럼 붙여넣는다.
+
+ojdbc8.jar
+
+oraclepki.jar
+
+osdt_cert.jar
+
+osdt_core.jar
+
+클라우드 테스트용 jsp파일을 웹컨텐츠 폴더에 만든다.
+
+오라클 클라우드 주소 (지갑 사용시)
+
+"jdbc:oracle:thin:@abr4ytrp9lp1m0sp_low?TNS_ADMIN=D://ljyf//oracle//Wallet_ABR4YTRP9LP1M0SP" ;
+
+*혹시 주소를 그냥 복사붙여넣기 할 때 폴더 주소에 있는 \슬래쉬를 //로 바꿔서 입력한다.
+
+지갑 압축을 풀어서 나온 tnsnames.ora메모장 파일을 열어보면 high, low, middle의 지갑주소 타입이 나오는데 그 중에 빌리는 사람이 만든 지갑 타입(low)를 물어보고 타입에 맞는 걸로 지갑이름을 복사해서 붙여넣고  tnsnames.ora파일이 보이는 폴더까지 주소를 이어서 붙여서 만든다.
+
+중간에 TNS_ADMIN(반드시 대문자로 써야 함)을 붙여서
+
+그리고 지갑 아이디와 패스를 변수로
+
+지갑 주소에 폴더나 파일이 한글 이름이 있으면 안된다. 
+
+jdbc:oracle:thin:@ptax15g6ez0tr2te_low?TNS_ADMIN=D://bbj//oracle//wallet//temp_1689158546393.978827221
+JaewonChung73
