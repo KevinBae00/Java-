@@ -35,12 +35,12 @@ public class Wordadao {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(WORDA_INSERT);
             stmt.setString(1, dto.getWord());
-            stmt.setString(2, dto.getMEANINGA());
-            stmt.setString(3, dto.getMEANINGB());
-            stmt.setString(4, dto.getMEANINGC());
-            stmt.setString(5, dto.getSIMILIAR_WORDA());
-            stmt.setString(6, dto.getSIMILIAR_WORDB());
-            stmt.setString(7, dto.getSIMILIAR_WORDC());
+            stmt.setString(2, dto.getMeaninga());
+            stmt.setString(3, dto.getMeaningb());
+            stmt.setString(4, dto.getMeaningc());
+            stmt.setString(5, dto.getSimilar_worda());
+            stmt.setString(6, dto.getSimilar_wordb());
+            stmt.setString(7, dto.getSimilar_wordc());
             stmt.setInt(8, dto.getDay());
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -57,12 +57,12 @@ public class Wordadao {
         try {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(WORDA_UPDATE);
-            stmt.setString(1, dto.getMEANINGA());
-            stmt.setString(2, dto.getMEANINGB());
-            stmt.setString(3, dto.getMEANINGC());
-            stmt.setString(4, dto.getSIMILIAR_WORDA());
-            stmt.setString(5, dto.getSIMILIAR_WORDB());
-            stmt.setString(6, dto.getSIMILIAR_WORDC());
+            stmt.setString(1, dto.getMeaninga());
+            stmt.setString(2, dto.getMeaningb());
+            stmt.setString(3, dto.getMeaningc());
+            stmt.setString(4, dto.getSimilar_worda());
+            stmt.setString(5, dto.getSimilar_wordb());
+            stmt.setString(6, dto.getSimilar_wordc());
             stmt.setInt(7, dto.getDay());
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -102,12 +102,12 @@ public class Wordadao {
             if (rs.next()) {
                 worddto = new Worddto();
                 worddto.setWord(rs.getString("word"));
-                worddto.setMEANINGA(rs.getString("MEANINGA"));
-                worddto.setMEANINGB(rs.getString("MEANINGB"));
-                worddto.setMEANINGC(rs.getString("MEANINGC"));
-                worddto.setSIMILIAR_WORDA(rs.getString("SIMILIAR_WORDA"));
-                worddto.setSIMILIAR_WORDB(rs.getString("SIMILIAR_WORDB"));
-                worddto.setSIMILIAR_WORDC(rs.getString("SIMILIAR_WORDC"));
+                worddto.setMeaninga(rs.getString("MEANINGA"));
+                worddto.setMeaningb(rs.getString("MEANINGB"));
+                worddto.setMeaningc(rs.getString("MEANINGC"));
+                worddto.setSimilar_worda(rs.getString("SIMILAR_WORDA"));
+                worddto.setMeaningb(rs.getString("SIMILAR_WORDB"));
+                worddto.setMeaningc(rs.getString("SIMILAR_WORDC"));
                 worddto.setDay(rs.getInt("day"));
             }
         } catch (SQLException e) {
@@ -135,9 +135,9 @@ public class Wordadao {
                 worddto.setMeaninga(rs.getString("MEANINGA"));
                 worddto.setMeaningb(rs.getString("MEANINGB"));
                 worddto.setMeaningc(rs.getString("MEANINGC"));
-                worddto.setSimiliar_worda(rs.getString("SIMILIAR_WORDA"));
-                worddto.setSimiliar_wordb(rs.getString("SIMILIAR_WORDB"));
-                worddto.setSimiliar_wordc(rs.getString("SIMILIAR_WORDC"));
+                worddto.setSimilar_worda(rs.getString("SIMILAR_WORDA"));
+                worddto.setSimilar_wordb(rs.getString("SIMILAR_WORDB"));
+                worddto.setSimilar_wordc(rs.getString("SIMILAR_WORDC"));
                 worddto.setDay(rs.getInt("day"));
                 WordAList.add(worddto);
             }

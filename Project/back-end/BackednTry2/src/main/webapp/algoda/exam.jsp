@@ -174,7 +174,101 @@
             </div>
         </div>
     </div>
-    <div id="box4" style="height: 1em;"></div>
+    <div id="box4" style="height: 1em;">
+
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <div class="card"
+             style="width: 50rem; background-color: #BDFCC9; margin-top: 3rem; ">
+            <div class="card-img-top">4/10</div>
+            <div class="card-body">
+                <p class="fs-3">의자</p>
+                <h5 class="card-title">회원님의 답</h5>
+                <input type="text" class="card-text form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm"
+                       placeholder="영어로 정답을 입력하세요"></input>
+                <a href="#box5" class="btn btn-primary" style="margin-top: 0.3em; float: right">next</a>
+            </div>
+        </div>
+    </div>
+    <div id="box5" style="height: 1em;">
+
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <div class="card"
+             style="width: 50rem; background-color: #BDFCC9; margin-top: 3rem; ">
+            <div class="card-img-top">5/10</div>
+            <div class="card-body">
+                <p class="fs-3">의자</p>
+                <h5 class="card-title">회원님의 답</h5>
+                <input type="text" class="card-text form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm"
+                       placeholder="영어로 정답을 입력하세요"></input>
+                <a href="#box6" class="btn btn-primary" style="margin-top: 0.3em; float: right">next</a>
+            </div>
+        </div>
+    </div>
+    <div id="box6" style="height: 1em;"></div>
+    <div style="display: flex; justify-content: center;">
+        <div class="card"
+             style="width: 50rem; background-color: #BDFCC9; margin-top: 3rem; ">
+            <div class="card-img-top">6/10</div>
+            <div class="card-body">
+                <p class="fs-3">의자</p>
+                <h5 class="card-title">회원님의 답</h5>
+                <input type="text" class="card-text form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm"
+                       placeholder="영어로 정답을 입력하세요"></input>
+                <a href="#box7" class="btn btn-primary" style="margin-top: 0.3em; float: right">next</a>
+            </div>
+        </div>
+    </div>
+    <div id="box7" style="height: 1em;"></div>
+    <div style="display: flex; justify-content: center;">
+        <div class="card"
+             style="width: 50rem; background-color: #BDFCC9; margin-top: 3rem; ">
+            <div class="card-img-top">7/10</div>
+            <div class="card-body">
+                <p class="fs-3">의자</p>
+                <h5 class="card-title">회원님의 답</h5>
+                <input type="text" class="card-text form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm"
+                       placeholder="영어로 정답을 입력하세요"></input>
+                <a href="#box8" class="btn btn-primary" style="margin-top: 0.3em; float: right">next</a>
+            </div>
+        </div>
+    </div>
+    <div id="box8" style="height: 1em;"></div>
+    <div style="display: flex; justify-content: center;">
+        <div class="card"
+             style="width: 50rem; background-color: #BDFCC9; margin-top: 3rem; ">
+            <div class="card-img-top">8/10</div>
+            <div class="card-body">
+                <p class="fs-3">의자</p>
+                <h5 class="card-title">회원님의 답</h5>
+                <input type="text" class="card-text form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm"
+                       placeholder="영어로 정답을 입력하세요"></input>
+                <a href="#box9" class="btn btn-primary" style="margin-top: 0.3em; float: right">next</a>
+            </div>
+        </div>
+    </div>
+    <div id="box9" style="height: 1em;"></div>
+    <div style="display: flex; justify-content: center;">
+        <div class="card"
+             style="width: 50rem; background-color: #BDFCC9; margin-top: 3rem; ">
+            <div class="card-img-top">9/10</div>
+            <div class="card-body">
+                <p class="fs-3">의자</p>
+                <h5 class="card-title">회원님의 답</h5>
+                <input type="text" class="card-text form-control" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm"
+                       placeholder="영어로 정답을 입력하세요"></input>
+                <a href="#box10" class="btn btn-primary" style="margin-top: 0.3em; float: right">next</a>
+            </div>
+        </div>
+    </div>
+    <div id="box10" style="height: 1em;"></div>
     <div style="display: flex; justify-content: center;">
         <div class="card"
              style="width: 50rem; background-color: #BDFCC9; margin-top: 3rem; ">

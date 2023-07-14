@@ -8,8 +8,8 @@ public class Worddto {
     String meaninga;
     String meaningb;
     String meaningc;
-    String similiar_worda;
-    String similiar_wordb;
-    String similiar_wordc;
+    String similar_worda;
+    String similar_wordb;
+    String similar_wordc;
     int day;
 }
