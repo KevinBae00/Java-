@@ -9,8 +9,10 @@ import java.util.List;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
+
     @Autowired
     private BoardDAOSpring boardDAO;
+//    private BoardDAO boardDAO;
 //    private LogAdvice log;
 
     public BoardServiceImpl() {

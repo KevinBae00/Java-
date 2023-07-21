@@ -1,0 +1,13 @@
+@RequestMapping("/getBoardList.do")
+    public String getBoardList(
+            @RequestParam(value = "searchCondition", defaultValue = "TITLE", required = false) String condition,
+            @RequestParam(value = "searchKeyword", defaultValue = "", required = false) String keyword,
+            BoardDAO dao,
+            Model model) {
+
+        System.out.println("검색 조건 : " + condition);
+        System.out.println("검색 단어 : " + keyword);
+
+
+        return "getBoardList.jsp";
+    }

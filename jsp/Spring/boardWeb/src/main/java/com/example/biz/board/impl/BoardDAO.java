@@ -18,14 +18,16 @@ public class BoardDAO {
     private PreparedStatement stmt = null;
     private ResultSet rs = null;
 
-    private final String BOARD_INSERT = "insert into  BOARD(seq, title, writer, content)\n" +
-            "values ((select nvl(max(seq),0)+1 from BOARD),?,?,?)";
-    private final String BOARD_UPDATE = "update BOARD set TITLE=?, CONTENT=? where SEQ = ?";
-    private final String BOARD_DELETE = "delete BOARD where SEQ=?";
-    private final String BOARD_GET = "select * from BOARD where SEQ=?";
-    private final String BOARD_LIST = "select * from BOARD order by SEQ desc";
+    private final String BOARD_INSERT = "insert into board(seq, title, writer, content) "
+            + "values((select nvl(max(seq), 0)+1 from board),?,?,?)";
+    private final String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
+    private final String BOARD_DELETE = "delete board where seq=?";
+    private final String BOARD_GET = "select * from board where seq=?";
+    private final String BOARD_LIST = "select * from board order by seq desc";
+    private final String BOARD_LIST_T = "select * from board where title like '%'||?||'%' order by seq desc";
+    private final String BOARD_LIST_C = "select * from board where content like '%'||?||'%' order by seq desc";
 
-    //    글 등록
+    // 글 등록
     public void insertBoard(BoardVO vo) {
         System.out.println("===> JDBC로 insertBoard() 기능 처리");
 
@@ -37,16 +39,17 @@ public class BoardDAO {
             stmt.setString(3, vo.getContent());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         } finally {
             JDBCUtil.close(stmt, conn);
         }
+
     }
 
-    //    글 수정
+    // 글 수정
     public void updateBoard(BoardVO vo) {
         System.out.println("===> JDBC로 updateBoard() 기능 처리");
-
         try {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(BOARD_UPDATE);
@@ -54,34 +57,32 @@ public class BoardDAO {
             stmt.setString(2, vo.getContent());
             stmt.setInt(3, vo.getSeq());
             stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             JDBCUtil.close(stmt, conn);
         }
     }
 
-    //    글 삭제
+    // 글 삭제
     public void deleteBoard(BoardVO vo) {
         System.out.println("===> JDBC로 deleteBoard() 기능 처리");
-
         try {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(BOARD_DELETE);
             stmt.setInt(1, vo.getSeq());
             stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             JDBCUtil.close(stmt, conn);
         }
     }
 
-    //    글 상세 조회
+    // 글 상세 조회
     public BoardVO getBoard(BoardVO vo) {
         System.out.println("===> JDBC로 getBoard() 기능 처리");
-
-        BoardVO boardVO = null;
+        BoardVO board = null;
         try {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(BOARD_GET);
@@ -89,47 +90,56 @@ public class BoardDAO {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                boardVO = new BoardVO();
-                boardVO.setSeq(rs.getInt("seq"));
-                boardVO.setTitle(rs.getString("title"));
-                boardVO.setWriter(rs.getString("writer"));
-                boardVO.setContent(rs.getString("content"));
-                boardVO.setRegDate(rs.getDate("regdate"));
-                boardVO.setCnt(rs.getInt("cnt"));
+                board = new BoardVO();
+                board.setSeq(rs.getInt("SEQ"));
+                board.setTitle(rs.getString("TITLE"));
+                board.setWriter(rs.getString("WRITER"));
+                board.setContent(rs.getString("CONTENT"));
+                board.setRegDate(rs.getDate("REGDATE"));
+                board.setCnt(rs.getInt("CNT"));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             JDBCUtil.close(rs, stmt, conn);
         }
-        return boardVO;
+
+        return board;
     }
 
-    //    글 목록 조회
+    // 글 목록 조회
     public List<BoardVO> getBoardList(BoardVO vo) {
         System.out.println("===> JDBC로 getBoardList() 기능 처리");
 
-        List<BoardVO> boardVOList = new ArrayList<BoardVO>();
+        List<BoardVO> boardList = new ArrayList<BoardVO>();
+        BoardVO board = null;
         try {
             conn = JDBCUtil.getConnection();
-            stmt = conn.prepareStatement(BOARD_LIST);
+            if (vo.getSearchCondition().equals("TITLE")) {
+                stmt = conn.prepareStatement(BOARD_LIST_T);
+            } else if (vo.getSearchCondition().equals("CONTENT")) {
+                stmt = conn.prepareStatement(BOARD_LIST_C);
+            }
+            stmt.setString(1, vo.getSearchKeyword());
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                BoardVO boardVO = new BoardVO();
-                boardVO.setSeq(rs.getInt("seq"));
-                boardVO.setTitle(rs.getString("title"));
-                boardVO.setWriter(rs.getString("writer"));
-                boardVO.setContent(rs.getString("content"));
-                boardVO.setRegDate(rs.getDate("regdate"));
-                boardVO.setCnt(rs.getInt("cnt"));
-                boardVOList.add(boardVO);
+                board = new BoardVO();
+                board.setSeq(rs.getInt("SEQ"));
+                board.setTitle(rs.getString("TITLE"));
+                board.setWriter(rs.getString("WRITER"));
+                board.setContent(rs.getString("CONTENT"));
+                board.setRegDate(rs.getDate("REGDATE"));
+                board.setCnt(rs.getInt("CNT"));
+                boardList.add(board);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             JDBCUtil.close(rs, stmt, conn);
         }
-        return boardVOList;
+        return boardList;
     }
 }
