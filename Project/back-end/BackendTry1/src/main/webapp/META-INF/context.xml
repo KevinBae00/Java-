@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <!--    <GlobalNamingResources>-->
+    <!--        &lt;!&ndash; Editable user database that can also be used by-->
+    <!--        UserDatabaseRealm to authenticate users-->
+    <!--        &ndash;&gt;-->
+    <!--        <Resource name="UserDatabase" auth="Container"-->
+    <!--                  type="org.apache.catalina.UserDatabase"-->
+    <!--                  description="User database that can be updated and saved"-->
+    <!--                  factory="org.apache.catalina.users.MemoryUserDatabaseFactory"-->
+    <!--                  pathname="conf/tomcat-users.xml"/>-->
+    <!--    </GlobalNamingResources>-->
+</Context>
